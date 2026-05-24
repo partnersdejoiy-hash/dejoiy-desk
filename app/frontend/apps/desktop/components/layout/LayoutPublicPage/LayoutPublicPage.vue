@@ -35,16 +35,24 @@ const boxSizeClass = computed(() => {
 
 <template>
   <div
-    class="flex min-h-screen flex-col items-center bg-neutral-950 text-stone-200 dark:text-neutral-500"
+    class="flex min-h-screen flex-col items-center text-stone-200"
+    style="background: linear-gradient(135deg, #1a0533 0%, #0f1547 50%, #050d24 100%)"
   >
-    <div :class="boxSizeClass" class="m-auto w-full">
+    <!-- Dejoiy brand accent bar -->
+    <div
+      class="w-full h-1 flex-shrink-0"
+      style="background: linear-gradient(90deg, #EC4899, #A855F7, #3B82F6)"
+    />
+
+    <div :class="boxSizeClass" class="m-auto w-full px-4">
       <main
-        class="flex flex-col gap-2.5 rounded-3xl bg-neutral-50 p-5 text-black dark:bg-gray-500 dark:text-white"
+        class="flex flex-col gap-2.5 rounded-2xl bg-white p-6 text-black shadow-2xl"
+        style="box-shadow: 0 25px 60px rgba(168, 85, 247, 0.15), 0 10px 25px rgba(0,0,0,0.4)"
       >
-        <div v-if="showLogo" class="flex justify-center">
+        <div v-if="showLogo" class="flex justify-center pb-2">
           <CommonLogo />
         </div>
-        <h1 v-if="title" class="mb-5 text-center text-xl">
+        <h1 v-if="title" class="mb-5 text-center text-xl font-semibold text-gray-800">
           {{ $t(title) }}
         </h1>
         <slot />
@@ -63,14 +71,14 @@ const boxSizeClass = computed(() => {
       </section>
       <footer
         v-if="!hideFooter"
-        class="flex w-full items-center justify-center py-3 align-middle text-xs"
+        class="flex w-full items-center justify-center py-4 align-middle text-xs text-purple-300/60"
       >
         <span class="ltr:mr-1 rtl:ml-1">{{ $t('Powered by') }}</span>
         <CommonLink
           link="https://dejoiy.com"
           open-in-new-tab
           external
-          class="flex items-center gap-1 text-neutral-500 hover:text-neutral-500!"
+          class="font-medium text-purple-300/80 hover:text-purple-200!"
         >
           {{ $t('Dejoiy') }}
         </CommonLink>
