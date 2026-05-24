@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -128,7 +128,7 @@ const currentDevices = computed<TableItem[]>(() =>
 )
 
 const helpText = computed(() =>
-  i18n.t('All computers and browsers from which you logged in to Zammad appear here.'),
+  i18n.t('All computers and browsers from which you logged in to Dejoiy appear here.'),
 )
 </script>
 

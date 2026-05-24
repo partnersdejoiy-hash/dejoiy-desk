@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { setAutoCompleteBehavior } from '#shared/components/Form/fields/FieldRecipient/features/setAutoCompleteBehavior.ts'
 import createInput from '#shared/form/core/createInput.ts'

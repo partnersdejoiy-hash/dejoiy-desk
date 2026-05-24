@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 // "Pre" Load editor on app start to be faster available
 const loadEditor = () => import('#shared/components/Form/fields/FieldEditor/FieldEditorInput.vue')

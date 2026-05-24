@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { shallowRef, computed, reactive } from 'vue'
@@ -55,7 +55,7 @@ const systemInformationSchema = [
         type: 'text',
         required: true,
         validation: 'url',
-        help: __('The URL of this installation of Zammad.'),
+        help: __('The URL of this installation of Dejoiy.'),
       },
     ],
   },

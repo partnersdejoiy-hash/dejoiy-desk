@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { markRaw } from 'vue'
@@ -37,7 +37,7 @@ const schema = markRaw([
         label: __('Can you tell us what are you missing in the BETA UI?'),
         props: { rows: 4 },
         classes: { outer: 'text-left' },
-        help: __('Your answer will be submitted to Zammad GmbH in an anonymized way.'),
+        help: __('Your answer will be submitted to Dejoiy in an anonymized way.'),
         required: true,
       },
     ],

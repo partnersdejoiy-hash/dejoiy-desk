@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { useRouteQuery } from '@vueuse/router'
 import { computed, onMounted } from 'vue'
@@ -114,7 +114,7 @@ const useAppMaintenanceCheck = (maintenanceOptions: UseAppMaintenanceCheckOption
 
       switch (type) {
         case EnumAppMaintenanceType.ConfigChanged:
-          message = __('The configuration of Zammad has changed. Please reload at your earliest.')
+          message = __('The configuration of Dejoiy has changed. Please reload at your earliest.')
           break
         case EnumAppMaintenanceType.RestartAuto:
         case EnumAppMaintenanceType.RestartManual:

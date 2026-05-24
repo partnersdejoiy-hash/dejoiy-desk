@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { ApolloError } from '@apollo/client/errors'
@@ -187,7 +187,7 @@ const { switchValue, toggleBetaUiSwitch } = useBetaUi()
     <div v-if="$c.maintenance_mode" class="mb-1 rounded-lg bg-red-500 px-4 py-2 text-sm text-white">
       {{
         $t(
-          'Zammad is currently in maintenance mode. Only administrators can log in. Please wait until the maintenance window is over.',
+          'Dejoiy is currently in maintenance mode. Only administrators can log in. Please wait until the maintenance window is over.',
         )
       }}
     </div>

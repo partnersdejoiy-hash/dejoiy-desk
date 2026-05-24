@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import UserError from '#shared/errors/UserError.ts'
 import type { UserErrors } from '#shared/types/error.ts'

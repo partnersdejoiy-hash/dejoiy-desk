@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { computed, toRef, watch, nextTick, onMounted } from 'vue'
@@ -185,7 +185,7 @@ onMounted(() => {
 
   /*
     Strip inline color styles in dark mode.
-      However, we need to keep the colors of the Zammad palette.
+      However, we need to keep the colors of the Dejoiy palette.
   */
   [data-theme='dark'] &:deep(*[style*='color']):not(
     [style*='color:rgb(102, 102, 102)'], [style*='color: rgb(102, 102, 102)'], /* neutral 1 */

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -56,7 +56,7 @@ const finish = () => {
 <template>
   <div class="flex flex-col gap-2.5">
     <CommonLabel>
-      {{ $t('Your Zammad has the following email address:') }}
+      {{ $t('Your Dejoiy has the following email address:') }}
     </CommonLabel>
 
     <ul class="list-disc gap-1 text-sm text-gray-100 ltr:ml-5 rtl:mr-5 dark:text-neutral-400">

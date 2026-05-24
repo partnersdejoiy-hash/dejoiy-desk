@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 const openExternalLink = (url: string, target: string = '_blank', filename: string = '') => {
   const link = document.createElement('a')

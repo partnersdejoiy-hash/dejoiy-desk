@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { FormKit } from '@formkit/vue'
@@ -49,7 +49,7 @@ const leaveFeedbackProgram = () => {
     <div class="mb-2 flex flex-col gap-4">
       <FormKit
         type="toggle"
-        :label="__('Display Zammad with the new BETA user interface')"
+        :label="__('Display Dejoiy with the new BETA user interface')"
         :value="true"
         :variants="{ true: 'True', false: 'False' }"
         @input-raw="toggleBetaUiSwitch()"

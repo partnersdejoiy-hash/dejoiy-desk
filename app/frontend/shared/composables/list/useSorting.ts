@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { isRef, ref, toValue, watch, type ComputedRef, type Ref } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'

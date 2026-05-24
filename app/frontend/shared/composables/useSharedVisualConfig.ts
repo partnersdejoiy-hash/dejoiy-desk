@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import type { FilePreviewVisualConfig } from '#shared/components/CommonFilePreview/types.ts'
 import type { TooltipVisualConfig } from '#shared/components/CommonTooltip/types.ts'

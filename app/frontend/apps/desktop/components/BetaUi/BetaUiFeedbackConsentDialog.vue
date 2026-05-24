@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import Form from '#shared/components/Form/Form.vue'
@@ -54,7 +54,7 @@ const dummySchema = defineFormSchema([
     <CommonLabel>
       {{
         $t(
-          'Hey, we have something to show you! Our team has been working on the new Zammad UI for a while, and we’re very eager for you to try it and send some feedback. It involves asking you to rate your experience and provide an optional comment every once in a while.',
+          ‘Hey, we have something to show you! Our team has been working on the new Dejoiy UI for a while, and we’re very eager for you to try it and send some feedback. It involves asking you to rate your experience and provide an optional comment every once in a while.’,
         )
       }}
     </CommonLabel>
@@ -82,7 +82,7 @@ const dummySchema = defineFormSchema([
           </li>
           <li>
             <CommonLabel>
-              {{ $t('name of the Zammad instance with tracked usage time of the new UI.') }}
+              {{ $t('name of the Dejoiy instance with tracked usage time of the new UI.') }}
             </CommonLabel>
           </li>
         </ul>
@@ -96,7 +96,7 @@ const dummySchema = defineFormSchema([
       </div>
     </div>
     <CommonLabel>
-      {{ $t('Help us shape the future of Zammad!') }}
+      {{ $t('Help us shape the future of Dejoiy!') }}
     </CommonLabel>
     <template #footer>
       <CommonDialogActionFooter

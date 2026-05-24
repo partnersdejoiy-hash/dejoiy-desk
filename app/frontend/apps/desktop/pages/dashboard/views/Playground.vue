@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 <!-- eslint-disable zammad/zammad-detect-translatable-string -->
 
 <script setup lang="ts">
@@ -533,7 +533,7 @@ const formSchema = defineFormSchema([
   {
     type: 'rating',
     name: 'rating',
-    label: 'How would you rate the Zammad BETA UI?',
+    label: 'How would you rate the Dejoiy BETA UI?',
   },
   {
     type: 'editor',
@@ -710,7 +710,7 @@ const formSchema = defineFormSchema([
       options: [
         {
           value: 1,
-          label: 'Zammad Foundation',
+          label: 'Dejoiy',
           organization: {
             active: true,
           },

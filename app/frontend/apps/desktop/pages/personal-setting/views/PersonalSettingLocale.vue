@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { useLocaleUpdate } from '#shared/composables/useLocaleUpdate.ts'
@@ -30,7 +30,7 @@ const { breadcrumbItems } = useBreadcrumb(__('Language'))
       <p class="mt-4 text-sm">
         {{ $t('Did you know?') }}
         <CommonLink :link="translation.link" size="medium" open-in-new-tab>
-          {{ $t('You can help translating Zammad.') }}
+          {{ $t('You can help translating Dejoiy.') }}
         </CommonLink>
       </p>
     </div>

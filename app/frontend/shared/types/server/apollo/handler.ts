@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import type { NotificationTypes } from '#shared/components/CommonNotifications/index.ts'
 import type { PageInfo } from '#shared/graphql/types.ts'

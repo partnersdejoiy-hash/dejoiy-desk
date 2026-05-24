@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 <script lang="ts" setup>
 import { useActiveElement, useEventListener } from '@vueuse/core'
 import { computed, ref, useTemplateRef } from 'vue'

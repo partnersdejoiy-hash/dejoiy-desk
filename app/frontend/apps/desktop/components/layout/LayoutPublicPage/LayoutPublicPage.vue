@@ -1,7 +1,7 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 import CommonLogo from '#shared/components/CommonLogo/CommonLogo.vue'
 
@@ -30,7 +30,7 @@ const boxSizeClass = computed(() => {
   return boxSizeMap[props.boxSize]
 })
 
-const hoverPoweredByLogo = ref(false)
+
 </script>
 
 <template>
@@ -67,27 +67,12 @@ const hoverPoweredByLogo = ref(false)
       >
         <span class="ltr:mr-1 rtl:ml-1">{{ $t('Powered by') }}</span>
         <CommonLink
-          link="https://zammad.org"
+          link="https://dejoiy.com"
           open-in-new-tab
           external
           class="flex items-center gap-1 text-neutral-500 hover:text-neutral-500!"
-          @focus="hoverPoweredByLogo = true"
-          @blur="hoverPoweredByLogo = false"
-          @mouseover="hoverPoweredByLogo = true"
-          @mouseleave="hoverPoweredByLogo = false"
         >
-          <div class="relative">
-            <CommonIcon name="logo-flat" size="base" />
-            <Transition name="fade">
-              <CommonIcon
-                v-if="hoverPoweredByLogo"
-                class="absolute top-0"
-                name="logo"
-                size="base"
-              />
-            </Transition>
-          </div>
-          {{ $t('Zammad') }}
+          {{ $t('Dejoiy') }}
         </CommonLink>
       </footer>
     </div>

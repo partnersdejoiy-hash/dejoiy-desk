@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { useAppName } from '#shared/composables/useAppName.ts'
 import type { FieldResolverModule } from '#shared/entities/object-attributes/types/resolver.ts'

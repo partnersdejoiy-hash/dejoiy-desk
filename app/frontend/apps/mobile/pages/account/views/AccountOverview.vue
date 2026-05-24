@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { computed, ref, toRef } from 'vue'
@@ -75,7 +75,7 @@ const installPWAMessage = computed(() => {
     __(
       'To install %s as an app, press the %s "Share" button and then the %s "Add to Home Screen" button.',
     ),
-    __('Zammad'),
+    __('Dejoiy'),
     iconShare,
     iconAdd,
   )
@@ -156,14 +156,14 @@ const { forceDesktop } = useForceDesktop()
       <template #help>
         {{ $t('Did you know?') }}
         <CommonLink class="text-blue" target="_blank" :link="translation.link">
-          {{ $t('You can help translating Zammad.') }}
+          {{ $t('You can help translating Dejoiy.') }}
         </CommonLink>
       </template>
     </FormGroup>
 
     <CommonSectionMenu v-if="hasVersionPermission">
       <CommonSectionMenuItem :label="__('Version')">
-        {{ $t('This is Zammad version %s', productAbout?.productAbout as string) }}
+        {{ $t('This is Dejoiy version %s', productAbout?.productAbout as string) }}
       </CommonSectionMenuItem>
     </CommonSectionMenu>
 

@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { getNode } from '@formkit/core'
 import { getByLabelText, getByRole, waitFor, within } from '@testing-library/vue'

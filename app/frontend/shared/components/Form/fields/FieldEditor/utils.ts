@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { autoUpdate, computePosition, flip, shift } from '@floating-ui/dom'
 import { type Editor, getHTMLFromFragment } from '@tiptap/core'

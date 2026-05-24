@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -166,7 +166,7 @@ const currentAccessTokenPresent = computed(() => currentAccessTokens.value.lengt
 
 const helpText = computed(() => [
   i18n.t(
-    'You can generate a personal access token for each application you use that needs access to the Zammad API.',
+    'You can generate a personal access token for each application you use that needs access to the Dejoiy API.',
   ),
   i18n.t("Pick a name for the application, and we'll give you a unique token."),
 ])

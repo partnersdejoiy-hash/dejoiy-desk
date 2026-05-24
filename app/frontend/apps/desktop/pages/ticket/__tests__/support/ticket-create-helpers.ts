@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 import type { ExtendedRenderResult } from '#tests/support/components'
 import { visitView } from '#tests/support/components/visitView.ts'
 import { nullableMock } from '#tests/support/utils.ts'

@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { text as inputTextDefinition, select as selectDefinition, casts } from '@formkit/inputs'
 import { cloneDeep } from 'lodash-es'
