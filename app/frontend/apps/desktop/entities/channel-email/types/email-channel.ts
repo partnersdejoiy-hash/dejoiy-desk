@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import type { FormRef, FormFieldValue } from '#shared/components/Form/types.ts'
 import type { MutationSendError } from '#shared/types/error.ts'

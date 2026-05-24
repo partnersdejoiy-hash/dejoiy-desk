@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import Form from '#shared/components/Form/Form.vue'
@@ -64,7 +64,7 @@ const { configureSystemImportSource } = useImportSourceConfiguration(EnumSystemI
     <CommonAlert variant="info">
       {{
         $t(
-          'The entered email and password will become your Zammad login credentials after the import is completed.',
+          'The entered email and password will become your Dejoiy login credentials after the import is completed.',
         )
       }}
     </CommonAlert>

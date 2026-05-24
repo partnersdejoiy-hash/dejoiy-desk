@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -60,7 +60,7 @@ const startImport = () => {
     <CommonLabel
       >{{
         $t(
-          'Initiate the import process to transfer your data into Zammad. Keep track of the migration progress on this page to be notified as soon as the import is successfully finished.',
+          'Initiate the import process to transfer your data into Dejoiy. Keep track of the migration progress on this page to be notified as soon as the import is successfully finished.',
         )
       }}
     </CommonLabel>
@@ -74,7 +74,7 @@ const startImport = () => {
       <CommonLabel>
         {{
           $t(
-            'Before you start, make sure to check the following points to ensure a smooth migration and usage of your Zammad instance:',
+            'Before you start, make sure to check the following points to ensure a smooth migration and usage of your Dejoiy instance:',
           )
         }}
       </CommonLabel>

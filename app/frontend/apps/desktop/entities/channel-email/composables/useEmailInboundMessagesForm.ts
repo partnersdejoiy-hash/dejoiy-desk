@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { shallowRef, reactive } from 'vue'
 
@@ -24,7 +24,7 @@ export const useEmailInboundMessagesForm = (
           isLayout: true,
           component: 'CommonLabel',
           children:
-            '$t("%s email(s) were found in your mailbox. They will all be moved from your mailbox into Zammad.", $metaInformationInbound.contentMessages)',
+            '$t("%s email(s) were found in your mailbox. They will all be moved from your mailbox into Dejoiy.", $metaInformationInbound.contentMessages)',
         },
         {
           isLayout: true,
@@ -36,7 +36,7 @@ export const useEmailInboundMessagesForm = (
           isLayout: true,
           component: 'CommonLabel',
           children:
-            '$t("You can find archived emails in Zammad anytime using the search function, like for any other ticket.")',
+            '$t("You can find archived emails in Dejoiy anytime using the search function, like for any other ticket.")',
         },
         {
           name: 'archive',

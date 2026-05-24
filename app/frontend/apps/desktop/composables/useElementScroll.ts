@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { useScroll, useThrottleFn } from '@vueuse/core'
 import { whenever } from '@vueuse/shared'

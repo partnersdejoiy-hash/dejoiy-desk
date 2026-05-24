@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import type { TicketArticle } from '#shared/graphql/types.ts'
 import { capitalize } from '#shared/utils/formatter.ts'

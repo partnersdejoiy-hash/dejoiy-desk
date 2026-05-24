@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { useTimeoutFn } from '@vueuse/shared'
@@ -22,5 +22,5 @@ useTimeoutFn(() => {
 </script>
 
 <template>
-  <GuidedSetupStatusMessage :message="__('Starting Zammad…')" />
+  <GuidedSetupStatusMessage :message="__('Starting Dejoiy…')" />
 </template>

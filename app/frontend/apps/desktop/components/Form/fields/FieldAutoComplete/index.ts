@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import type { AutocompleteSelectValue } from '#shared/components/Form/fields/FieldAutocomplete/types.ts'
 import createInput from '#shared/form/core/createInput.ts'

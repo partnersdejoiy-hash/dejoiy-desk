@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -27,7 +27,7 @@ const setupEmailChannel = () => {
 <template>
   <div class="mb-2.5 flex flex-col items-center justify-center gap-5">
     <CommonLabel class="text-center">
-      {{ $t('Set up the communication channels you want to use with your Zammad.') }}
+      {{ $t('Set up the communication channels you want to use with your Dejoiy.') }}
     </CommonLabel>
     <CommonButton variant="primary" size="large" @click="setupEmailChannel()">
       {{ $t('Email channel') }}

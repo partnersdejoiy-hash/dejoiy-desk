@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { watchPausable } from '@vueuse/core'
 import { ref, type Ref, type ComputedRef, onScopeDispose, toRef, watch, toValue } from 'vue'

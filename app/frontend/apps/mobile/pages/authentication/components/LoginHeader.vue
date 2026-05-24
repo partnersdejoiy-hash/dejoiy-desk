@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/ -->
+<!-- Copyright (C) 2024-2026 Dejoiy -->
 
 <script setup lang="ts">
 import CommonLogo from '#shared/components/CommonLogo/CommonLogo.vue'
@@ -19,7 +19,7 @@ defineProps<{
     <div class="bg-red mb-4 flex items-center rounded-xl px-4 py-2 text-white">
       {{
         $t(
-          'Zammad is currently in maintenance mode. Only administrators can log in. Please wait until the maintenance window is over.',
+          'Dejoiy is currently in maintenance mode. Only administrators can log in. Please wait until the maintenance window is over.',
         )
       }}
     </div>

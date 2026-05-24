@@ -1,4 +1,4 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 import { EnumSecurityStateType } from '#shared/graphql/types.ts'
 import { i18n } from '#shared/i18n.ts'

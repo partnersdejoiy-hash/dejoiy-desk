@@ -1,3 +1,3 @@
-// Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
+// Copyright (C) 2024-2026 Dejoiy
 
 declare const VITE_TEST_MODE: boolean
