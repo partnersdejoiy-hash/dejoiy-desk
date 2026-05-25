@@ -1,0 +1,186 @@
+# Dejoiy Desk — Docker Compose deployment
+# Copy .env.example to .env and fill in your values before starting.
+# Usage:
+#   docker compose up -d
+
+services:
+
+  # ── Database ───────────────────────────────────────────────────────────────
+  postgresql:
+    image: postgres:16-alpine
+    container_name: dejoiy-postgresql
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRESQL_DB:-dejoiy_production}
+      POSTGRES_USER: ${POSTGRESQL_USER:-dejoiy}
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASS:?Set POSTGRESQL_PASS in .env}
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    networks:
+      - dejoiy-internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRESQL_USER:-dejoiy}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Cache / pubsub ─────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: dejoiy-redis
+    restart: unless-stopped
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - redis-data:/data
+    networks:
+      - dejoiy-internal
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Search (optional — set ELASTICSEARCH_ENABLED=false to skip) ────────────
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    container_name: dejoiy-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      xpack.security.enabled: "false"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - dejoiy-internal
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:9200/_cluster/health | grep -v '\"status\":\"red\"'"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+
+  # ── One-time init (DB migrations + seed) ──────────────────────────────────
+  init:
+    build:
+      context: .
+      args:
+        COMMIT_SHA: ${COMMIT_SHA:-local}
+    image: dejoiy-desk:${IMAGE_TAG:-latest}
+    container_name: dejoiy-init
+    command: zammad-init
+    restart: on-failure
+    env_file: .env
+    environment:
+      POSTGRESQL_HOST: postgresql
+      REDIS_URL: redis://redis:6379
+      ELASTICSEARCH_HOST: elasticsearch
+      ELASTICSEARCH_ENABLED: ${ELASTICSEARCH_ENABLED:-true}
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - dejoiy-internal
+    volumes:
+      - dejoiy-storage:/opt/zammad/storage
+      - dejoiy-tmp:/opt/zammad/tmp
+
+  # ── Rails web server ───────────────────────────────────────────────────────
+  railsserver:
+    image: dejoiy-desk:${IMAGE_TAG:-latest}
+    container_name: dejoiy-railsserver
+    command: zammad-railsserver
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRESQL_HOST: postgresql
+      REDIS_URL: redis://redis:6379
+      ELASTICSEARCH_HOST: elasticsearch
+      ZAMMAD_RAILSSERVER_HOST: "0.0.0.0"
+      ZAMMAD_RAILSSERVER_PORT: "3000"
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks:
+      - dejoiy-internal
+    volumes:
+      - dejoiy-storage:/opt/zammad/storage
+      - dejoiy-tmp:/opt/zammad/tmp
+
+  # ── WebSocket server ───────────────────────────────────────────────────────
+  websocket:
+    image: dejoiy-desk:${IMAGE_TAG:-latest}
+    container_name: dejoiy-websocket
+    command: zammad-websocket
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRESQL_HOST: postgresql
+      REDIS_URL: redis://redis:6379
+      ZAMMAD_WEBSOCKET_HOST: "0.0.0.0"
+      ZAMMAD_WEBSOCKET_PORT: "6042"
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks:
+      - dejoiy-internal
+    volumes:
+      - dejoiy-storage:/opt/zammad/storage
+      - dejoiy-tmp:/opt/zammad/tmp
+
+  # ── Background job scheduler ───────────────────────────────────────────────
+  scheduler:
+    image: dejoiy-desk:${IMAGE_TAG:-latest}
+    container_name: dejoiy-scheduler
+    command: zammad-scheduler
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRESQL_HOST: postgresql
+      REDIS_URL: redis://redis:6379
+      ELASTICSEARCH_HOST: elasticsearch
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    networks:
+      - dejoiy-internal
+    volumes:
+      - dejoiy-storage:/opt/zammad/storage
+      - dejoiy-tmp:/opt/zammad/tmp
+
+  # ── Nginx reverse proxy (public-facing) ────────────────────────────────────
+  nginx:
+    image: dejoiy-desk:${IMAGE_TAG:-latest}
+    container_name: dejoiy-nginx
+    command: zammad-nginx
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NGINX_PORT: "8080"
+      NGINX_SERVER_NAME: ${DEJOIY_FQDN:-_}
+      NGINX_CLIENT_MAX_BODY_SIZE: ${NGINX_CLIENT_MAX_BODY_SIZE:-50M}
+      ZAMMAD_RAILSSERVER_HOST: railsserver
+      ZAMMAD_RAILSSERVER_PORT: "3000"
+      ZAMMAD_WEBSOCKET_HOST: websocket
+      ZAMMAD_WEBSOCKET_PORT: "6042"
+    ports:
+      - "${HTTP_PORT:-80}:8080"
+    depends_on:
+      - railsserver
+      - websocket
+    networks:
+      - dejoiy-internal
+    volumes:
+      - dejoiy-storage:/opt/zammad/storage
+
+volumes:
+  postgresql-data:
+  redis-data:
+  elasticsearch-data:
+  dejoiy-storage:
+  dejoiy-tmp:
+
+networks:
+  dejoiy-internal:
+    driver: bridge
