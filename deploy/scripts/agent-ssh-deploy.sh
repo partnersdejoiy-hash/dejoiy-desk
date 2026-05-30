@@ -1,19 +1,15 @@
 #!/usr/bin/env bash
 # Used by Cursor Cloud Agent when DEJOIY_DEPLOY_* secrets are set.
-# Do not run manually unless those variables are exported.
 set -euo pipefail
 
-: "${DEJOIY_DEPLOY_HOST:?Set DEJOIY_DEPLOY_HOST secret}"
-: "${DEJOIY_DEPLOY_USER:?Set DEJOIY_DEPLOY_USER secret}"
-: "${DEJOIY_DEPLOY_SSH_KEY:?Set DEJOIY_DEPLOY_SSH_KEY secret (private key PEM)}"
-: "${DEJOIY_DEPLOY_FQDN:?Set DEJOIY_DEPLOY_FQDN secret (public hostname)}"
+: "${DEJOIY_DEPLOY_HOST:?Set DEJOIY_DEPLOY_HOST secret (server public IP)}"
+: "${DEJOIY_DEPLOY_USER:?Set DEJOIY_DEPLOY_USER secret (e.g. root)}"
+: "${DEJOIY_DEPLOY_FQDN:?Set DEJOIY_DEPLOY_FQDN secret (e.g. desk.dejoiy.internal)}"
 
-KEY_FILE="$(mktemp)"
-trap 'rm -f "$KEY_FILE"' EXIT
-printf '%s\n' "$DEJOIY_DEPLOY_SSH_KEY" > "$KEY_FILE"
-chmod 600 "$KEY_FILE"
-
-SSH_OPTS=(-o StrictHostKeyChecking=accept-new -o BatchMode=yes -i "$KEY_FILE")
+if [[ -z "${DEJOIY_DEPLOY_SSH_KEY:-}" && -z "${DEJOIY_DEPLOY_PASSWORD:-}" ]]; then
+  echo "Set either DEJOIY_DEPLOY_SSH_KEY or DEJOIY_DEPLOY_PASSWORD in Cursor secrets."
+  exit 1
+fi
 
 REMOTE_REPO="${DEJOIY_DEPLOY_REPO_PATH:-/opt/dejoiy-desk}"
 REPO_URL="${DEJOIY_DEPLOY_REPO_URL:-https://github.com/partnersdejoiy-hash/dejoiy-desk.git}"
@@ -21,14 +17,33 @@ BRANCH="${DEJOIY_DEPLOY_BRANCH:-cursor/dejoiy-complete-rebrand-35c2}"
 PURGE_FLAG=""
 [[ "${DEJOIY_PURGE_OLD_ZAMMAD:-false}" == "true" ]] && PURGE_FLAG="--purge-old-zammad"
 
+SSH_BASE_OPTS=(-o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null)
+
+run_ssh() {
+  if [[ -n "${DEJOIY_DEPLOY_SSH_KEY:-}" ]]; then
+    local key_file
+    key_file="$(mktemp)"
+    trap 'rm -f "$key_file"' RETURN
+    printf '%s\n' "$DEJOIY_DEPLOY_SSH_KEY" > "$key_file"
+    chmod 600 "$key_file"
+    ssh "${SSH_BASE_OPTS[@]}" -o BatchMode=yes -i "$key_file" "$@"
+  else
+    if ! command -v sshpass >/dev/null 2>&1; then
+      echo "Installing sshpass for password-based SSH..."
+      sudo apt-get update -qq && sudo apt-get install -y sshpass
+    fi
+    SSHPASS="$DEJOIY_DEPLOY_PASSWORD" sshpass -e ssh "${SSH_BASE_OPTS[@]}" \
+      -o PreferredAuthentications=password -o PubkeyAuthentication=no "$@"
+  fi
+}
+
 echo "Connecting to ${DEJOIY_DEPLOY_USER}@${DEJOIY_DEPLOY_HOST}..."
 
-ssh "${SSH_OPTS[@]}" "${DEJOIY_DEPLOY_USER}@${DEJOIY_DEPLOY_HOST}" bash -s <<REMOTE
+run_ssh "${DEJOIY_DEPLOY_USER}@${DEJOIY_DEPLOY_HOST}" bash -s <<REMOTE
 set -euo pipefail
 if [[ ! -d "$REMOTE_REPO/.git" ]]; then
-  sudo mkdir -p "$(dirname "$REMOTE_REPO")"
-  sudo git clone "$REPO_URL" "$REMOTE_REPO"
-  sudo chown -R "\$(whoami):\$(whoami)" "$REMOTE_REPO"
+  mkdir -p "$(dirname "$REMOTE_REPO")"
+  git clone "$REPO_URL" "$REMOTE_REPO"
 fi
 cd "$REMOTE_REPO"
 git fetch origin

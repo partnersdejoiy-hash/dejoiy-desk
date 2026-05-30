@@ -26,11 +26,15 @@ Then point your existing portal nginx/Caddy at `127.0.0.1:8080` (`deploy/nginx-p
 
    | Secret | Example |
    |--------|---------|
-   | `DEJOIY_DEPLOY_HOST` | `203.0.113.10` or `portal.dejoiy.com` |
-   | `DEJOIY_DEPLOY_USER` | `ubuntu` or `deploy` |
-   | `DEJOIY_DEPLOY_SSH_KEY` | Full private key (PEM), no passphrase preferred |
+   | `DEJOIY_DEPLOY_HOST` | Server **public IP** (required) |
+   | `DEJOIY_DEPLOY_USER` | `root` |
+   | `DEJOIY_DEPLOY_FQDN` | `desk.dejoiy.internal` (required) |
+   | `DEJOIY_DEPLOY_PASSWORD` | Root SSH password **OR** use key below |
+   | `DEJOIY_DEPLOY_SSH_KEY` | Full private key (only if not using password) |
 
-2. Optional: `DEJOIY_DEPLOY_FQDN` = public URL for the desk  
+   Secret **names must match exactly** (not `host` or `password` — use the names above).
+
+2. Optional: `DEJOIY_PURGE_OLD_ZAMMAD` = `true` to delete old Zammad volumes  
 3. Re-run the agent task: *“Deploy DEJOIY using SSH secrets”*
 
 The agent will use `deploy/scripts/agent-ssh-deploy.sh` (reads those env vars only).
