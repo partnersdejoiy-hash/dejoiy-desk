@@ -1,6 +1,6 @@
 <div class="alert alert--danger hidden" role="alert"></div>
 <p>
-  <%- @T('You can find a tutorial on how to manage a %s in our online documentation %l.', 'WhatsApp Business Account', 'https://admin-docs.zammad.org/en/latest/channels/whatsapp/index.html') %>
+  <%- @T('You can find a tutorial on how to manage a %s in our online documentation %l.', 'WhatsApp Business Account', '/help/channels/whatsapp/index.html') %>
 </p>
 <fieldset>
   <h2 id="name" for="name"><%- @T('Step 2 of 3: WhatsApp Business Phone Number') %></h2>
@@ -38,7 +38,7 @@
     </div>
     <p class="help-text">
       <%- @T('Send out automatic reminders to customers asking them for reply if the 24-hour window is about to expire.') %>
-      <%- @T('To find out more about the 24-hour customer service window see %l.', 'https://admin-docs.zammad.org/en/latest/channels/whatsapp/limitations.html') %>
+      <%- @T('To find out more about the 24-hour customer service window see %l.', '/help/channels/whatsapp/limitations.html') %>
     </p>
   </div>
 

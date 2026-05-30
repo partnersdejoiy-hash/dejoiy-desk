@@ -32,7 +32,7 @@
     <div class="browser-ratio">
       <form class="browser-head js-demo-head" novalidate>
         <div class="browser-input">
-          <input type="url" class="js-testurl-input" id="preview-iframe" value="<%= @previewUrl %>" placeholder="www.zammad.org">
+          <input type="url" class="js-testurl-input" id="preview-iframe" value="<%= @previewUrl %>" placeholder="www.example.com">
           <div class="loading icon small muted"></div>
         </div>
         <input type="submit" class="btn" value="<%- @Ti('Load') %>">

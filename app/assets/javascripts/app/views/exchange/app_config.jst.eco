@@ -1,6 +1,6 @@
 <div class="alert alert--danger hidden" role="alert"></div>
 <p>
-  <%- @T('You can find a tutorial on how to manage an %s in our online documentation %l.', 'Exchange App', 'https://admin-docs.zammad.org/en/latest/system/integrations/exchange.html') %>
+  <%- @T('You can find a tutorial on how to manage an %s in our online documentation %l.', 'Exchange App', '/help/system/integrations/exchange.html') %>
 </p>
 <fieldset>
   <h2><%- @T('Enter your %s App Keys', 'Exchange') %></h2>

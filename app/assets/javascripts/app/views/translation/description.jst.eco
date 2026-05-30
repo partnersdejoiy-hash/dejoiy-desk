@@ -2,7 +2,7 @@
 
 <div>
   <h2><%- @T('Contributing Translations') %></h2>
-  <p><%- @T('System translations can be contributed and shared with the community on our public platform %l. It sports a very convenient user interface based on Weblate, give it a try!', 'https://translations.zammad.org') %></p>
+  <p><%- @T('System translations are managed by your DEJOIY administrators. Contact them if you need an additional language.') %></p>
 </div>
 
 <% if @keyboardShortcutsEnabled: %>

@@ -1,23 +1,23 @@
 App.Config.set('admin_docs', {
-  name: __('Admin Documentation'),
+  name: __('Help Center'),
   permission: ['admin.*'],
-  target: 'https://admin-docs.zammad.org/en/latest',
+  target: '/help',
   containerClass: 'navbar-link-admin-docs',
   prio: 10,
-  external: true,
+  external: false,
   parent: '#current_user',
   translate: true,
-  iconClass: 'external'
+  iconClass: 'help'
 }, 'NavBarRight')
 
 App.Config.set('agent_docs', {
-  name: __('User Documentation'),
+  name: __('Help Center'),
   permission: ['ticket.agent', 'report', 'knowledge_base.*', 'chat.agent', 'cti.agent'],
-  target: 'https://user-docs.zammad.org/en/latest',
+  target: '/help',
   containerClass: 'navbar-link-agent-docs',
   prio: 11,
-  external: true,
+  external: false,
   parent: '#current_user',
   translate: true,
-  iconClass: 'external'
+  iconClass: 'help'
 }, 'NavBarRight')

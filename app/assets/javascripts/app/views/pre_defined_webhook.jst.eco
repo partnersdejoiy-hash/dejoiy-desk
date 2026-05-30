@@ -12,7 +12,7 @@
       <%- @T("A webhook can be fired by triggers and schedulers, don't forget to define them!") %>
     </p>
     <p class="help-text">
-      <%- @T('You can find a tutorial on how to manage a %s in our online documentation %l.', 'Webhook', 'https://admin-docs.zammad.org/en/latest/manage/webhook.html') %>
+      <%- @T('You can find a tutorial on how to manage a %s in our online documentation %l.', 'Webhook', '/help/manage/webhook.html') %>
     </p>
   </fieldset>
 </div>

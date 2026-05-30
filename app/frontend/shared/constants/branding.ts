@@ -17,6 +17,9 @@ export const DEJOIY_BRAND = {
   tagline: 'YOU + JOY',
   websiteUrl: 'https://dejoiy.com',
   supportPath: '/help',
+  /** Internal knowledge base (no vendor documentation). */
+  helpUrl: '/help',
+  adminHelpUrl: '/help',
 } as const
 
 export const DEJOIY_GRADIENT = {

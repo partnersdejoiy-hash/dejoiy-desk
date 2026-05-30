@@ -17,5 +17,5 @@ export default <GuidedSetupImportSourcePlugin>{
     Users: __('Users'),
     Tickets: __('Tickets'),
   },
-  documentationURL: 'https://docs.zammad.org/en/latest/migration/zendesk.html',
+  documentationURL: '/help',
 }

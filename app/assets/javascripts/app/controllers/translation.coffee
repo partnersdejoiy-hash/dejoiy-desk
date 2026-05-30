@@ -321,7 +321,7 @@ class TranslationModal extends App.ControllerModal
       .addClass('alert')
       .addClass('alert--warning')
       .addClass('js-contribution-alert')
-      .html(App.i18n.translateContent('Did you know that system translations can be contributed and shared with the community on our public platform %l? It sports a very convenient user interface based on Weblate, give it a try!', 'https://translations.zammad.org'))
+      .html(App.i18n.translateContent('System translations are managed by your DEJOIY administrators. Contact them if you need an additional language.'))
       .appendTo(@el.find('.modal-alerts-container'))
 
   onSubmit: (e) =>

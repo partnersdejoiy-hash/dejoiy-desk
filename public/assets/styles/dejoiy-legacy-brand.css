@@ -27,3 +27,13 @@
 .signup .poweredBy {
   display: none !important;
 }
+
+/* User-switch banner (admin previewing as another user) */
+.switchBackToUser {
+  background: linear-gradient(90deg, #e91e63, #d946ef, #00bcd4) !important;
+  border-bottom: none !important;
+}
+
+.switchBackToUser-text {
+  font-weight: 600;
+}

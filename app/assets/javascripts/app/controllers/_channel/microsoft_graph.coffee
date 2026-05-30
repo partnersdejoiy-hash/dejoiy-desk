@@ -118,7 +118,7 @@ class ChannelAccountOverview extends App.ControllerSubContent
           'warning',
           [
             __('Please note that email aliases have to be configured on the Microsoft 365 side beforehand. %l'),
-            'https://admin-docs.zammad.org/microsoft365-graph-account-aliases'
+            '/help'
           ]
         ]
       ]
