@@ -1,8 +1,8 @@
 <p>
   <% if @percent < 80: %>
-    <%- @T('Only %s% of this language is already translated. Please help to improve Zammad and complete the translation.', @percent) %>
+    <%- @T('Only %s% of this language is already translated. Please help to improve %s and complete the translation.', @percent, @C('product_name')) %>
   <% end %>
   <% if @percent >= 80: %>
-    <%- @T('Up to %s% of this language is already translated. Please help to make Zammad even better and complete the translation.', @percent) %>
+    <%- @T('Up to %s% of this language is already translated. Please help to make %s even better and complete the translation.', @percent, @C('product_name')) %>
   <% end %>
 </p>

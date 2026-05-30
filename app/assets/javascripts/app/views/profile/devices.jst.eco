@@ -4,7 +4,7 @@
 
 <form class="page-content">
 
-  <p><%- @T('All computers and browsers that have access to your Zammad appear here.') %></p>
+  <p><%- @T('All computers and browsers that have access to your %s account appear here.', @C('product_name')) %></p>
 
   <table class="settings-list">
     <thead>

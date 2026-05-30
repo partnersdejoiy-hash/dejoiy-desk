@@ -36,7 +36,7 @@ class Modal extends App.ControllerModal
   buttonClose: true
   buttonCancel: __('No Thanks!')
   buttonSubmit: __('Complete translations')
-  head: __('Help to improve Zammad!')
+  head: App.i18n.translateContent('Help to improve %s!', App.Config.get('product_name'))
   shown: false
 
   constructor: ->

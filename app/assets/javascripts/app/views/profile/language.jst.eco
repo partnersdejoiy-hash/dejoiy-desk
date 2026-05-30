@@ -9,5 +9,5 @@
     <div class="form-item js-language flex"></div>
     <button type="submit" class="btn btn--primary"><%- @T('Submit') %></button>
   </form>
-  <p><%- @T('Did you know? You can help translating %s at:', 'Zammad') %> <a href="https://translations.zammad.org" target="_blank">translations.zammad.org</a></p>
+  <p><%- @T('Contact your administrator if you need another language for %s.', @C('product_name')) %></p>
 </div>

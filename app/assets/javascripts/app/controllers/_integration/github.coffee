@@ -3,7 +3,7 @@ class GitHub extends App.ControllerIntegrationBase
   featureName: __('GitHub')
   featureConfig: 'github_config'
   description: [
-    [__('This service allows you to connect %s with %s.'), 'GitHub', 'Zammad']
+    [__('This service allows you to connect %s with %s.'), 'GitHub', App.Config.get('product_name')]
   ]
   events:
     'change .js-switch input': 'switch'

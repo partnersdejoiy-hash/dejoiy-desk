@@ -75,7 +75,7 @@ class ChannelAiProvider extends App.ControllerTabs
 
 class AiProviderSettings extends App.Controller
   @requiredPermission: 'admin.ai_provider'
-  description : __('This service allows you to connect Zammad with an AI provider.')
+  description : App.i18n.translateContent('This service allows you to connect %s with an AI provider.', App.Config.get('product_name'))
 
   constructor: ->
     super

@@ -1,7 +1,7 @@
 # Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
 
 class SystemReport::Plugin::Version < SystemReport::Plugin
-  DESCRIPTION = __('Zammad version').freeze
+  DESCRIPTION = __('Application version').freeze
 
   def fetch
     ::Version.get

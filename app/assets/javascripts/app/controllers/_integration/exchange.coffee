@@ -3,7 +3,7 @@ class Exchange extends App.ControllerIntegrationBase
   featureName: __('Exchange')
   featureConfig: 'exchange_config'
   description: [
-    [__('This service enables Zammad to connect with your Exchange server.')]
+    [App.i18n.translateContent('This service enables %s to connect with your Exchange server.', App.Config.get('product_name'))]
   ]
   events:
     'change .js-switch input': 'switch'

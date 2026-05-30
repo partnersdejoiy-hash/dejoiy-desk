@@ -262,7 +262,7 @@ Setting.create_if_not_exists(
   title:       __('SystemID'),
   name:        'system_id',
   area:        'System::Base',
-  description: __('Defines the system identifier. Every ticket number contains this ID. This ensures that only tickets which belong to your system will be processed as follow-ups (useful when communicating between two instances of Zammad).'),
+  description: __('Defines the system identifier. Every ticket number contains this ID. This ensures that only tickets which belong to your system will be processed as follow-ups (useful when communicating between two instances of this system).'),
   options:     {
     form: [
       {
@@ -406,7 +406,7 @@ Setting.create_if_not_exists(
         tag:     'select',
         options: {
           ''                       => '-',
-          'Service::Image::Zammad' => 'Zammad Image Service', # rubocop:disable Zammad/DetectTranslatableString
+          'Service::Image::Zammad' => 'DEJOIY Image Service', # rubocop:disable Zammad/DetectTranslatableString
         },
       },
     ],
@@ -433,7 +433,7 @@ Setting.create_if_not_exists(
         tag:     'select',
         options: {
           ''                       => '-',
-          'Service::GeoIp::Zammad' => 'Zammad GeoIP Service', # rubocop:disable Zammad/DetectTranslatableString
+          'Service::GeoIp::Zammad' => 'DEJOIY GeoIP Service', # rubocop:disable Zammad/DetectTranslatableString
         },
       },
     ],
@@ -487,7 +487,7 @@ Setting.create_if_not_exists(
         tag:     'select',
         options: {
           ''                             => '-',
-          'Service::GeoCalendar::Zammad' => 'Zammad GeoCalendar Service', # rubocop:disable Zammad/DetectTranslatableString
+          'Service::GeoCalendar::Zammad' => 'DEJOIY GeoCalendar Service', # rubocop:disable Zammad/DetectTranslatableString
         },
       },
     ],
@@ -1250,7 +1250,7 @@ Setting.create_if_not_exists(
   title:       __('Automatic account link on initial logon'),
   name:        'auth_third_party_auto_link_at_inital_login',
   area:        'Security::ThirdPartyAuthentication',
-  description: __('Enables the automatic linking of an existing account on initial login via a third party application. If this is disabled, an existing user must first log into Zammad and then link his "Third Party" account to his Zammad account via Profile -> Linked Accounts.'),
+  description: __('Enables the automatic linking of an existing account on initial login via a third party application. If this is disabled, an existing user must first log into the application and then link his "Third Party" account to their account via Profile -> Linked Accounts.'),
   options:     {
     form: [
       {
@@ -1929,7 +1929,7 @@ Setting.create_if_not_exists(
         name:        'idp_cert_fingerprint',
         tag:         'input',
         placeholder: 'E7:91:B2:E1:...',
-        help:        __('Please note that this attribute is deprecated within one of the next versions of Zammad. Use the IDP certificate instead.'),
+        help:        __('Please note that this attribute is deprecated within one of the next versions of the application. Use the IDP certificate instead.'),
       },
       {
         display:     __('Name Identifier Format'),
@@ -3495,7 +3495,7 @@ Setting.create_if_not_exists(
   title:       __('BCC address for all outgoing emails'),
   name:        'system_bcc',
   area:        'Email::Enhanced',
-  description: __('To archive all outgoing emails from Zammad to external, you can store a BCC email address here.'),
+  description: __('To archive all outgoing emails from the application to external, you can store a BCC email address here.'),
   options:     {},
   state:       '',
   preferences: { online_service_disable: true },
@@ -3738,7 +3738,7 @@ Setting.create_if_not_exists(
   title:       __('Import Mode'),
   name:        'import_mode',
   area:        'Import::Base',
-  description: __('Puts Zammad into import mode (disables some triggers).'),
+  description: __('Puts the application into import mode (disables some triggers).'),
   options:     {
     form: [
       {
@@ -4242,7 +4242,7 @@ Setting.create_if_not_exists(
   title:       __('Defines postmaster filter.'),
   name:        '0006_postmaster_filter_auto_response_check',
   area:        'Postmaster::PreFilter',
-  description: __('Defines postmaster filter to identify auto responses to prevent auto replies from Zammad.'),
+  description: __('Defines postmaster filter to identify auto responses to prevent auto replies from the application.'),
   options:     {},
   state:       'Channel::Filter::AutoResponseCheck',
   frontend:    false
@@ -4296,7 +4296,7 @@ Setting.create_if_not_exists(
   title:       __('Defines postmaster filter.'),
   name:        '6105_postmaster_filter_sender_is_system_address',
   area:        'Postmaster::PreFilter',
-  description: __('Defines postmaster filter to check if email has been created by Zammad itself and will set the article sender.'),
+  description: __('Defines postmaster filter to check if email has been created by the application itself and will set the article sender.'),
   options:     {},
   state:       'Channel::Filter::SenderIsSystemAddress',
   frontend:    false
@@ -5208,7 +5208,7 @@ Setting.create_if_not_exists(
   title:       __('sipgate.io alternative FQDN'),
   name:        'sipgate_alternative_fqdn',
   area:        'Integration::Sipgate::Expert',
-  description: __('Alternative FQDN for callbacks if you operate Zammad in an internal network.'),
+  description: __('Alternative FQDN for callbacks if you operate this system in an internal network.'),
   options:     {
     form: [
       {
@@ -6045,7 +6045,7 @@ Setting.create_if_not_exists(
   title:       __('Auto Shutdown'),
   name:        'auto_shutdown',
   area:        'Core::WebApp',
-  description: __('Enable or disable self-shutdown of Zammad processes after significant configuration changes. This should only be used if the controlling process manager like systemd or docker supports an automatic restart policy.'),
+  description: __('Enable or disable self-shutdown of application processes after significant configuration changes. This should only be used if the controlling process manager like systemd or docker supports an automatic restart policy.'),
   options:     {},
   state:       !Rails.env.test?,
   preferences: { online_service_disable: true },

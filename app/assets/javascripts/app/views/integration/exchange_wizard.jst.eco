@@ -142,7 +142,7 @@
             <thead>
               <tr>
                 <th><%- @T('%s Attribute', 'Exchange') %>
-                <th><%- @T('%s Attribute', 'Zammad') %>
+                <th><%- @T('%s Attribute', @C('product_name')) %>
                 <th><%- @T('Action') %>
             </thead>
             <tbody>

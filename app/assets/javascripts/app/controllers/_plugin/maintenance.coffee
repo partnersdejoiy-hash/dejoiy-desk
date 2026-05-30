@@ -56,9 +56,10 @@ class Maintenance extends App.Controller
 
     App.SessionStorage.clear()
 
+    product = App.Config.get('product_name')
     @messageRestartAuto = new App.SessionMessage(
-      head:         __('Zammad is restarting…')
-      message:      __('Some system settings have changed, Zammad is restarting. Please wait until Zammad is back again.')
+      head:         App.i18n.translateContent('%s is restarting…', product)
+      message:      App.i18n.translateContent('Some system settings have changed, %s is restarting. Please wait until %s is back again.', product, product)
       keyboard:     false
       backdrop:     false
       buttonClose:  false
@@ -75,9 +76,10 @@ class Maintenance extends App.Controller
 
     App.SessionStorage.clear()
 
+    product = App.Config.get('product_name')
     @messageRestartManual = new App.SessionMessage(
-      head:         __('Zammad requires a restart!')
-      message:      __('Some system settings have changed, please restart all Zammad processes!')
+      head:         App.i18n.translateContent('%s requires a restart!', product)
+      message:      App.i18n.translateContent('Some system settings have changed, please restart all %s processes!', product)
       keyboard:     false
       backdrop:     false
       buttonClose:  false
@@ -101,7 +103,7 @@ class Maintenance extends App.Controller
 
     @messageConfigChanged = new App.SessionMessage(
       head:          __('Config has changed')
-      message:       __('The configuration of Zammad has changed, please reload your browser.')
+      message:       App.i18n.translateContent('The configuration of %s has changed, please reload your browser.', App.Config.get('product_name'))
       keyboard:      false
       backdrop:      true
       buttonClose:   false
@@ -138,7 +140,7 @@ class Maintenance extends App.Controller
     message = =>
       @messageAppVersion = new App.SessionMessage(
         head:         __('New Version')
-        message:      __('A new version of Zammad is available, please reload your browser.')
+        message:      App.i18n.translateContent('A new version of %s is available, please reload your browser.', App.Config.get('product_name'))
         keyboard:     false
         backdrop:     true
         buttonClose:  false

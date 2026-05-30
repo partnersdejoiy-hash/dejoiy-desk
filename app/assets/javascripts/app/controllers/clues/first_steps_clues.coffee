@@ -38,7 +38,7 @@ class App.FirstStepsClues extends App.CluesBase
     {
       container: '.user-menu .user .navbar-link-agent-docs'
       headline: __('Help')
-      text: __('Need help? Check the Zammad Documentation for detailed guidance.')
+      text: __('Need help? Check your internal DEJOIY documentation for detailed guidance.')
       actions: [
         'click .user-menu .user .js-action',
         'hover .user-menu .navbar-link-agent-docs'

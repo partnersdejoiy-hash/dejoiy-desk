@@ -3,12 +3,12 @@ class App.BetaUI extends App.ControllerSubContent
   description: __('''
 This service configures the usage and consent to participate in the BETA research of the new UI.
 
-As an administrator, you can configure which roles in your Zammad instance can get an easy access to the new UI.
+As an administrator, you can configure which roles in your instance can get an easy access to the new UI.
 
 Each of the users can then provide consent or not for the participation in the BETA program.
 
 Answers will be anonymized and the data collected consists of:
-- Zammad instance name
+- Instance name
 - star rating of the new UI
 - text comments on the new UI
 - amount of tracked hours in the new UI

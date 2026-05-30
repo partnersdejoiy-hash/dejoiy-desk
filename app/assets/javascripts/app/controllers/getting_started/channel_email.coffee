@@ -257,7 +257,7 @@ class GettingStartedChannelEmail extends App.ControllerWizardFullScreen
 
   probeInboundArchive: (data, verify) =>
     if data.content_messages
-      message = App.i18n.translateContent('%s email(s) were found in your mailbox. They will all be moved from your mailbox into Zammad.', data.content_messages)
+      message = App.i18n.translateContent('%s email(s) were found in your mailbox. They will all be moved from your mailbox into %s.', data.content_messages, App.Config.get('product_name'))
       @$('.js-inbound-acknowledge .js-messageFound').html(message)
     else
       @$('.js-inbound-acknowledge .js-messageFound').remove()

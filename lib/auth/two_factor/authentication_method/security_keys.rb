@@ -114,7 +114,7 @@ class Auth::TwoFactor::AuthenticationMethod::SecurityKeys < Auth::TwoFactor::Aut
   end
 
   def issuer
-    Setting.get('organization').presence || Setting.get('product_name').presence || 'Zammad'
+    Setting.get('organization').presence || Setting.get('product_name').presence || 'DEJOIY Internal Tools'
   end
 
   def verify_result(verified, configuration = {}, new_configuration = {})
