@@ -54,7 +54,7 @@ const dummySchema = defineFormSchema([
     <CommonLabel>
       {{
         $t(
-          ‘Hey, we have something to show you! Our team has been working on the new Dejoiy UI for a while, and we’re very eager for you to try it and send some feedback. It involves asking you to rate your experience and provide an optional comment every once in a while.’,
+          'Hey, we have something to show you! Our team has been working on the new Dejoiy UI for a while, and we\'re very eager for you to try it and send some feedback. It involves asking you to rate your experience and provide an optional comment every once in a while.',
         )
       }}
     </CommonLabel>

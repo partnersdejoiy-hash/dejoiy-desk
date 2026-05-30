@@ -49,7 +49,7 @@ describe('DragAndDropBulkConfirmation', () => {
 
     // 0 because useTicketBulkEdit is not populated
     expect(
-      wrapper.getByText('You’re about to apply a macro to 0 tickets. Do you want to continue?'),
+      wrapper.getByText('You\'re about to apply a macro to 0 tickets. Do you want to continue?'),
     ).toBeInTheDocument()
   })
 

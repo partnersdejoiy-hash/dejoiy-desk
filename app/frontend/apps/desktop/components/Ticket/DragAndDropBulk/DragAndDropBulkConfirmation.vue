@@ -46,11 +46,11 @@ onKeyDown('Escape', cancelBulkAction)
         {{
           currentActiveEntityType === DragAndDropBulkEntityType.Macro
             ? $t(
-                'You’re about to apply a macro to %s tickets. Do you want to continue?',
+                'You\'re about to apply a macro to %s tickets. Do you want to continue?',
                 currentSelectedTicketCount,
               )
             : $t(
-                'You’re about to assign %s tickets. Do you want to continue?',
+                'You\'re about to assign %s tickets. Do you want to continue?',
                 currentSelectedTicketCount,
               )
         }}
