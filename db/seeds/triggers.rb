@@ -34,7 +34,7 @@ Trigger.create_or_update(
 <br/>
 <div>Your #{config.product_name} Team</div>
 <br/>
-<div><i><a href="https://zammad.com">Zammad</a>, your customer support system</i></div>',
+<div><i>#{config.product_name} — internal tools by DEJOIY</i></div>',
       'recipient' => 'article_last_sender',
       'subject'   => 'Thanks for your inquiry (#{ticket.title})', # rubocop:disable Lint/InterpolationCheck
     },
@@ -75,7 +75,7 @@ Trigger.create_or_update(
 <br/>
 <div>Your #{config.product_name} Team</div>
 <br/>
-<div><i><a href="https://zammad.com">Zammad</a>, your customer support system</i></div>',
+<div><i>#{config.product_name} — internal tools by DEJOIY</i></div>',
       'recipient' => 'article_last_sender',
       'subject'   => 'Thanks for your follow-up (#{ticket.title})', # rubocop:disable Lint/InterpolationCheck
     },
@@ -105,7 +105,7 @@ Trigger.create_or_update(
 <a href="#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}">#{config.http_type}://#{config.fqdn}/#ticket/zoom/#{ticket.id}</a>
 </p>
 <br/>
-<p><i><a href="https://zammad.com">Zammad</a>, your customer support system</i></p>',
+<p><i>#{config.product_name} — internal tools by DEJOIY</i></p>',
       'recipient' => 'ticket_customer',
       'subject'   => 'Owner has changed (#{ticket.title})', # rubocop:disable Lint/InterpolationCheck
     },

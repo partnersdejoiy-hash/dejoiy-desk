@@ -1,7 +1,7 @@
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["agent"] = function(__obj) {
+window.dejoiyChatTemplates["agent"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -41,12 +41,12 @@ window.zammadChatTemplates["agent"] = function(__obj) {
   (function() {
     (function() {
       if (this.agent.avatar) {
-        __out.push('\n<img class="zammad-chat-agent-avatar" src="');
+        __out.push('\n<img class="dejoiy-chat-agent-avatar" src="');
         __out.push(__sanitize(this.agent.avatar));
         __out.push('">\n');
       }
     
-      __out.push('\n<span class="zammad-chat-agent-sentence">\n  <span class="zammad-chat-agent-name">');
+      __out.push('\n<span class="dejoiy-chat-agent-sentence">\n  <span class="dejoiy-chat-agent-name">');
     
       __out.push(__sanitize(this.agent.name));
     
@@ -59,10 +59,10 @@ window.zammadChatTemplates["agent"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["chat"] = function(__obj) {
+window.dejoiyChatTemplates["chat"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -101,10 +101,10 @@ window.zammadChatTemplates["chat"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat');
+      __out.push('<div class="dejoiy-chat');
     
       if (this.flat) {
-        __out.push(__sanitize(' zammad-chat--flat'));
+        __out.push(__sanitize(' dejoiy-chat--flat'));
       }
     
       __out.push('"');
@@ -113,25 +113,25 @@ window.zammadChatTemplates["chat"] = function(__obj) {
         __out.push(__sanitize(" style='font-size: " + this.fontSize + "'"));
       }
     
-      __out.push('>\n  <div class="zammad-chat-header js-chat-open"');
+      __out.push('>\n  <div class="dejoiy-chat-header js-chat-open"');
     
       if (this.background) {
         __out.push(__sanitize(" style='background: " + this.background + "'"));
       }
     
-      __out.push('>\n    <div class="zammad-chat-header-controls js-chat-toggle">\n      <span class="zammad-chat-agent-status zammad-chat-is-hidden js-chat-status" data-status="online"></span>\n      <span class="zammad-chat-header-icon">\n        <svg class="zammad-chat-header-icon-open" width="13" height="7" viewBox="0 0 13 7"><path d="M10.807 7l1.4-1.428-5-4.9L6.5-.02l-.7.7-4.9 4.9 1.414 1.413L6.5 2.886 10.807 7z" fill-rule="evenodd"/></svg>\n        <svg class="zammad-chat-header-icon-close" width="13" height="13" viewBox="0 0 13 13"><path d="m2.241.12l-2.121 2.121 4.243 4.243-4.243 4.243 2.121 2.121 4.243-4.243 4.243 4.243 2.121-2.121-4.243-4.243 4.243-4.243-2.121-2.121-4.243 4.243-4.243-4.243" fill-rule="evenodd"/></svg>\n      </span>\n    </div>\n    <div class="zammad-chat-agent zammad-chat-is-hidden">\n    </div>\n    <div class="zammad-chat-welcome">\n      <svg class="zammad-chat-icon" viewBox="0 0 24 24" width="24" height="24"><path d="M2 5C2 4 3 3 4 3h16c1 0 2 1 2 2v10C22 16 21 17 20 17H4C3 17 2 16 2 15V5zM12 17l6 4v-4h-6z"/></svg>\n      <span class="zammad-chat-welcome-text">');
+      __out.push('>\n    <div class="dejoiy-chat-header-controls js-chat-toggle">\n      <span class="dejoiy-chat-agent-status dejoiy-chat-is-hidden js-chat-status" data-status="online"></span>\n      <span class="dejoiy-chat-header-icon">\n        <svg class="dejoiy-chat-header-icon-open" width="13" height="7" viewBox="0 0 13 7"><path d="M10.807 7l1.4-1.428-5-4.9L6.5-.02l-.7.7-4.9 4.9 1.414 1.413L6.5 2.886 10.807 7z" fill-rule="evenodd"/></svg>\n        <svg class="dejoiy-chat-header-icon-close" width="13" height="13" viewBox="0 0 13 13"><path d="m2.241.12l-2.121 2.121 4.243 4.243-4.243 4.243 2.121 2.121 4.243-4.243 4.243 4.243 2.121-2.121-4.243-4.243 4.243-4.243-2.121-2.121-4.243 4.243-4.243-4.243" fill-rule="evenodd"/></svg>\n      </span>\n    </div>\n    <div class="dejoiy-chat-agent dejoiy-chat-is-hidden">\n    </div>\n    <div class="dejoiy-chat-welcome">\n      <svg class="dejoiy-chat-icon" viewBox="0 0 24 24" width="24" height="24"><path d="M2 5C2 4 3 3 4 3h16c1 0 2 1 2 2v10C22 16 21 17 20 17H4C3 17 2 16 2 15V5zM12 17l6 4v-4h-6z"/></svg>\n      <span class="dejoiy-chat-welcome-text">');
     
       __out.push(this.T(this.title));
     
-      __out.push('</span>\n    </div>\n  </div>\n  <div class="zammad-chat-modal"></div>\n  <div class="zammad-scroll-hint is-hidden">\n    <svg class="zammad-scroll-hint-icon" width="20" height="18" viewBox="0 0 20 18"><path d="M0,2.00585866 C0,0.898053512 0.898212381,0 1.99079514,0 L18.0092049,0 C19.1086907,0 20,0.897060126 20,2.00585866 L20,11.9941413 C20,13.1019465 19.1017876,14 18.0092049,14 L1.99079514,14 C0.891309342,14 0,13.1029399 0,11.9941413 L0,2.00585866 Z M10,14 L16,18 L16,14 L10,14 Z" fill-rule="evenodd"/></svg>\n    ');
+      __out.push('</span>\n    </div>\n  </div>\n  <div class="dejoiy-chat-modal"></div>\n  <div class="zammad-scroll-hint is-hidden">\n    <svg class="zammad-scroll-hint-icon" width="20" height="18" viewBox="0 0 20 18"><path d="M0,2.00585866 C0,0.898053512 0.898212381,0 1.99079514,0 L18.0092049,0 C19.1086907,0 20,0.897060126 20,2.00585866 L20,11.9941413 C20,13.1019465 19.1017876,14 18.0092049,14 L1.99079514,14 C0.891309342,14 0,13.1029399 0,11.9941413 L0,2.00585866 Z M10,14 L16,18 L16,14 L10,14 Z" fill-rule="evenodd"/></svg>\n    ');
     
       __out.push(this.T(this.scrollHint));
     
-      __out.push('\n  </div>\n  <div class="zammad-chat-body"></div>\n  <form class="zammad-chat-controls">\n    <div class="zammad-chat-input" rows="1" placeholder="');
+      __out.push('\n  </div>\n  <div class="dejoiy-chat-body"></div>\n  <form class="dejoiy-chat-controls">\n    <div class="dejoiy-chat-input" rows="1" placeholder="');
     
       __out.push(this.T('Compose your message…'));
     
-      __out.push('" contenteditable="true"></div>\n    <button type="submit" class="zammad-chat-button zammad-chat-send"');
+      __out.push('" contenteditable="true"></div>\n    <button type="submit" class="dejoiy-chat-button dejoiy-chat-send"');
     
       if (this.background) {
         __out.push(__sanitize(" style='background: " + this.background + "'"));
@@ -150,10 +150,10 @@ window.zammadChatTemplates["chat"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["customer_timeout"] = function(__obj) {
+window.dejoiyChatTemplates["customer_timeout"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -192,7 +192,7 @@ window.zammadChatTemplates["customer_timeout"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-modal-text">\n  ');
+      __out.push('<div class="dejoiy-chat-modal-text">\n  ');
     
       if (this.agent) {
         __out.push('\n    ');
@@ -204,7 +204,7 @@ window.zammadChatTemplates["customer_timeout"] = function(__obj) {
         __out.push('\n  ');
       }
     
-      __out.push('\n  <br>\n  <div class="zammad-chat-button js-restart"');
+      __out.push('\n  <br>\n  <div class="dejoiy-chat-button js-restart"');
     
       if (this.background) {
         __out.push(__sanitize(" style='background: " + this.background + "'"));
@@ -223,10 +223,10 @@ window.zammadChatTemplates["customer_timeout"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["loader"] = function(__obj) {
+window.dejoiyChatTemplates["loader"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -265,7 +265,7 @@ window.zammadChatTemplates["loader"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<span class="zammad-chat-loading-animation">\n  <span class="zammad-chat-loading-circle"></span>\n  <span class="zammad-chat-loading-circle"></span>\n  <span class="zammad-chat-loading-circle"></span>\n</span>\n<span class="zammad-chat-modal-text">');
+      __out.push('<span class="dejoiy-chat-loading-animation">\n  <span class="dejoiy-chat-loading-circle"></span>\n  <span class="dejoiy-chat-loading-circle"></span>\n  <span class="dejoiy-chat-loading-circle"></span>\n</span>\n<span class="dejoiy-chat-modal-text">');
     
       __out.push(this.T('Connecting'));
     
@@ -278,10 +278,10 @@ window.zammadChatTemplates["loader"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["message"] = function(__obj) {
+window.dejoiyChatTemplates["message"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -320,13 +320,13 @@ window.zammadChatTemplates["message"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-message zammad-chat-message--');
+      __out.push('<div class="dejoiy-chat-message dejoiy-chat-message--');
     
       __out.push(__sanitize(this.from));
     
       __out.push(__sanitize(this.unreadClass));
     
-      __out.push('">\n  <span class="zammad-chat-message-body"');
+      __out.push('">\n  <span class="dejoiy-chat-message-body"');
     
       if (this.background && this.from === 'customer') {
         __out.push(__sanitize(" style='background: " + this.background + "'"));
@@ -345,10 +345,10 @@ window.zammadChatTemplates["message"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["status"] = function(__obj) {
+window.dejoiyChatTemplates["status"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -387,7 +387,7 @@ window.zammadChatTemplates["status"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-status">\n  <div class="zammad-chat-status-inner">\n    ');
+      __out.push('<div class="dejoiy-chat-status">\n  <div class="dejoiy-chat-status-inner">\n    ');
     
       __out.push(this.status);
     
@@ -400,10 +400,10 @@ window.zammadChatTemplates["status"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["timestamp"] = function(__obj) {
+window.dejoiyChatTemplates["timestamp"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -442,7 +442,7 @@ window.zammadChatTemplates["timestamp"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-timestamp"><strong>');
+      __out.push('<div class="dejoiy-chat-timestamp"><strong>');
     
       __out.push(__sanitize(this.label));
     
@@ -459,10 +459,10 @@ window.zammadChatTemplates["timestamp"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["typingIndicator"] = function(__obj) {
+window.dejoiyChatTemplates["typingIndicator"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -501,7 +501,7 @@ window.zammadChatTemplates["typingIndicator"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-message zammad-chat-message--typing zammad-chat-message--agent">\n  <span class="zammad-chat-message-body">\n    <span class="zammad-chat-loading-animation">\n      <span class="zammad-chat-loading-circle"></span>\n      <span class="zammad-chat-loading-circle"></span>\n      <span class="zammad-chat-loading-circle"></span>\n    </span>\n  </span>\n</div>');
+      __out.push('<div class="dejoiy-chat-message dejoiy-chat-message--typing dejoiy-chat-message--agent">\n  <span class="dejoiy-chat-message-body">\n    <span class="dejoiy-chat-loading-animation">\n      <span class="dejoiy-chat-loading-circle"></span>\n      <span class="dejoiy-chat-loading-circle"></span>\n      <span class="dejoiy-chat-loading-circle"></span>\n    </span>\n  </span>\n</div>');
     
     }).call(this);
     
@@ -510,10 +510,10 @@ window.zammadChatTemplates["typingIndicator"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["waiting_list_timeout"] = function(__obj) {
+window.dejoiyChatTemplates["waiting_list_timeout"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -552,11 +552,11 @@ window.zammadChatTemplates["waiting_list_timeout"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-modal-text">\n  ');
+      __out.push('<div class="dejoiy-chat-modal-text">\n  ');
     
       __out.push(this.T('We are sorry, it is taking longer than expected to get a slot. Please try again later or send us an email. Thank you!'));
     
-      __out.push('\n  <br>\n  <div class="zammad-chat-button js-restart"');
+      __out.push('\n  <br>\n  <div class="dejoiy-chat-button js-restart"');
     
       if (this.background) {
         __out.push(__sanitize(" style='background: " + this.background + "'"));
@@ -575,10 +575,10 @@ window.zammadChatTemplates["waiting_list_timeout"] = function(__obj) {
   return __out.join('');
 };
 
-if (!window.zammadChatTemplates) {
-  window.zammadChatTemplates = {};
+if (!window.dejoiyChatTemplates) {
+  window.dejoiyChatTemplates = {};
 }
-window.zammadChatTemplates["waiting"] = function(__obj) {
+window.dejoiyChatTemplates["waiting"] = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
     var out = __out, result;
@@ -617,7 +617,7 @@ window.zammadChatTemplates["waiting"] = function(__obj) {
   }
   (function() {
     (function() {
-      __out.push('<div class="zammad-chat-modal-text">\n  <span class="zammad-chat-loading-animation">\n    <span class="zammad-chat-loading-circle"></span>\n    <span class="zammad-chat-loading-circle"></span>\n    <span class="zammad-chat-loading-circle"></span>\n  </span>\n  ');
+      __out.push('<div class="dejoiy-chat-modal-text">\n  <span class="dejoiy-chat-loading-animation">\n    <span class="dejoiy-chat-loading-circle"></span>\n    <span class="dejoiy-chat-loading-circle"></span>\n    <span class="dejoiy-chat-loading-circle"></span>\n  </span>\n  ');
     
       __out.push(this.T('All colleagues are busy.'));
     
@@ -644,7 +644,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
   slice = [].slice;
 
 (function(window) {
-  var Base, Core, Io, Log, Timeout, ZammadChat, myScript, scriptHost, scriptProtocol, scripts;
+  var Base, Core, Io, Log, Timeout, DejoiyChat, myScript, scriptHost, scriptProtocol, scripts;
   scripts = document.getElementsByTagName('script');
   myScript = scripts[scripts.length - 1];
   scriptProtocol = window.location.protocol.replace(':', '');
@@ -919,10 +919,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
     return Io;
 
   })(Base);
-  ZammadChat = (function(superClass) {
-    extend(ZammadChat, superClass);
+  DejoiyChat = (function(superClass) {
+    extend(DejoiyChat, superClass);
 
-    ZammadChat.prototype.defaults = {
+    DejoiyChat.prototype.defaults = {
       chatId: void 0,
       show: true,
       target: document.querySelector('body'),
@@ -933,7 +933,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       cssAutoload: true,
       cssUrl: void 0,
       fontSize: void 0,
-      buttonClass: 'open-zammad-chat',
+      buttonClass: 'open-dejoiy-chat',
       inactiveClass: 'is-inactive',
       title: '<strong>Chat</strong> with us!',
       scrollHint: 'Scroll down to see new messages',
@@ -953,33 +953,33 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       onCssLoaded: void 0
     };
 
-    ZammadChat.prototype.logPrefix = 'chat';
+    DejoiyChat.prototype.logPrefix = 'chat';
 
-    ZammadChat.prototype._messageCount = 0;
+    DejoiyChat.prototype._messageCount = 0;
 
-    ZammadChat.prototype.isOpen = false;
+    DejoiyChat.prototype.isOpen = false;
 
-    ZammadChat.prototype.blinkOnlineInterval = null;
+    DejoiyChat.prototype.blinkOnlineInterval = null;
 
-    ZammadChat.prototype.stopBlinOnlineStateTimeout = null;
+    DejoiyChat.prototype.stopBlinOnlineStateTimeout = null;
 
-    ZammadChat.prototype.showTimeEveryXMinutes = 2;
+    DejoiyChat.prototype.showTimeEveryXMinutes = 2;
 
-    ZammadChat.prototype.lastTimestamp = null;
+    DejoiyChat.prototype.lastTimestamp = null;
 
-    ZammadChat.prototype.lastAddedType = null;
+    DejoiyChat.prototype.lastAddedType = null;
 
-    ZammadChat.prototype.inputDisabled = false;
+    DejoiyChat.prototype.inputDisabled = false;
 
-    ZammadChat.prototype.inputTimeout = null;
+    DejoiyChat.prototype.inputTimeout = null;
 
-    ZammadChat.prototype.isTyping = false;
+    DejoiyChat.prototype.isTyping = false;
 
-    ZammadChat.prototype.state = 'offline';
+    DejoiyChat.prototype.state = 'offline';
 
-    ZammadChat.prototype.initialQueueDelay = 10000;
+    DejoiyChat.prototype.initialQueueDelay = 10000;
 
-    ZammadChat.prototype.translations = {
+    DejoiyChat.prototype.translations = {
       'ca': {
         '<strong>Chat</strong> with us!': '<strong>Xateja</strong> amb nosaltres!',
         'All colleagues are busy.': 'Tot el personal està ocupat.',
@@ -1438,20 +1438,20 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.sessionId = void 0;
+    DejoiyChat.prototype.sessionId = void 0;
 
-    ZammadChat.prototype.scrolledToBottom = true;
+    DejoiyChat.prototype.scrolledToBottom = true;
 
-    ZammadChat.prototype.scrollSnapTolerance = 10;
+    DejoiyChat.prototype.scrollSnapTolerance = 10;
 
-    ZammadChat.prototype.richTextFormatKey = {
+    DejoiyChat.prototype.richTextFormatKey = {
       66: true,
       73: true,
       85: true,
       83: true
     };
 
-    ZammadChat.prototype.T = function() {
+    DejoiyChat.prototype.T = function() {
       var item, items, j, len, string, translations;
       string = arguments[0], items = 2 <= arguments.length ? slice.call(arguments, 1) : [];
       if (this.options.lang && this.options.lang !== 'en') {
@@ -1474,7 +1474,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return string;
     };
 
-    ZammadChat.prototype.view = function(name) {
+    DejoiyChat.prototype.view = function(name) {
       return (function(_this) {
         return function(options) {
           if (!options) {
@@ -1484,12 +1484,12 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
           options.background = _this.options.background;
           options.flat = _this.options.flat;
           options.fontSize = _this.options.fontSize;
-          return window.zammadChatTemplates[name](options);
+          return window.dejoiyChatTemplates[name](options);
         };
       })(this);
     };
 
-    function ZammadChat(options) {
+    function DejoiyChat(options) {
       this.removeAttributes = bind(this.removeAttributes, this);
       this.startTimeoutObservers = bind(this.startTimeoutObservers, this);
       this.onCssLoaded = bind(this.onCssLoaded, this);
@@ -1527,7 +1527,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       this.render = bind(this.render, this);
       this.view = bind(this.view, this);
       this.T = bind(this.T, this);
-      ZammadChat.__super__.constructor.call(this, options);
+      DejoiyChat.__super__.constructor.call(this, options);
       if (typeof jQuery !== 'undefined' && this.options.target instanceof jQuery) {
         this.log.notice('Chat: target option is a jQuery object. jQuery is not a requirement for the chat any more.');
         this.options.target = this.options.target.get(0);
@@ -1568,7 +1568,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       this.io.connect();
     }
 
-    ZammadChat.prototype.getScrollRoot = function() {
+    DejoiyChat.prototype.getScrollRoot = function() {
       var end, html, start;
       if ('scrollingElement' in document) {
         return document.scrollingElement;
@@ -1585,9 +1585,9 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.render = function() {
+    DejoiyChat.prototype.render = function() {
       var btn;
-      if (!this.el || !document.querySelector('.zammad-chat')) {
+      if (!this.el || !document.querySelector('.dejoiy-chat')) {
         this.renderBase();
       }
       btn = document.querySelector("." + this.options.buttonClass);
@@ -1605,7 +1605,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.renderBase = function() {
+    DejoiyChat.prototype.renderBase = function() {
       if (this.el) {
         this.el.remove();
       }
@@ -1613,13 +1613,13 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         title: this.options.title,
         scrollHint: this.options.scrollHint
       }));
-      this.el = this.options.target.querySelector('.zammad-chat');
-      this.input = this.el.querySelector('.zammad-chat-input');
-      this.body = this.el.querySelector('.zammad-chat-body');
+      this.el = this.options.target.querySelector('.dejoiy-chat');
+      this.input = this.el.querySelector('.dejoiy-chat-input');
+      this.body = this.el.querySelector('.dejoiy-chat-body');
       this.el.querySelector('.js-chat-open').addEventListener('click', this.open);
       this.el.querySelector('.js-chat-toggle').addEventListener('click', this.toggle);
       this.el.querySelector('.js-chat-status').addEventListener('click', this.stopPropagation);
-      this.el.querySelector('.zammad-chat-controls').addEventListener('submit', this.onSubmit);
+      this.el.querySelector('.dejoiy-chat-controls').addEventListener('submit', this.onSubmit);
       this.body.addEventListener('scroll', this.detectScrolledtoBottom);
       this.el.querySelector('.zammad-scroll-hint').addEventListener('click', this.onScrollHintClick);
       this.input.addEventListener('keydown', this.onKeydown);
@@ -1643,11 +1643,11 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       })(this));
     };
 
-    ZammadChat.prototype.stopPropagation = function(event) {
+    DejoiyChat.prototype.stopPropagation = function(event) {
       return event.stopPropagation();
     };
 
-    ZammadChat.prototype.onDrop = function(e) {
+    DejoiyChat.prototype.onDrop = function(e) {
       var dataTransfer, file, reader, x, y;
       e.stopPropagation();
       e.preventDefault();
@@ -1696,7 +1696,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onPaste = function(e) {
+    DejoiyChat.prototype.onPaste = function(e) {
       var clipboardData, docType, html, htmlTmp, imageFile, imageInserted, item, j, k, l, len, len1, len2, len3, m, match, newTag, node, outer, reader, ref, ref1, ref2, ref3, regex, replacementTag, sanitized, text;
       e.stopPropagation();
       e.preventDefault();
@@ -1822,7 +1822,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return true;
     };
 
-    ZammadChat.prototype.onKeydown = function(e) {
+    DejoiyChat.prototype.onKeydown = function(e) {
       var richtTextControl;
       if (!this.inputDisabled && !e.shiftKey && e.keyCode === 13) {
         e.preventDefault();
@@ -1855,7 +1855,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.send = function(event, data) {
+    DejoiyChat.prototype.send = function(event, data) {
       if (data == null) {
         data = {};
       }
@@ -1863,7 +1863,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.io.send(event, data);
     };
 
-    ZammadChat.prototype.onWebSocketMessage = function(pipes) {
+    DejoiyChat.prototype.onWebSocketMessage = function(pipes) {
       var j, len, pipe;
       for (j = 0, len = pipes.length; j < len; j++) {
         pipe = pipes[j];
@@ -1927,7 +1927,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onReady = function() {
+    DejoiyChat.prototype.onReady = function() {
       var base, btn;
       this.log.debug('widget ready for use');
       btn = document.querySelector("." + this.options.buttonClass);
@@ -1943,13 +1943,13 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onError = function(message) {
+    DejoiyChat.prototype.onError = function(message) {
       var base, btn;
       this.log.debug(message);
       this.addStatus(message);
       btn = document.querySelector("." + this.options.buttonClass);
       if (btn) {
-        btn.classList.add('zammad-chat-is-hidden');
+        btn.classList.add('dejoiy-chat-is-hidden');
       }
       if (this.isOpen) {
         this.disableInput();
@@ -1964,7 +1964,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onError === "function" ? base.onError(message) : void 0;
     };
 
-    ZammadChat.prototype.onReopenSession = function(data) {
+    DejoiyChat.prototype.onReopenSession = function(data) {
       var j, len, message, ref, unfinishedMessage;
       this.log.debug('old messages', data.session);
       this.inactiveTimeout.start();
@@ -1995,18 +1995,18 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onInput = function() {
+    DejoiyChat.prototype.onInput = function() {
       var j, len, message, ref;
-      ref = this.el.querySelectorAll('.zammad-chat-message--unread');
+      ref = this.el.querySelectorAll('.dejoiy-chat-message--unread');
       for (j = 0, len = ref.length; j < len; j++) {
         message = ref[j];
-        message.classList.remove('zammad-chat-message--unread');
+        message.classList.remove('dejoiy-chat-message--unread');
       }
       sessionStorage.setItem('unfinished_message', this.input.innerHTML);
       return this.onTyping();
     };
 
-    ZammadChat.prototype.onTyping = function() {
+    DejoiyChat.prototype.onTyping = function() {
       if (this.isTyping && this.isTyping > new Date(new Date().getTime() - 1500)) {
         return;
       }
@@ -2017,12 +2017,12 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.inactiveTimeout.start();
     };
 
-    ZammadChat.prototype.onSubmit = function(event) {
+    DejoiyChat.prototype.onSubmit = function(event) {
       event.preventDefault();
       return this.sendMessage();
     };
 
-    ZammadChat.prototype.sendMessage = function() {
+    DejoiyChat.prototype.sendMessage = function() {
       var message, messageElement;
       message = this.input.innerHTML;
       if (!message) {
@@ -2037,9 +2037,9 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         unreadClass: ''
       });
       this.maybeAddTimestamp();
-      if (this.el.querySelector('.zammad-chat-message--typing')) {
+      if (this.el.querySelector('.dejoiy-chat-message--typing')) {
         this.lastAddedType = 'typing-placeholder';
-        this.el.querySelector('.zammad-chat-message--typing').insertAdjacentHTML('beforebegin', messageElement);
+        this.el.querySelector('.dejoiy-chat-message--typing').insertAdjacentHTML('beforebegin', messageElement);
       } else {
         this.lastAddedType = 'message--customer';
         this.body.insertAdjacentHTML('beforeend', messageElement);
@@ -2053,7 +2053,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.receiveMessage = function(data) {
+    DejoiyChat.prototype.receiveMessage = function(data) {
       this.inactiveTimeout.start();
       this.onAgentTypingEnd();
       this.maybeAddTimestamp();
@@ -2067,13 +2067,13 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.renderMessage = function(data) {
+    DejoiyChat.prototype.renderMessage = function(data) {
       this.lastAddedType = "message--" + data.from;
-      data.unreadClass = document.hidden ? ' zammad-chat-message--unread' : '';
+      data.unreadClass = document.hidden ? ' dejoiy-chat-message--unread' : '';
       return this.body.insertAdjacentHTML('beforeend', this.view('message')(data));
     };
 
-    ZammadChat.prototype.open = function() {
+    DejoiyChat.prototype.open = function() {
       var remainerHeight;
       if (this.isOpen) {
         this.log.debug('widget already open, block');
@@ -2085,13 +2085,13 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       if (!this.sessionId) {
         this.showLoader();
       }
-      this.el.classList.add('zammad-chat-is-open');
-      remainerHeight = this.el.clientHeight - this.el.querySelector('.zammad-chat-header').offsetHeight;
+      this.el.classList.add('dejoiy-chat-is-open');
+      remainerHeight = this.el.clientHeight - this.el.querySelector('.dejoiy-chat-header').offsetHeight;
       this.el.style.transform = "translateY(" + remainerHeight + "px)";
       this.el.clientHeight;
       if (!this.sessionId) {
         this.el.addEventListener('transitionend', this.onOpenAnimationEnd);
-        this.el.classList.add('zammad-chat--animate');
+        this.el.classList.add('dejoiy-chat--animate');
         this.el.clientHeight;
         this.el.style.transform = '';
         return this.send('chat_session_init', {
@@ -2103,10 +2103,10 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onOpenAnimationEnd = function() {
+    DejoiyChat.prototype.onOpenAnimationEnd = function() {
       var base;
       this.el.removeEventListener('transitionend', this.onOpenAnimationEnd);
-      this.el.classList.remove('zammad-chat--animate');
+      this.el.classList.remove('dejoiy-chat--animate');
       this.idleTimeout.stop();
       if (this.isFullscreen) {
         this.disableScrollOnRoot();
@@ -2114,7 +2114,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onOpenAnimationEnd === "function" ? base.onOpenAnimationEnd() : void 0;
     };
 
-    ZammadChat.prototype.sessionClose = function() {
+    DejoiyChat.prototype.sessionClose = function() {
       this.send('chat_session_close', {
         session_id: this.sessionId
       });
@@ -2127,7 +2127,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.setSessionId(void 0);
     };
 
-    ZammadChat.prototype.toggle = function(event) {
+    DejoiyChat.prototype.toggle = function(event) {
       if (this.isOpen) {
         return this.close(event);
       } else {
@@ -2135,7 +2135,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.close = function(event) {
+    DejoiyChat.prototype.close = function(event) {
       var remainerHeight;
       if (!this.isOpen) {
         this.log.debug('can\'t close widget, it\'s not open');
@@ -2155,22 +2155,22 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       if (this.isFullscreen) {
         this.enableScrollOnRoot();
       }
-      remainerHeight = this.el.clientHeight - this.el.querySelector('.zammad-chat-header').offsetHeight;
+      remainerHeight = this.el.clientHeight - this.el.querySelector('.dejoiy-chat-header').offsetHeight;
       this.el.addEventListener('transitionend', this.onCloseAnimationEnd);
-      this.el.classList.add('zammad-chat--animate');
+      this.el.classList.add('dejoiy-chat--animate');
       document.offsetHeight;
       return this.el.style.transform = "translateY(" + remainerHeight + "px)";
     };
 
-    ZammadChat.prototype.onCloseAnimationEnd = function() {
+    DejoiyChat.prototype.onCloseAnimationEnd = function() {
       var base;
       this.el.removeEventListener('transitionend', this.onCloseAnimationEnd);
-      this.el.classList.remove('zammad-chat-is-open', 'zammad-chat--animate');
+      this.el.classList.remove('dejoiy-chat-is-open', 'dejoiy-chat--animate');
       this.el.style.transform = '';
       this.showLoader();
-      this.el.querySelector('.zammad-chat-welcome').classList.remove('zammad-chat-is-hidden');
-      this.el.querySelector('.zammad-chat-agent').classList.add('zammad-chat-is-hidden');
-      this.el.querySelector('.zammad-chat-agent-status').classList.add('zammad-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-welcome').classList.remove('dejoiy-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-agent').classList.add('dejoiy-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-agent-status').classList.add('dejoiy-chat-is-hidden');
       this.isOpen = false;
       if (typeof (base = this.options).onCloseAnimationEnd === "function") {
         base.onCloseAnimationEnd();
@@ -2178,42 +2178,42 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.io.reconnect();
     };
 
-    ZammadChat.prototype.onWebSocketClose = function() {
+    DejoiyChat.prototype.onWebSocketClose = function() {
       if (this.isOpen) {
         return;
       }
       if (this.el) {
-        this.el.classList.remove('zammad-chat-is-shown');
-        return this.el.classList.remove('zammad-chat-is-loaded');
+        this.el.classList.remove('dejoiy-chat-is-shown');
+        return this.el.classList.remove('dejoiy-chat-is-loaded');
       }
     };
 
-    ZammadChat.prototype.show = function() {
+    DejoiyChat.prototype.show = function() {
       if (this.state === 'offline') {
         return;
       }
-      this.el.classList.add('zammad-chat-is-loaded');
-      return this.el.classList.add('zammad-chat-is-shown');
+      this.el.classList.add('dejoiy-chat-is-loaded');
+      return this.el.classList.add('dejoiy-chat-is-shown');
     };
 
-    ZammadChat.prototype.disableInput = function() {
+    DejoiyChat.prototype.disableInput = function() {
       this.inputDisabled = true;
       this.input.setAttribute('contenteditable', false);
-      this.el.querySelector('.zammad-chat-send').disabled = true;
+      this.el.querySelector('.dejoiy-chat-send').disabled = true;
       return this.io.close();
     };
 
-    ZammadChat.prototype.enableInput = function() {
+    DejoiyChat.prototype.enableInput = function() {
       this.inputDisabled = false;
       this.input.setAttribute('contenteditable', true);
-      return this.el.querySelector('.zammad-chat-send').disabled = false;
+      return this.el.querySelector('.dejoiy-chat-send').disabled = false;
     };
 
-    ZammadChat.prototype.hideModal = function() {
-      return this.el.querySelector('.zammad-chat-modal').innerHTML = '';
+    DejoiyChat.prototype.hideModal = function() {
+      return this.el.querySelector('.dejoiy-chat-modal').innerHTML = '';
     };
 
-    ZammadChat.prototype.onQueueScreen = function(data) {
+    DejoiyChat.prototype.onQueueScreen = function(data) {
       var show;
       this.setSessionId(data.session_id);
       show = (function(_this) {
@@ -2232,37 +2232,37 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return show();
     };
 
-    ZammadChat.prototype.onQueue = function(data) {
+    DejoiyChat.prototype.onQueue = function(data) {
       this.log.notice('onQueue', data.position);
       this.inQueue = true;
-      return this.el.querySelector('.zammad-chat-modal').innerHTML = this.view('waiting')({
+      return this.el.querySelector('.dejoiy-chat-modal').innerHTML = this.view('waiting')({
         position: data.position
       });
     };
 
-    ZammadChat.prototype.onAgentTypingStart = function() {
+    DejoiyChat.prototype.onAgentTypingStart = function() {
       if (this.stopTypingId) {
         clearTimeout(this.stopTypingId);
       }
       this.stopTypingId = setTimeout(this.onAgentTypingEnd, 3000);
-      if (this.el.querySelector('.zammad-chat-message--typing')) {
+      if (this.el.querySelector('.dejoiy-chat-message--typing')) {
         return;
       }
       this.maybeAddTimestamp();
       this.body.insertAdjacentHTML('beforeend', this.view('typingIndicator')());
-      if (!this.isVisible(this.el.querySelector('.zammad-chat-message--typing'), true)) {
+      if (!this.isVisible(this.el.querySelector('.dejoiy-chat-message--typing'), true)) {
         return;
       }
       return this.scrollToBottom();
     };
 
-    ZammadChat.prototype.onAgentTypingEnd = function() {
-      if (this.el.querySelector('.zammad-chat-message--typing')) {
-        return this.el.querySelector('.zammad-chat-message--typing').remove();
+    DejoiyChat.prototype.onAgentTypingEnd = function() {
+      if (this.el.querySelector('.dejoiy-chat-message--typing')) {
+        return this.el.querySelector('.dejoiy-chat-message--typing').remove();
       }
     };
 
-    ZammadChat.prototype.onLeaveTemporary = function() {
+    DejoiyChat.prototype.onLeaveTemporary = function() {
       if (!this.sessionId) {
         return;
       }
@@ -2271,7 +2271,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.maybeAddTimestamp = function() {
+    DejoiyChat.prototype.maybeAddTimestamp = function() {
       var label, time, timestamp;
       timestamp = Date.now();
       if (!this.lastTimestamp || (timestamp - this.lastTimestamp) > this.showTimeEveryXMinutes * 60000) {
@@ -2292,12 +2292,12 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.updateLastTimestamp = function(label, time) {
+    DejoiyChat.prototype.updateLastTimestamp = function(label, time) {
       var timestamps;
       if (!this.el) {
         return;
       }
-      timestamps = this.el.querySelectorAll('.zammad-chat-body .zammad-chat-timestamp');
+      timestamps = this.el.querySelectorAll('.dejoiy-chat-body .dejoiy-chat-timestamp');
       if (!timestamps) {
         return;
       }
@@ -2307,7 +2307,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.addStatus = function(status) {
+    DejoiyChat.prototype.addStatus = function(status) {
       if (!this.el) {
         return;
       }
@@ -2318,7 +2318,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.scrollToBottom();
     };
 
-    ZammadChat.prototype.detectScrolledtoBottom = function() {
+    DejoiyChat.prototype.detectScrolledtoBottom = function() {
       var scrollBottom;
       scrollBottom = this.body.scrollTop + this.body.offsetHeight;
       this.scrolledToBottom = Math.abs(scrollBottom - this.body.scrollHeight) <= this.scrollSnapTolerance;
@@ -2327,19 +2327,19 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.showScrollHint = function() {
+    DejoiyChat.prototype.showScrollHint = function() {
       this.el.querySelector('.zammad-scroll-hint').classList.remove('is-hidden');
       return this.body.scrollTop = this.body.scrollTop + this.el.querySelector('.zammad-scroll-hint').offsetHeight;
     };
 
-    ZammadChat.prototype.onScrollHintClick = function() {
+    DejoiyChat.prototype.onScrollHintClick = function() {
       return this.body.scrollTo({
         top: this.body.scrollHeight,
         behavior: 'smooth'
       });
     };
 
-    ZammadChat.prototype.scrollToBottom = function(arg) {
+    DejoiyChat.prototype.scrollToBottom = function(arg) {
       var showHint;
       showHint = (arg != null ? arg : {
         showHint: false
@@ -2351,7 +2351,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.destroy = function(params) {
+    DejoiyChat.prototype.destroy = function(params) {
       var btn;
       if (params == null) {
         params = {};
@@ -2378,7 +2378,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.io.close();
     };
 
-    ZammadChat.prototype.reconnect = function() {
+    DejoiyChat.prototype.reconnect = function() {
       this.log.notice('reconnecting');
       this.disableInput();
       this.lastAddedType = 'status';
@@ -2386,7 +2386,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.addStatus(this.T('Connection lost'));
     };
 
-    ZammadChat.prototype.onConnectionReestablished = function() {
+    DejoiyChat.prototype.onConnectionReestablished = function() {
       var base;
       this.lastAddedType = 'status';
       this.setAgentOnlineState('online');
@@ -2394,7 +2394,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onConnectionReestablished === "function" ? base.onConnectionReestablished() : void 0;
     };
 
-    ZammadChat.prototype.onSessionClosed = function(data) {
+    DejoiyChat.prototype.onSessionClosed = function(data) {
       var base;
       this.addStatus(this.T('Chat closed by %s', data.realname));
       this.disableInput();
@@ -2403,7 +2403,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onSessionClosed === "function" ? base.onSessionClosed(data) : void 0;
     };
 
-    ZammadChat.prototype.setSessionId = function(id) {
+    DejoiyChat.prototype.setSessionId = function(id) {
       this.sessionId = id;
       if (id === void 0) {
         return sessionStorage.removeItem('sessionId');
@@ -2412,7 +2412,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.onConnectionEstablished = function(data) {
+    DejoiyChat.prototype.onConnectionEstablished = function(data) {
       var base;
       if (this.onInitialQueueDelayId) {
         clearTimeout(this.onInitialQueueDelayId);
@@ -2425,14 +2425,14 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         this.setSessionId(data.session_id);
       }
       this.body.innerHTML = '';
-      this.el.querySelector('.zammad-chat-agent').innerHTML = this.view('agent')({
+      this.el.querySelector('.dejoiy-chat-agent').innerHTML = this.view('agent')({
         agent: this.agent
       });
       this.enableInput();
       this.hideModal();
-      this.el.querySelector('.zammad-chat-welcome').classList.add('zammad-chat-is-hidden');
-      this.el.querySelector('.zammad-chat-agent').classList.remove('zammad-chat-is-hidden');
-      this.el.querySelector('.zammad-chat-agent-status').classList.remove('zammad-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-welcome').classList.add('dejoiy-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-agent').classList.remove('dejoiy-chat-is-hidden');
+      this.el.querySelector('.dejoiy-chat-agent-status').classList.remove('dejoiy-chat-is-hidden');
       if (!this.isFullscreen) {
         this.input.focus();
       }
@@ -2443,8 +2443,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onConnectionEstablished === "function" ? base.onConnectionEstablished(data) : void 0;
     };
 
-    ZammadChat.prototype.showCustomerTimeout = function() {
-      this.el.querySelector('.zammad-chat-modal').innerHTML = this.view('customer_timeout')({
+    DejoiyChat.prototype.showCustomerTimeout = function() {
+      this.el.querySelector('.dejoiy-chat-modal').innerHTML = this.view('customer_timeout')({
         agent: this.agent.name,
         delay: this.options.inactiveTimeout
       });
@@ -2454,8 +2454,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.sessionClose();
     };
 
-    ZammadChat.prototype.showWaitingListTimeout = function() {
-      this.el.querySelector('.zammad-chat-modal').innerHTML = this.view('waiting_list_timeout')({
+    DejoiyChat.prototype.showWaitingListTimeout = function() {
+      this.el.querySelector('.dejoiy-chat-modal').innerHTML = this.view('waiting_list_timeout')({
         delay: this.options.watingListTimeout
       });
       this.el.querySelector('.js-restart').addEventListener('click', function() {
@@ -2464,22 +2464,22 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.sessionClose();
     };
 
-    ZammadChat.prototype.showLoader = function() {
-      return this.el.querySelector('.zammad-chat-modal').innerHTML = this.view('loader')();
+    DejoiyChat.prototype.showLoader = function() {
+      return this.el.querySelector('.dejoiy-chat-modal').innerHTML = this.view('loader')();
     };
 
-    ZammadChat.prototype.setAgentOnlineState = function(state) {
+    DejoiyChat.prototype.setAgentOnlineState = function(state) {
       var capitalizedState;
       this.state = state;
       if (!this.el) {
         return;
       }
       capitalizedState = state.charAt(0).toUpperCase() + state.slice(1);
-      this.el.querySelector('.zammad-chat-agent-status').dataset.status = state;
-      return this.el.querySelector('.zammad-chat-agent-status').textContent = this.T(capitalizedState);
+      this.el.querySelector('.dejoiy-chat-agent-status').dataset.status = state;
+      return this.el.querySelector('.dejoiy-chat-agent-status').textContent = this.T(capitalizedState);
     };
 
-    ZammadChat.prototype.detectHost = function() {
+    DejoiyChat.prototype.detectHost = function() {
       var protocol;
       protocol = 'ws://';
       if (scriptProtocol === 'https') {
@@ -2488,7 +2488,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return this.options.host = "" + protocol + scriptHost + "/ws";
     };
 
-    ZammadChat.prototype.loadCss = function() {
+    DejoiyChat.prototype.loadCss = function() {
       var newSS, styles, url;
       if (!this.options.cssAutoload) {
         return;
@@ -2507,7 +2507,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return document.getElementsByTagName('head')[0].appendChild(newSS);
     };
 
-    ZammadChat.prototype.onCssLoaded = function() {
+    DejoiyChat.prototype.onCssLoaded = function() {
       var base;
       this.cssLoaded = true;
       if (this.socketReady) {
@@ -2516,7 +2516,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return typeof (base = this.options).onCssLoaded === "function" ? base.onCssLoaded() : void 0;
     };
 
-    ZammadChat.prototype.startTimeoutObservers = function() {
+    DejoiyChat.prototype.startTimeoutObservers = function() {
       this.idleTimeout = new Timeout({
         logPrefix: 'idleTimeout',
         debug: this.options.debug,
@@ -2563,19 +2563,19 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       });
     };
 
-    ZammadChat.prototype.disableScrollOnRoot = function() {
+    DejoiyChat.prototype.disableScrollOnRoot = function() {
       this.rootScrollOffset = this.scrollRoot.scrollTop;
       this.scrollRoot.style.overflow = 'hidden';
       return this.scrollRoot.style.position = 'fixed';
     };
 
-    ZammadChat.prototype.enableScrollOnRoot = function() {
+    DejoiyChat.prototype.enableScrollOnRoot = function() {
       this.scrollRoot.scrollTop = this.rootScrollOffset;
       this.scrollRoot.style.overflow = '';
       return this.scrollRoot.style.position = '';
     };
 
-    ZammadChat.prototype.isVisible = function(el, partial, hidden, direction) {
+    DejoiyChat.prototype.isVisible = function(el, partial, hidden, direction) {
       var bViz, clientSize, hVisible, lViz, rViz, rec, tViz, vVisible, vpHeight, vpWidth;
       if (el.length < 1) {
         return;
@@ -2600,7 +2600,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.isRetina = function() {
+    DejoiyChat.prototype.isRetina = function() {
       var mq;
       if (window.matchMedia) {
         mq = window.matchMedia('only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)');
@@ -2609,7 +2609,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return false;
     };
 
-    ZammadChat.prototype.resizeImage = function(dataURL, x, y, sizeFactor, type, quallity, callback, force) {
+    DejoiyChat.prototype.resizeImage = function(dataURL, x, y, sizeFactor, type, quallity, callback, force) {
       var imageObject;
       if (x == null) {
         x = 'auto';
@@ -2680,7 +2680,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return imageObject.src = dataURL;
     };
 
-    ZammadChat.prototype.pasteHtmlAtCaret = function(html) {
+    DejoiyChat.prototype.pasteHtmlAtCaret = function(html) {
       var el, frag, lastNode, node, range, sel;
       sel = void 0;
       range = void 0;
@@ -2709,7 +2709,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       }
     };
 
-    ZammadChat.prototype.wordFilter = function(editor) {
+    DejoiyChat.prototype.wordFilter = function(editor) {
       var content, cur_level, el, i, j, k, l, last_level, len, len1, len2, len3, len4, len5, len6, len7, list_tag, m, matches, n, o, p, pnt, q, r, ref, ref1, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9, s, start, str, txt;
       content = editor.html();
       content = content.replace(/<!--[\s\S]+?-->/gi, '');
@@ -2801,7 +2801,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return editor;
     };
 
-    ZammadChat.prototype.removeAttribute = function(element) {
+    DejoiyChat.prototype.removeAttribute = function(element) {
       var att, j, len, ref, results;
       if (!element) {
         return;
@@ -2815,7 +2815,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return results;
     };
 
-    ZammadChat.prototype.removeAttributes = function(html) {
+    DejoiyChat.prototype.removeAttributes = function(html) {
       var j, len, node, ref;
       ref = html.querySelectorAll('*');
       for (j = 0, len = ref.length; j < len; j++) {
@@ -2825,8 +2825,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
       return html;
     };
 
-    return ZammadChat;
+    return DejoiyChat;
 
   })(Base);
-  return window.ZammadChat = ZammadChat;
+  return window.DejoiyChat = DejoiyChat;
 })(window);

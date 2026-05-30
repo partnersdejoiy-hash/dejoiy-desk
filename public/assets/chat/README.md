@@ -1,6 +1,6 @@
 # Chat
 
-## Recreating the Static Zammad Chat Build
+## Recreating the Static DEJOIY Chat Build
 
 From the repository root you can run:
 

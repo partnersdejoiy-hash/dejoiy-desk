@@ -37,7 +37,7 @@ Setting.create_if_not_exists(
   title:       __('Maintenance Mode'),
   name:        'maintenance_mode',
   area:        'Core::WebApp',
-  description: __('Enable or disable the maintenance mode of Zammad. If enabled, all non-administrators get logged out and only administrators can start a new session.'),
+  description: __('Enable or disable the maintenance mode of DEJOIY. If enabled, all non-administrators get logged out and only administrators can start a new session.'),
   options:     {},
   state:       false,
   preferences: {
@@ -111,7 +111,7 @@ Setting.create_if_not_exists(
     placeholder: true,
     permission:  ['admin.branding'],
   },
-  state:       __('Zammad Helpdesk'),
+  state:       __('DEJOIY Internal Tools'),
   frontend:    true
 )
 Setting.create_if_not_exists(
@@ -411,7 +411,7 @@ Setting.create_if_not_exists(
       },
     ],
   },
-  state:       'Service::Image::Zammad',
+  state:       '',
   preferences: {
     prio:       1,
     permission: ['admin.system'],
@@ -438,7 +438,7 @@ Setting.create_if_not_exists(
       },
     ],
   },
-  state:       'Service::GeoIp::Zammad',
+  state:       '',
   preferences: {
     prio:       2,
     permission: ['admin.system'],
@@ -492,7 +492,7 @@ Setting.create_if_not_exists(
       },
     ],
   },
-  state:       'Service::GeoCalendar::Zammad',
+  state:       '',
   preferences: {
     prio:       2,
     permission: ['admin.system'],

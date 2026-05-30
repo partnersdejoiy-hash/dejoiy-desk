@@ -2,6 +2,7 @@
 
 class Service::GeoCalendar::Zammad
   def self.location(address)
+    return {} unless Dejoiy::ExternalServices.zammad_vendor_enabled?
 
     # check cache
     cache_key = "zammadgeocalendar::#{address}"

@@ -1,0 +1,145 @@
+# DEJOIY Internal Tools — private Docker Compose stack
+# Data lives only in dejoiy-* volumes on your infrastructure.
+
+name: dejoiy-desk
+
+x-shared:
+  dejoiy-service: &dejoiy-service
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        COMMIT_SHA: ${COMMIT_SHA:-local-build}
+    image: ${IMAGE_REPO:-dejoiy/desk}:${VERSION:-local}
+    restart: ${RESTART:-always}
+    environment: &dejoiy-environment
+      DEJOIY_ENABLE_VENDOR_SERVICES: ${DEJOIY_ENABLE_VENDOR_SERVICES:-false}
+      DEJOIY_AI_API_URL: ${DEJOIY_AI_API_URL:-}
+      DEJOIY_AI_TOKEN: ${DEJOIY_AI_TOKEN:-}
+      ZAMMAD_AI_API_URL: ${DEJOIY_AI_API_URL:-}
+      ZAMMAD_AI_TOKEN: ${DEJOIY_AI_TOKEN:-}
+
+      MEMCACHE_SERVERS: ${MEMCACHE_SERVERS:-dejoiy-memcached:11211}
+      POSTGRESQL_DB: ${POSTGRES_DB:-dejoiy_production}
+      POSTGRESQL_HOST: ${POSTGRES_HOST:-dejoiy-postgresql}
+      POSTGRESQL_USER: ${POSTGRES_USER:-dejoiy}
+      POSTGRESQL_PASS: ${POSTGRES_PASS:-dejoiy}
+      POSTGRESQL_PORT: ${POSTGRES_PORT:-5432}
+      POSTGRESQL_OPTIONS: ${POSTGRESQL_OPTIONS:-?pool=50}
+      POSTGRESQL_DB_CREATE: ${POSTGRESQL_DB_CREATE:-true}
+
+      REDIS_URL: ${REDIS_URL:-redis://dejoiy-redis:6379}
+
+      ELASTICSEARCH_ENABLED: ${ELASTICSEARCH_ENABLED:-true}
+      ELASTICSEARCH_SCHEMA: ${ELASTICSEARCH_SCHEMA:-http}
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST:-dejoiy-elasticsearch}
+      ELASTICSEARCH_PORT: ${ELASTICSEARCH_PORT:-9200}
+      ELASTICSEARCH_NAMESPACE: ${ELASTICSEARCH_NAMESPACE:-dejoiy}
+      ELASTICSEARCH_REINDEX: ${ELASTICSEARCH_REINDEX:-true}
+
+      NGINX_PORT: ${NGINX_PORT:-8080}
+      NGINX_SERVER_NAME: ${NGINX_SERVER_NAME:-_}
+      RAILS_TRUSTED_PROXIES: ${RAILS_TRUSTED_PROXIES:-127.0.0.1,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+
+      ZAMMAD_HTTP_TYPE: ${ZAMMAD_HTTP_TYPE:-https}
+      ZAMMAD_FQDN: ${ZAMMAD_FQDN:-desk.dejoiy.internal}
+
+      BACKUP_DIR: ${BACKUP_DIR:-/var/tmp/zammad}
+      BACKUP_TIME: ${BACKUP_TIME:-03:00}
+      BACKUP_ON_START: ${BACKUP_ON_START:-true}
+      HOLD_DAYS: ${HOLD_DAYS:-10}
+      TZ: ${TZ:-UTC}
+
+      AUTOWIZARD_JSON: ${AUTOWIZARD_JSON:-}
+      AUTOWIZARD_RELATIVE_PATH: ${AUTOWIZARD_RELATIVE_PATH:-}
+
+    volumes:
+      - dejoiy-backup:/var/tmp/zammad:ro
+      - dejoiy-storage:/opt/zammad/storage
+    depends_on:
+      - dejoiy-memcached
+      - dejoiy-postgresql
+      - dejoiy-redis
+
+services:
+  dejoiy-backup:
+    <<: *dejoiy-service
+    command: ['zammad-backup']
+    volumes:
+      - dejoiy-backup:/var/tmp/zammad
+      - dejoiy-storage:/opt/zammad/storage
+    user: '0:0'
+
+  dejoiy-elasticsearch:
+    image: elasticsearch:${ELASTICSEARCH_VERSION:-8.15.3}
+    restart: ${RESTART:-always}
+    volumes:
+      - dejoiy-elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+      ES_JAVA_OPTS: ${ELASTICSEARCH_JAVA_OPTS:--Xms512m -Xmx512m}
+
+  dejoiy-init:
+    <<: *dejoiy-service
+    command: ['zammad-init']
+    depends_on:
+      - dejoiy-postgresql
+      - dejoiy-elasticsearch
+    restart: on-failure
+    user: '0:0'
+
+  dejoiy-memcached:
+    image: memcached:${MEMCACHE_VERSION:-1.6.42-alpine}
+    command: memcached -m 256M
+    restart: ${RESTART:-always}
+
+  dejoiy-nginx:
+    <<: *dejoiy-service
+    command: ['zammad-nginx']
+    ports:
+      - '${NGINX_EXPOSE_PORT:-8080}:${NGINX_PORT:-8080}'
+    depends_on:
+      dejoiy-railsserver:
+        condition: service_healthy
+
+  dejoiy-postgresql:
+    image: postgres:${POSTGRES_VERSION:-17.2-alpine}
+    restart: ${RESTART:-always}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-dejoiy_production}
+      POSTGRES_USER: ${POSTGRES_USER:-dejoiy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS:-dejoiy}
+    volumes:
+      - dejoiy-postgresql-data:/var/lib/postgresql/data
+
+  dejoiy-railsserver:
+    <<: *dejoiy-service
+    command: ['zammad-railsserver']
+    healthcheck:
+      test: ['CMD', 'curl', '-sf', 'http://127.0.0.1:3000']
+      interval: 30s
+      timeout: 5s
+      start_period: 180s
+      retries: 5
+
+  dejoiy-redis:
+    image: redis:${REDIS_VERSION:-7.4-alpine}
+    restart: ${RESTART:-always}
+    volumes:
+      - dejoiy-redis-data:/data
+
+  dejoiy-scheduler:
+    <<: *dejoiy-service
+    command: ['zammad-scheduler']
+
+  dejoiy-websocket:
+    <<: *dejoiy-service
+    command: ['zammad-websocket']
+
+volumes:
+  dejoiy-elasticsearch-data:
+  dejoiy-postgresql-data:
+  dejoiy-redis-data:
+  dejoiy-backup:
+  dejoiy-storage:

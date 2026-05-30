@@ -1,0 +1,170 @@
+/* Copyright (C) 2024-2026 Dejoiy — official brand canvases & surfaces */
+
+:root {
+  --dejoiy-navy: #001f3f;
+  --dejoiy-magenta: #e91e63;
+  --dejoiy-cyan: #00bcd4;
+  --dejoiy-gradient-icon: linear-gradient(135deg, #e91e63 0%, #d946ef 55%, #00bcd4 100%);
+  --dejoiy-gradient-brand: linear-gradient(90deg, #e91e63, #d946ef, #00bcd4);
+  --dejoiy-gradient-sidebar: linear-gradient(180deg, #000814 0%, #001f3f 45%, #001a33 100%);
+  --dejoiy-shadow-glow:
+    0 0 0 1px rgba(233, 30, 99, 0.12),
+    0 20px 50px rgba(0, 31, 63, 0.22),
+    0 8px 24px rgba(0, 188, 212, 0.1);
+  --dejoiy-radius-card: 1rem;
+  --dejoiy-radius-tile: 0.75rem;
+  --dejoiy-focus-ring: 0 0 0 2px #fff, 0 0 0 4px #e91e63;
+  --dejoiy-glass-bg: rgba(255, 255, 255, 0.72);
+  --dejoiy-glass-border: rgba(255, 255, 255, 0.45);
+}
+
+@layer components {
+  .dejoiy-brand-bar {
+    background: var(--dejoiy-gradient-brand);
+    height: 3px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  /* —— Canvas: authentication / public pages (dark mesh) —— */
+  .dejoiy-canvas-auth {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    color: #e2e8f0;
+    background-color: #000814;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 15% 10%, rgba(233, 30, 99, 0.38), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 85%, rgba(0, 188, 212, 0.28), transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0, 31, 63, 0.9), transparent),
+      linear-gradient(160deg, #000814 0%, #001f3f 40%, #000a14 100%);
+  }
+
+  .dejoiy-canvas-auth::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.4;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.06) 0, transparent 8%),
+      radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.04) 0, transparent 6%);
+    pointer-events: none;
+  }
+
+  /* —— Canvas: main app workspace —— */
+  .dejoiy-canvas-workspace {
+    background:
+      linear-gradient(
+        165deg,
+        #fafbfc 0%,
+        color-mix(in srgb, #e0f7fa 35%, #fafbfc) 50%,
+        color-mix(in srgb, #fce4ec 20%, #fafbfc) 100%
+      );
+  }
+
+  [data-theme='dark'] .dejoiy-canvas-workspace {
+    background: linear-gradient(165deg, #0a1628 0%, #001f3f 50%, #0d1117 100%);
+  }
+
+  /* —— Canvas: content panels / cards area —— */
+  .dejoiy-canvas-panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border-radius: var(--dejoiy-radius-card);
+  }
+
+  [data-theme='dark'] .dejoiy-canvas-panel {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(0, 31, 63, 0.6) 100%);
+  }
+
+  /* —— Canvas: marketing / empty states —— */
+  .dejoiy-canvas-hero {
+    background:
+      radial-gradient(ellipse 100% 80% at 50% -20%, rgba(233, 30, 99, 0.15), transparent),
+      radial-gradient(ellipse 80% 60% at 100% 100%, rgba(0, 188, 212, 0.12), transparent),
+      var(--color-neutral-50, #fafafa);
+  }
+
+  [data-theme='dark'] .dejoiy-canvas-hero {
+    background:
+      radial-gradient(ellipse 100% 80% at 50% -20%, rgba(233, 30, 99, 0.2), transparent),
+      radial-gradient(ellipse 80% 60% at 100% 100%, rgba(0, 188, 212, 0.15), transparent),
+      #0a1628;
+  }
+
+  /* —— Canvas: subtle mesh overlay (stack on parent) —— */
+  .dejoiy-canvas-mesh::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black, transparent);
+  }
+
+  .dejoiy-sidebar-surface {
+    background: var(--dejoiy-gradient-sidebar);
+  }
+
+  .dejoiy-logo-glow {
+    filter: drop-shadow(0 0 14px rgba(233, 30, 99, 0.5)) drop-shadow(0 0 8px rgba(0, 188, 212, 0.35));
+    transition: filter 0.2s ease;
+  }
+
+  .dejoiy-logo-glow:hover {
+    filter: drop-shadow(0 0 18px rgba(233, 30, 99, 0.65)) drop-shadow(0 0 12px rgba(0, 188, 212, 0.45));
+  }
+
+  .dejoiy-glass-card {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--dejoiy-radius-card);
+    border: 1px solid var(--dejoiy-glass-border);
+    background: var(--dejoiy-glass-bg);
+    backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow: var(--dejoiy-shadow-glow);
+  }
+
+  [data-theme='dark'] .dejoiy-glass-card {
+    --dejoiy-glass-bg: rgba(0, 31, 63, 0.75);
+    --dejoiy-glass-border: rgba(0, 188, 212, 0.2);
+  }
+
+  .dejoiy-card-elevated {
+    border-radius: var(--dejoiy-radius-card);
+    box-shadow: var(--dejoiy-shadow-glow);
+  }
+
+  .dejoiy-main-surface {
+    background:
+      linear-gradient(
+        165deg,
+        #fafbfc 0%,
+        color-mix(in srgb, #e0f7fa 35%, #fafbfc) 50%,
+        color-mix(in srgb, #fce4ec 20%, #fafbfc) 100%
+      );
+  }
+
+  [data-theme='dark'] .dejoiy-main-surface {
+    background: linear-gradient(165deg, #0a1628 0%, #001f3f 50%, #0d1117 100%);
+  }
+
+  .dejoiy-tile {
+    border-radius: var(--dejoiy-radius-tile);
+    border: 1px solid color-mix(in srgb, var(--dejoiy-cyan) 15%, transparent);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.5));
+  }
+
+  [data-theme='dark'] .dejoiy-tile {
+    background: linear-gradient(145deg, rgba(0, 31, 63, 0.8), rgba(0, 10, 20, 0.9));
+    border-color: rgba(0, 188, 212, 0.2);
+  }
+
+  .dejoiy-brand__tagline {
+    font-variant-numeric: tabular-nums;
+  }
+}

@@ -9,10 +9,12 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex justify-center p-2">
-    <CommonLogo />
+  <div class="dejoiy-canvas-auth dejoiy-canvas-mesh -mx-4 mb-4 rounded-b-2xl px-4 pb-6 pt-4">
+    <div class="flex justify-center">
+      <CommonLogo brand-variant="full" />
+    </div>
   </div>
-  <h1 class="mb-6 flex justify-center p-2 text-2xl font-bold">
+  <h1 class="mb-6 flex justify-center px-2 text-2xl font-bold text-[var(--dejoiy-navy)] dark:text-white">
     {{ $t(title) }}
   </h1>
   <template v-if="$c.maintenance_mode">

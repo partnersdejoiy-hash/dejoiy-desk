@@ -101,4 +101,14 @@
   --top-header-height: 0;
 
   --blur-2xs: 2px;
+
+  /* DEJOIY official brand (logo: magenta → cyan, navy wordmark) */
+  --color-brand-navy: #001f3f;
+  --color-brand-magenta: #e91e63;
+  --color-brand-cyan: #00bcd4;
+  --color-brand-500: #e91e63;
+  --color-brand-600: #c2185b;
+  --color-brand-700: #001f3f;
+  --color-brand-accent-pink: #e91e63;
+  --color-brand-accent-blue: #00bcd4;
 }

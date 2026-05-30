@@ -1,1 +1,1 @@
-<div class="zammad-chat-timestamp"><strong><%= @label %></strong> <%= @time %></div>
+<div class="dejoiy-chat-timestamp"><strong><%= @label %></strong> <%= @time %></div>

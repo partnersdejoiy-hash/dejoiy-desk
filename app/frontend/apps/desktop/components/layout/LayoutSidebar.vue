@@ -68,7 +68,7 @@ const backgroundVariantClass = computed(() => {
       return 'bg-blue-50 dark:bg-gray-800'
     case 'primary':
     default:
-      return 'bg-neutral-950'
+      return 'dejoiy-sidebar-surface text-stone-200'
   }
 })
 
