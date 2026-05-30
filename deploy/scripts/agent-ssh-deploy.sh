@@ -2,7 +2,20 @@
 # Used by Cursor Cloud Agent when DEJOIY_DEPLOY_* secrets are set.
 set -euo pipefail
 
-: "${DEJOIY_DEPLOY_HOST:?Set DEJOIY_DEPLOY_HOST secret (server public IP)}"
+if [[ -z "${DEJOIY_DEPLOY_HOST:-}" ]]; then
+  cat >&2 <<'EOF'
+ERROR: DEJOIY deploy secrets are not available in this agent session.
+
+Add these in Cursor → Cloud Agents → your Environment → Secrets (environment-scoped):
+  DEJOIY_DEPLOY_HOST, DEJOIY_DEPLOY_USER, DEJOIY_DEPLOY_PASSWORD, DEJOIY_DEPLOY_FQDN
+
+Then start a NEW Cloud Agent run (secrets do not reload mid-conversation).
+
+Or on the server: curl -fsSL "https://raw.githubusercontent.com/partnersdejoiy-hash/dejoiy-desk/cursor/dejoiy-complete-rebrand-35c2/deploy/scripts/bootstrap-server.sh" | bash -s -- --fqdn desk.dejoiy.internal
+EOF
+  exit 1
+fi
+: "${DEJOIY_DEPLOY_HOST:?}"
 : "${DEJOIY_DEPLOY_USER:?Set DEJOIY_DEPLOY_USER secret (e.g. root)}"
 : "${DEJOIY_DEPLOY_FQDN:?Set DEJOIY_DEPLOY_FQDN secret (e.g. desk.dejoiy.internal)}"
 

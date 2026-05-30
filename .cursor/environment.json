@@ -1,0 +1,4 @@
+{
+  "install": "sudo apt-get update -qq && sudo apt-get install -y -qq openssh-client sshpass git curl && chmod +x deploy/scripts/*.sh 2>/dev/null || true",
+  "terminals": []
+}
