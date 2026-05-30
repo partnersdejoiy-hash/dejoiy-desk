@@ -10,6 +10,8 @@ import emitter from '#shared/utils/emitter.ts'
 import OnlineNotification from '#desktop/components/layout/LayoutSidebar/LeftSidebar/LeftSidebarHeader/OnlineNotification.vue'
 import QuickSearchInput from '#desktop/components/Search/QuickSearch/QuickSearchInput/QuickSearchInput.vue'
 
+import DejoiyBrand from '#shared/components/DejoiyBrand/DejoiyBrand.vue'
+
 interface Props {
   collapsed?: boolean
 }
@@ -51,11 +53,7 @@ const isTicketAgent = computed(() => hasPermission('ticket.agent') ?? false)
       class="flex items-center justify-center"
       :class="{ 'ltr:ml-auto rtl:mr-auto': !collapsed }"
     >
-      <CommonIcon
-        name="logo"
-        class="dejoiy-logo-glow z-10 block h-9 w-9"
-        :title="$t('DEJOIY')"
-      />
+      <DejoiyBrand variant="icon" icon-class="dejoiy-logo-glow h-9 w-9" />
     </component>
   </header>
 </template>

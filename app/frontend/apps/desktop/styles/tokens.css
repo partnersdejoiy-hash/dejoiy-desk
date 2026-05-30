@@ -102,10 +102,13 @@
 
   --blur-2xs: 2px;
 
-  /* DEJOIY brand semantics */
-  --color-brand-500: #8b5cf6;
-  --color-brand-600: #7c3aed;
-  --color-brand-700: #6d28d9;
-  --color-brand-accent-pink: #ec4899;
-  --color-brand-accent-blue: #3b82f6;
+  /* DEJOIY official brand (logo: magenta → cyan, navy wordmark) */
+  --color-brand-navy: #001f3f;
+  --color-brand-magenta: #e91e63;
+  --color-brand-cyan: #00bcd4;
+  --color-brand-500: #e91e63;
+  --color-brand-600: #c2185b;
+  --color-brand-700: #001f3f;
+  --color-brand-accent-pink: #e91e63;
+  --color-brand-accent-blue: #00bcd4;
 }

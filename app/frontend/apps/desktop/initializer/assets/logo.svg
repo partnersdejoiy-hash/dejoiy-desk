@@ -1,16 +1,20 @@
-<svg width="42" height="38" viewBox="0 0 42 38" xmlns="http://www.w3.org/2000/svg">
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="dejoiy-bg" x1="0" y1="0" x2="42" y2="38" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#A855F7"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
+    <linearGradient id="dejoiy-icon-bg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="55%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#00BCD4"/>
+    </linearGradient>
+    <linearGradient id="dejoiy-icon-shine" x1="24" y1="6" x2="24" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect width="42" height="38" rx="8" fill="url(#dejoiy-bg)"/>
-  <circle cx="21" cy="19" r="13.5" fill="rgba(255,255,255,0.93)"/>
-  <ellipse cx="22.5" cy="19" rx="6" ry="4.5" fill="#0EA5E9"/>
-  <path d="M16.5 19L13 14.5L13 23.5Z" fill="#0EA5E9"/>
-  <circle cx="26.5" cy="17.5" r="1.8" fill="white"/>
-  <circle cx="27" cy="17.5" r="0.9" fill="#0369A1"/>
-  <path d="M21 14.5 Q23.5 11 26.5 13" stroke="#38BDF8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#dejoiy-icon-bg)"/>
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#dejoiy-icon-shine)"/>
+  <rect x="2.5" y="2.5" width="43" height="43" rx="10.5" stroke="rgba(255,255,255,0.55)" stroke-width="1" fill="none"/>
+  <path fill="#FFFFFF" d="M13 11h11.5c7.2 0 11.5 4.6 11.5 13s-4.3 13-11.5 13H13V11zm4.2 4.2v25.6h7.2c4.8 0 7.3-3.4 7.3-8.8s-2.5-8.8-7.3-8.8h-7.2z"/>
+  <circle cx="29.5" cy="21.5" r="2.1" fill="#FFFFFF"/>
+  <path d="M25.5 30.5c1.8-4.2 3.6-6.2 6.5-6.2s4.7 2 6.5 6.2" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <path d="M27 17.5c2.2-2.8 4.8-3.5 7.5-2.2" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.9"/>
 </svg>

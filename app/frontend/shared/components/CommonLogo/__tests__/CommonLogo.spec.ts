@@ -24,7 +24,7 @@ describe('CommonLogo.vue', () => {
     expect(img).toHaveAttribute('src', '/api/v1/system_assets/product_logo/1234')
   })
 
-  it('renders default zammad logo', async () => {
+  it('renders official DEJOIY brand lockup for default logo', async () => {
     const wrapper = renderComponent(CommonLogo, { store: true })
     const application = useApplicationStore()
 
@@ -33,9 +33,7 @@ describe('CommonLogo.vue', () => {
 
     await nextTick()
 
-    const img = wrapper.container.querySelector('img')
-
-    expect(img).toHaveAttribute('alt', '')
-    expect(img).toHaveAttribute('src', '/api/v1/system_assets/product_logo/logo.svg')
+    expect(wrapper.container.querySelector('.dejoiy-brand')).toBeInTheDocument()
+    expect(wrapper.container.querySelector('img.dejoiy-brand__icon')).toBeInTheDocument()
   })
 })

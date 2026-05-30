@@ -4,6 +4,7 @@
 import { computed } from 'vue'
 
 import CommonLogo from '#shared/components/CommonLogo/CommonLogo.vue'
+import { DEJOIY_CANVAS } from '#shared/constants/branding.ts'
 
 import LayoutPublicPageBoxActions from './LayoutPublicPageBoxActions.vue'
 
@@ -14,10 +15,13 @@ export interface Props {
   showLogo?: boolean
   boxSize?: BoxSizes
   hideFooter?: boolean
+  /** auth = dark mesh; hero = light marketing canvas */
+  canvas?: 'auth' | 'hero'
 }
 
 const props = withDefaults(defineProps<Props>(), {
   boxSize: 'medium',
+  canvas: 'auth',
 })
 
 const boxSizeMap: Record<BoxSizes, string> = {
@@ -26,28 +30,26 @@ const boxSizeMap: Record<BoxSizes, string> = {
   large: 'max-w-2xl',
 }
 
-const boxSizeClass = computed(() => {
-  return boxSizeMap[props.boxSize]
-})
+const boxSizeClass = computed(() => boxSizeMap[props.boxSize])
 
-
+const canvasClass = computed(() =>
+  props.canvas === 'hero' ? DEJOIY_CANVAS.hero : `${DEJOIY_CANVAS.auth} ${DEJOIY_CANVAS.mesh}`,
+)
 </script>
 
 <template>
-  <div
-    class="flex min-h-screen flex-col items-center text-stone-200"
-    style="background: linear-gradient(135deg, #1a0533 0%, #0f1547 50%, #050d24 100%)"
-  >
+  <div class="flex min-h-screen flex-col items-center" :class="canvasClass">
     <div class="dejoiy-brand-bar" role="presentation" />
 
-    <div :class="boxSizeClass" class="m-auto w-full px-4">
-      <main
-        class="dejoiy-card-elevated flex flex-col gap-2.5 bg-white p-6 text-black"
-      >
-        <div v-if="showLogo" class="flex justify-center pb-2">
-          <CommonLogo />
+    <div :class="boxSizeClass" class="relative z-10 m-auto w-full px-4">
+      <main class="dejoiy-glass-card flex flex-col gap-3 p-6 text-[var(--dejoiy-navy)] dark:text-slate-100">
+        <div v-if="showLogo" class="flex justify-center pb-1">
+          <CommonLogo brand-variant="full" />
         </div>
-        <h1 v-if="title" class="mb-5 text-center text-xl font-semibold text-gray-800">
+        <h1
+          v-if="title"
+          class="mb-4 text-center text-xl font-semibold text-[var(--dejoiy-navy)] dark:text-white"
+        >
           {{ $t(title) }}
         </h1>
         <slot />
@@ -60,20 +62,20 @@ const boxSizeClass = computed(() => {
       <section
         v-if="$slots.bottomContent"
         :aria-label="$t('Additional information and links')"
-        class="flex w-full flex-col items-center justify-center space-y-3 py-3 align-middle text-xs"
+        class="flex w-full flex-col items-center justify-center space-y-3 py-3 align-middle text-xs text-cyan-100/80"
       >
         <slot name="bottomContent" />
       </section>
       <footer
         v-if="!hideFooter"
-        class="flex w-full items-center justify-center py-4 align-middle text-xs text-purple-300/60"
+        class="flex w-full items-center justify-center py-4 align-middle text-xs text-cyan-200/60"
       >
         <span class="ltr:mr-1 rtl:ml-1">{{ $t('Powered by') }}</span>
         <CommonLink
           link="https://dejoiy.com"
           open-in-new-tab
           external
-          class="font-medium text-purple-300/80 hover:text-purple-200!"
+          class="font-medium text-[var(--dejoiy-magenta)] hover:text-[var(--dejoiy-cyan)]!"
         >
           {{ $t('Dejoiy') }}
         </CommonLink>

@@ -1,0 +1,16 @@
+<svg width="200" height="64" viewBox="0 0 200 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <linearGradient id="dejoiy-o-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="100%" stop-color="#00BCD4"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="36" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="800" fill="#001F3F">DEJ</text>
+  <circle cx="98" cy="24" r="13" fill="none" stroke="url(#dejoiy-o-ring)" stroke-width="4.5"/>
+  <path d="M91 24c2.5-4.5 7-6 11-3.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <text x="114" y="36" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="800" fill="#001F3F">IY</text>
+  <text x="100" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" letter-spacing="0.22em">
+    <tspan fill="#001F3F">YOU </tspan>
+    <tspan fill="#E91E63">+ JOY</tspan>
+  </text>
+</svg>
