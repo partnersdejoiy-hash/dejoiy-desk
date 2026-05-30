@@ -38,16 +38,11 @@ const boxSizeClass = computed(() => {
     class="flex min-h-screen flex-col items-center text-stone-200"
     style="background: linear-gradient(135deg, #1a0533 0%, #0f1547 50%, #050d24 100%)"
   >
-    <!-- Dejoiy brand accent bar -->
-    <div
-      class="w-full h-1 flex-shrink-0"
-      style="background: linear-gradient(90deg, #EC4899, #A855F7, #3B82F6)"
-    />
+    <div class="dejoiy-brand-bar" role="presentation" />
 
     <div :class="boxSizeClass" class="m-auto w-full px-4">
       <main
-        class="flex flex-col gap-2.5 rounded-2xl bg-white p-6 text-black shadow-2xl"
-        style="box-shadow: 0 25px 60px rgba(168, 85, 247, 0.15), 0 10px 25px rgba(0,0,0,0.4)"
+        class="dejoiy-card-elevated flex flex-col gap-2.5 bg-white p-6 text-black"
       >
         <div v-if="showLogo" class="flex justify-center pb-2">
           <CommonLogo />

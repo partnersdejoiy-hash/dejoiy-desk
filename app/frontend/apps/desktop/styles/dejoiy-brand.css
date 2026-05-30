@@ -1,0 +1,48 @@
+/* Copyright (C) 2024-2026 Dejoiy — DEJOIY design tokens & polish */
+
+:root {
+  --dejoiy-gradient-brand: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6);
+  --dejoiy-gradient-sidebar: linear-gradient(180deg, #1a0533 0%, #0f1547 55%, #050d24 100%);
+  --dejoiy-shadow-glow: 0 0 0 1px rgba(168, 85, 247, 0.15), 0 8px 32px rgba(139, 92, 246, 0.2);
+  --dejoiy-radius-card: 1rem;
+  --dejoiy-focus-ring: 0 0 0 2px var(--color-white), 0 0 0 4px #8b5cf6;
+}
+
+@layer components {
+  .dejoiy-brand-bar {
+    background: var(--dejoiy-gradient-brand);
+    height: 3px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .dejoiy-sidebar-surface {
+    background: var(--dejoiy-gradient-sidebar);
+  }
+
+  .dejoiy-logo-glow {
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.45));
+    transition: filter 0.2s ease;
+  }
+
+  .dejoiy-logo-glow:hover {
+    filter: drop-shadow(0 0 16px rgba(236, 72, 153, 0.55));
+  }
+
+  .dejoiy-card-elevated {
+    border-radius: var(--dejoiy-radius-card);
+    box-shadow: var(--dejoiy-shadow-glow);
+  }
+
+  .dejoiy-main-surface {
+    background: linear-gradient(
+      165deg,
+      var(--color-neutral-50) 0%,
+      color-mix(in srgb, var(--color-blue-50) 40%, var(--color-neutral-50)) 100%
+    );
+  }
+
+  [data-theme='dark'] .dejoiy-main-surface {
+    background: linear-gradient(165deg, var(--color-gray-500) 0%, var(--color-gray-600) 100%);
+  }
+}

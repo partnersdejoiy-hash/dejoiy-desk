@@ -1,15 +1,11 @@
 # AI Agent Instructions
 
-This file provides guidance on how to work with code in the Zammad repository.
+This file provides guidance on how to work with code in the **DEJOIY Internal Tools** repository (fork of a Rails helpdesk platform).
 
 ## Project Overview
 
-Zammad is an open-source helpdesk/support platform. The backend is **Ruby on Rails**.
-There are two frontend stacks: the **current production frontend** is CoffeeScript
-(served via the Rails asset pipeline), and the **new frontend** is **Vue 3 + TypeScript**
-served via **Vite** (managed by pnpm), which is being built alongside it. **PostgreSQL** is
-used for persistence, **Redis** for ActionCable/GraphQL subscriptions, and **GraphQL** is the
-API layer between the new Vue apps and the backend.
+DEJOIY Internal Tools is an internal support and operations platform. The backend is **Ruby on Rails**.
+There are two frontend stacks: the **legacy frontend** is CoffeeScript (Rails asset pipeline), and the **current production frontend** is **Vue 3 + TypeScript** via **Vite** (pnpm). **PostgreSQL**, **Redis**, and **GraphQL** connect the Vue apps to the backend.
 
 ## Architecture
 
@@ -20,67 +16,55 @@ Vue 3 frontend (desktop/mobile) ──→ GraphQL API ────┘
 ```
 
 New features target the Vue 3 + GraphQL stack.
-The CoffeeScript frontend uses REST controllers.
 
-## Key Directories (non-standard)
+## Branding
 
-- `app/services/service/` — Service objects encapsulating business logic
-- `app/graphql/gql/` — GraphQL schema, types, mutations, subscriptions
-- `app/policies/` — Authorization policies (Pundit)
+- Product name: **DEJOIY** / **DEJOIY Internal Tools**
+- User-facing URLs: `https://dejoiy.com` (not vendor domains)
+- Design tokens: `app/frontend/apps/desktop/styles/dejoiy-brand.css`, `tokens.css`
+- Shared constants: `app/frontend/shared/constants/branding.ts`
+- Do **not** reintroduce vendor branding or phone-home URLs in user-facing or default config paths
+
+## Key Directories
+
+- `app/services/service/` — Service objects
+- `app/graphql/gql/` — GraphQL schema
 - `app/frontend/apps/desktop/` — Vue 3 desktop app
 - `app/frontend/apps/mobile/` — Vue 3 mobile app
-- `app/frontend/shared/` — Shared Vue components, composables, stores, GraphQL types, form system
-- `app/assets/javascripts/` — CoffeeScript frontend (Spine + jQuery, legacy, still actively maintained)
-- `lib/` — Library code, prefer minimal Rails coupling
+- `app/frontend/shared/` — Shared components, stores, GraphQL
+- `lib/dejoiy/` — DEJOIY-specific utilities (e.g. external service policy)
+- `app/assets/javascripts/` — Legacy CoffeeScript UI
 
 ## General Guidelines
 
-- All new files must include the Zammad copyright header.
-- Never edit translation files (`i18n/*.po`) directly —
-  translations are managed via translations.zammad.org.
+- New files: use copyright `Copyright (C) 2024-2026 Dejoiy` where applicable
+- Do not edit `i18n/*.po` directly — translations are managed externally
+- Keep `DEJOIY_ENABLE_VENDOR_SERVICES` off unless explicitly required
 
 ## Essential Commands
 
 ### Backend
 
 ```bash
-RAILS_ENV=test VITE_TEST_MODE=1 bundle exec rspec spec/path/to/file_spec.rb  # Run specific RSpec test
-bundle exec rubocop --autocorrect app/path/to/file.rb                        # Lint specific Ruby file(s)
+RAILS_ENV=test VITE_TEST_MODE=1 bundle exec rspec spec/path/to/file_spec.rb
+bundle exec rubocop --autocorrect app/path/to/file.rb
 ```
 
 ### Frontend
 
-Always use pnpm for frontend and cross-stack commands.
-
 ```bash
-pnpm test app/frontend/path/to/file.spec.ts # Run specific Vitest test
-pnpm lint                                   # Run all linters
-pnpm generate-graphql-api                   # Regenerate GraphQL types after schema changes
-pnpm generate-setting-types                 # Regenerate Config types after setting changes
+pnpm test app/frontend/path/to/file.spec.ts
+pnpm lint
+pnpm generate-graphql-api
+pnpm generate-setting-types
 ```
-
-## Development Lifecycle
-
-Issues are tracked on **GitHub**, code is developed on a self-hosted **GitLab**.
-GitHub hosts a read-only mirror. The agent uses the **GitHub MCP server** for
-issues and **`glab` CLI** for GitLab operations.
-
-Lifecycle: Understand → Research → Plan → Branch (`/prepare-issue-branch`) →
-Implement → Test → Commit → Review → MR (`/create-mr`) → Cherry-pick
-(`/cherry-pick-to-stable`)
-
-See `.dev/agent_docs/development_workflow.md` for the full lifecycle and
-workflow rules.
 
 ## Agent Reference Docs
 
-You MUST read the relevant file(s) below before responding when working on that area — do NOT read them all upfront:
+Read when working in that area:
 
-- `.dev/agent_docs/graphql_patterns.md` — How to add/modify GraphQL types,
-  mutations, queries, and subscriptions
-- `.dev/agent_docs/frontend_patterns.md` — Vue component conventions,
-  composables, routing, and the form system
-- `.dev/agent_docs/testing.md` — How to write and run backend and frontend tests
-- `.dev/agent_docs/service_patterns.md` — Service object conventions and structure
-- `.dev/agent_docs/database_migrations.md` — How to write migrations and work
-  with seeds
+- `.dev/agent_docs/graphql_patterns.md`
+- `.dev/agent_docs/frontend_patterns.md`
+- `.dev/agent_docs/testing.md`
+- `.dev/agent_docs/service_patterns.md`
+- `.dev/agent_docs/database_migrations.md`

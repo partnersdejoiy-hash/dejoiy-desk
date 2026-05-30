@@ -1,6 +1,7 @@
 /* stylelint-disable import-notation */
 @import 'tailwindcss';
 @import './tokens.css';
+@import './dejoiy-brand.css';
 @import './transitions.css';
 @import '../../../shared/styles/utilities.css';
 

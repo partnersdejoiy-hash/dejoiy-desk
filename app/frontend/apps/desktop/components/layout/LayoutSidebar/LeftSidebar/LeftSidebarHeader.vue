@@ -51,8 +51,11 @@ const isTicketAgent = computed(() => hasPermission('ticket.agent') ?? false)
       class="flex items-center justify-center"
       :class="{ 'ltr:ml-auto rtl:mr-auto': !collapsed }"
     >
-      <!--  :TODO Add custom branding  -->
-      <CommonIcon name="logo" class="z-10 block h-9 w-9" />
+      <CommonIcon
+        name="logo"
+        class="dejoiy-logo-glow z-10 block h-9 w-9"
+        :title="$t('DEJOIY')"
+      />
     </component>
   </header>
 </template>

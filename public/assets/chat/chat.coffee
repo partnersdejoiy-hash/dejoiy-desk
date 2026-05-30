@@ -148,7 +148,7 @@ do($ = window.jQuery, window) ->
         @send('ping')
       @pingDelayId = setTimeout(localPing, 29000)
 
-  class ZammadChat extends Base
+  class DejoiyChat extends Base
     defaults:
       chatId: undefined
       show: true
@@ -160,7 +160,7 @@ do($ = window.jQuery, window) ->
       cssAutoload: true
       cssUrl: undefined
       fontSize: undefined
-      buttonClass: 'open-zammad-chat'
+      buttonClass: 'open-dejoiy-chat'
       inactiveClass: 'is-inactive'
       title: '<strong>Chat</strong> with us!'
       scrollHint: 'Scroll down to see new messages'
@@ -660,7 +660,7 @@ do($ = window.jQuery, window) ->
         options.background = @options.background
         options.flat = @options.flat
         options.fontSize = @options.fontSize
-        return window.zammadChatTemplates[name](options)
+        return window.dejoiyChatTemplates[name](options)
 
     constructor: (options) ->
       @options = $.extend {}, @defaults, options
@@ -718,7 +718,7 @@ do($ = window.jQuery, window) ->
       return if end > start then html else document.body
 
     render: =>
-      if !@el || !$('.zammad-chat').get(0)
+      if !@el || !$('.dejoiy-chat').get(0)
         @renderBase()
 
       # disable open button
@@ -744,14 +744,14 @@ do($ = window.jQuery, window) ->
       ))
       @options.target.append @el
 
-      @input = @el.find('.zammad-chat-input')
+      @input = @el.find('.dejoiy-chat-input')
 
       # start bindings
       @el.find('.js-chat-open').on 'click', @open
       @el.find('.js-chat-toggle').on 'click', @toggle
       @el.find('.js-chat-status').on 'click', @stopPropagation
-      @el.find('.zammad-chat-controls').on 'submit', @onSubmit
-      @el.find('.zammad-chat-body').on 'scroll', @detectScrolledtoBottom
+      @el.find('.dejoiy-chat-controls').on 'submit', @onSubmit
+      @el.find('.dejoiy-chat-body').on 'scroll', @detectScrolledtoBottom
       @el.find('.zammad-scroll-hint').on 'click', @onScrollHintClick
       @input.on(
         keydown: @checkForEnter
@@ -1024,11 +1024,11 @@ do($ = window.jQuery, window) ->
                 else
                   @socketReady = true
               when 'offline'
-                @onError 'Zammad Chat: No agent online'
+                @onError 'DEJOIY Chat: No agent online'
               when 'chat_disabled'
-                @onError 'Zammad Chat: Chat is disabled'
+                @onError 'DEJOIY Chat: Chat is disabled'
               when 'no_seats_available'
-                @onError "Zammad Chat: Too many clients in queue. Clients in queue: #{pipe.data.queue}"
+                @onError "DEJOIY Chat: Too many clients in queue. Clients in queue: #{pipe.data.queue}"
               when 'reconnect'
                 @onReopenSession pipe.data
 
@@ -1085,8 +1085,8 @@ do($ = window.jQuery, window) ->
 
     onInput: =>
       # remove unread-state from messages
-      @el.find('.zammad-chat-message--unread')
-        .removeClass 'zammad-chat-message--unread'
+      @el.find('.dejoiy-chat-message--unread')
+        .removeClass 'dejoiy-chat-message--unread'
 
       sessionStorage.setItem 'unfinished_message', @input.html()
 
@@ -1135,12 +1135,12 @@ do($ = window.jQuery, window) ->
       @maybeAddTimestamp()
 
       # add message before message typing loader
-      if @el.find('.zammad-chat-message--typing').get(0)
+      if @el.find('.dejoiy-chat-message--typing').get(0)
         @lastAddedType = 'typing-placeholder'
-        @el.find('.zammad-chat-message--typing').before messageElement
+        @el.find('.dejoiy-chat-message--typing').before messageElement
       else
         @lastAddedType = 'message--customer'
-        @el.find('.zammad-chat-body').append messageElement
+        @el.find('.dejoiy-chat-body').append messageElement
 
       @input.html('')
       @scrollToBottom()
@@ -1168,8 +1168,8 @@ do($ = window.jQuery, window) ->
 
     renderMessage: (data) =>
       @lastAddedType = "message--#{ data.from }"
-      data.unreadClass = if document.hidden then ' zammad-chat-message--unread' else ''
-      @el.find('.zammad-chat-body').append @view('message')(data)
+      data.unreadClass = if document.hidden then ' dejoiy-chat-message--unread' else ''
+      @el.find('.dejoiy-chat-body').append @view('message')(data)
 
     open: =>
       if @isOpen
@@ -1183,9 +1183,9 @@ do($ = window.jQuery, window) ->
       if !@sessionId
         @showLoader()
 
-      @el.addClass('zammad-chat-is-open')
+      @el.addClass('dejoiy-chat-is-open')
 
-      remainerHeight = @el.height() - @el.find('.zammad-chat-header').outerHeight()
+      remainerHeight = @el.height() - @el.find('.dejoiy-chat-header').outerHeight()
 
       @el.css 'bottom', -remainerHeight
 
@@ -1247,17 +1247,17 @@ do($ = window.jQuery, window) ->
         @enableScrollOnRoot()
 
       # close window
-      remainerHeight = @el.height() - @el.find('.zammad-chat-header').outerHeight()
+      remainerHeight = @el.height() - @el.find('.dejoiy-chat-header').outerHeight()
       @el.animate { bottom: -remainerHeight }, 500, @onCloseAnimationEnd
 
     onCloseAnimationEnd: =>
       @el.css 'bottom', ''
-      @el.removeClass('zammad-chat-is-open')
+      @el.removeClass('dejoiy-chat-is-open')
 
       @showLoader()
-      @el.find('.zammad-chat-welcome').removeClass('zammad-chat-is-hidden')
-      @el.find('.zammad-chat-agent').addClass('zammad-chat-is-hidden')
-      @el.find('.zammad-chat-agent-status').addClass('zammad-chat-is-hidden')
+      @el.find('.dejoiy-chat-welcome').removeClass('dejoiy-chat-is-hidden')
+      @el.find('.dejoiy-chat-agent').addClass('dejoiy-chat-is-hidden')
+      @el.find('.dejoiy-chat-agent-status').addClass('dejoiy-chat-is-hidden')
 
       @isOpen = false
       @options.onCloseAnimationEnd?()
@@ -1267,29 +1267,29 @@ do($ = window.jQuery, window) ->
     onWebSocketClose: =>
       return if @isOpen
       if @el
-        @el.removeClass('zammad-chat-is-shown')
-        @el.removeClass('zammad-chat-is-loaded')
+        @el.removeClass('dejoiy-chat-is-shown')
+        @el.removeClass('dejoiy-chat-is-loaded')
 
     show: ->
       return if @state is 'offline'
 
-      @el.addClass('zammad-chat-is-loaded')
+      @el.addClass('dejoiy-chat-is-loaded')
 
-      @el.addClass('zammad-chat-is-shown')
+      @el.addClass('dejoiy-chat-is-shown')
 
     disableInput: ->
       @inputDisabled = true
       @input.prop('contenteditable', false)
-      @el.find('.zammad-chat-send').prop('disabled', true)
+      @el.find('.dejoiy-chat-send').prop('disabled', true)
       @io.close()
 
     enableInput: ->
       @inputDisabled = false
       @input.prop('contenteditable', true)
-      @el.find('.zammad-chat-send').prop('disabled', false)
+      @el.find('.dejoiy-chat-send').prop('disabled', false)
 
     hideModal: ->
-      @el.find('.zammad-chat-modal').html ''
+      @el.find('.dejoiy-chat-modal').html ''
 
     onQueueScreen: (data) =>
       @setSessionId data.session_id
@@ -1314,7 +1314,7 @@ do($ = window.jQuery, window) ->
       @log.notice 'onQueue', data.position
       @inQueue = true
 
-      @el.find('.zammad-chat-modal').html @view('waiting')
+      @el.find('.dejoiy-chat-modal').html @view('waiting')
         position: data.position
 
     onAgentTypingStart: =>
@@ -1323,18 +1323,18 @@ do($ = window.jQuery, window) ->
       @stopTypingId = setTimeout(@onAgentTypingEnd, 3000)
 
       # never display two typing indicators
-      return if @el.find('.zammad-chat-message--typing').get(0)
+      return if @el.find('.dejoiy-chat-message--typing').get(0)
 
       @maybeAddTimestamp()
 
-      @el.find('.zammad-chat-body').append @view('typingIndicator')()
+      @el.find('.dejoiy-chat-body').append @view('typingIndicator')()
 
       # only if typing indicator is shown
-      return if !@isVisible(@el.find('.zammad-chat-message--typing'), true)
+      return if !@isVisible(@el.find('.dejoiy-chat-message--typing'), true)
       @scrollToBottom()
 
     onAgentTypingEnd: =>
-      @el.find('.zammad-chat-message--typing').remove()
+      @el.find('.dejoiy-chat-message--typing').remove()
 
     onLeaveTemporary: =>
       return if !@sessionId
@@ -1353,7 +1353,7 @@ do($ = window.jQuery, window) ->
           @lastTimestamp = timestamp
         else
           # add new timestamp
-          @el.find('.zammad-chat-body').append @view('timestamp')
+          @el.find('.dejoiy-chat-body').append @view('timestamp')
             label: label
             time: time
           @lastTimestamp = timestamp
@@ -1362,8 +1362,8 @@ do($ = window.jQuery, window) ->
 
     updateLastTimestamp: (label, time) ->
       return if !@el
-      @el.find('.zammad-chat-body')
-        .find('.zammad-chat-timestamp')
+      @el.find('.dejoiy-chat-body')
+        .find('.dejoiy-chat-timestamp')
         .last()
         .replaceWith @view('timestamp')
           label: label
@@ -1373,28 +1373,28 @@ do($ = window.jQuery, window) ->
       return if !@el
       @maybeAddTimestamp()
 
-      @el.find('.zammad-chat-body').append @view('status')
+      @el.find('.dejoiy-chat-body').append @view('status')
         status: status
 
       @scrollToBottom()
 
     detectScrolledtoBottom: =>
-      scrollBottom = @el.find('.zammad-chat-body').scrollTop() + @el.find('.zammad-chat-body').outerHeight()
-      @scrolledToBottom = Math.abs(scrollBottom - @el.find('.zammad-chat-body').prop('scrollHeight')) <= @scrollSnapTolerance
+      scrollBottom = @el.find('.dejoiy-chat-body').scrollTop() + @el.find('.dejoiy-chat-body').outerHeight()
+      @scrolledToBottom = Math.abs(scrollBottom - @el.find('.dejoiy-chat-body').prop('scrollHeight')) <= @scrollSnapTolerance
       @el.find('.zammad-scroll-hint').addClass('is-hidden') if @scrolledToBottom
 
     showScrollHint: ->
       @el.find('.zammad-scroll-hint').removeClass('is-hidden')
       # compensate scroll
-      @el.find('.zammad-chat-body').scrollTop(@el.find('.zammad-chat-body').scrollTop() + @el.find('.zammad-scroll-hint').outerHeight())
+      @el.find('.dejoiy-chat-body').scrollTop(@el.find('.dejoiy-chat-body').scrollTop() + @el.find('.zammad-scroll-hint').outerHeight())
 
     onScrollHintClick: =>
       # animate scroll
-      @el.find('.zammad-chat-body').animate({scrollTop: @el.find('.zammad-chat-body').prop('scrollHeight')}, 300)
+      @el.find('.dejoiy-chat-body').animate({scrollTop: @el.find('.dejoiy-chat-body').prop('scrollHeight')}, 300)
 
     scrollToBottom: ({ showHint } = { showHint: false }) ->
       if @scrolledToBottom
-        @el.find('.zammad-chat-body').scrollTop($('.zammad-chat-body').prop('scrollHeight'))
+        @el.find('.dejoiy-chat-body').scrollTop($('.dejoiy-chat-body').prop('scrollHeight'))
       else if showHint
         @showScrollHint()
 
@@ -1461,17 +1461,17 @@ do($ = window.jQuery, window) ->
         @setSessionId data.session_id
 
       # empty old messages
-      @el.find('.zammad-chat-body').html('')
+      @el.find('.dejoiy-chat-body').html('')
 
-      @el.find('.zammad-chat-agent').html @view('agent')
+      @el.find('.dejoiy-chat-agent').html @view('agent')
         agent: @agent
 
       @enableInput()
 
       @hideModal()
-      @el.find('.zammad-chat-welcome').addClass('zammad-chat-is-hidden')
-      @el.find('.zammad-chat-agent').removeClass('zammad-chat-is-hidden')
-      @el.find('.zammad-chat-agent-status').removeClass('zammad-chat-is-hidden')
+      @el.find('.dejoiy-chat-welcome').addClass('dejoiy-chat-is-hidden')
+      @el.find('.dejoiy-chat-agent').removeClass('dejoiy-chat-is-hidden')
+      @el.find('.dejoiy-chat-agent-status').removeClass('dejoiy-chat-is-hidden')
 
       @input.trigger('focus') if not @isFullscreen
 
@@ -1483,7 +1483,7 @@ do($ = window.jQuery, window) ->
       @options.onConnectionEstablished?(data)
 
     showCustomerTimeout: ->
-      @el.find('.zammad-chat-modal').html @view('customer_timeout')
+      @el.find('.dejoiy-chat-modal').html @view('customer_timeout')
         agent: @agent.name
         delay: @options.inactiveTimeout
       reload = ->
@@ -1492,7 +1492,7 @@ do($ = window.jQuery, window) ->
       @sessionClose()
 
     showWaitingListTimeout: ->
-      @el.find('.zammad-chat-modal').html @view('waiting_list_timeout')
+      @el.find('.dejoiy-chat-modal').html @view('waiting_list_timeout')
         delay: @options.watingListTimeout
       reload = ->
         location.reload()
@@ -1500,14 +1500,14 @@ do($ = window.jQuery, window) ->
       @sessionClose()
 
     showLoader: ->
-      @el.find('.zammad-chat-modal').html @view('loader')()
+      @el.find('.dejoiy-chat-modal').html @view('loader')()
 
     setAgentOnlineState: (state) =>
       @state = state
       return if !@el
       capitalizedState = state.charAt(0).toUpperCase() + state.slice(1)
       @el
-        .find('.zammad-chat-agent-status')
+        .find('.dejoiy-chat-agent-status')
         .attr('data-status', state)
         .text @T(capitalizedState)  # @T('Online') @T('Offline')
 
@@ -1836,4 +1836,4 @@ do($ = window.jQuery, window) ->
       html.find('*').each((index, element) => @removeAttribute(element) )
       html
 
-  window.ZammadChat = ZammadChat
+  window.DejoiyChat = DejoiyChat

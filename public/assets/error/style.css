@@ -9,16 +9,16 @@
 }
 
 html {
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', system-ui, sans-serif;
   height: 100%;
   color: #8c959c;
-  background: #f8f9fa;
+  background: linear-gradient(165deg, #fafafa 0%, #f3e8ff 100%);
   text-align: center;
 }
 
 .dark {
-  background: #444a4f;
-  color: #919497;
+  background: linear-gradient(165deg, #1a0533 0%, #050d24 100%);
+  color: #c4b5fd;
 }
 
 body {
@@ -57,20 +57,20 @@ pre {
 
 h1 {
   margin: 0;
-  color: #444a4f;
+  color: #5b21b6;
 }
 
 .dark h1 {
-  color: white;
+  color: #e9d5ff;
 }
 
 a {
-  color: #f1d158;
+  color: #8b5cf6;
   text-decoration: none;
 }
 
 a:visited {
-  color: #ccb250;
+  color: #7c3aed;
 }
 
 ul {

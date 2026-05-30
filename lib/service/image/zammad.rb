@@ -11,6 +11,7 @@ class Service::Image::Zammad
   def self.user(email)
     raise Exceptions::UnprocessableContent, 'no email given' if email.blank?
 
+    return unless Dejoiy::ExternalServices.zammad_vendor_enabled?
     return if Rails.env.test? && DISABLE_IN_TEST_ENV
 
     email.downcase!
@@ -44,6 +45,7 @@ class Service::Image::Zammad
   def self.organization(domain)
     raise Exceptions::UnprocessableContent, 'no domain given' if domain.blank?
 
+    return unless Dejoiy::ExternalServices.zammad_vendor_enabled?
     return if Rails.env.test? && DISABLE_IN_TEST_ENV
 
     # strip, just use domain name

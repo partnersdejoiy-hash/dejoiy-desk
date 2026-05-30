@@ -2,7 +2,7 @@
 <html lang="de-de">
 <head>
   <meta charset="utf-8">
-  <title>Zammad Chat</title>
+  <title>DEJOIY Chat</title>
   <link rel="stylesheet" href="znuny.css">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
@@ -116,7 +116,7 @@
         <label for="fontSize">Font Size</label>
     <tr>
       <td>
-      <td><button class="open-zammad-chat">Open Chat</button>
+      <td><button class="open-dejoiy-chat">Open Chat</button>
     <tr>
       <td class="log"><h2>Log</h2>
       <td>
@@ -152,7 +152,7 @@
   }
   cssUrl = protocol + '//' + hostname + ':' + port + '/assets/chat/chat.css'
 
-  var chat = new ZammadChat({
+  var chat = new DejoiyChat({
     chatId: 1,
     host: host,
     cssUrl: cssUrl,
@@ -172,7 +172,7 @@
     change: function(){
       switch($(this).attr('data-option')){
         case "flat":
-          $('.zammad-chat').toggleClass('zammad-chat--flat', this.checked);
+          $('.dejoiy-chat').toggleClass('dejoiy-chat--flat', this.checked);
           break;
         case "color":
           setScssVariable('themeColor', this.value);

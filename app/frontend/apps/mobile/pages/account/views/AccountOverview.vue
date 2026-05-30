@@ -81,7 +81,7 @@ const installPWAMessage = computed(() => {
   )
 })
 
-const installZammadPWA = () => {
+const installDejoiyPWA = () => {
   if (isStandalone()) return
 
   // on chromium this will show a chrome popup with native "install" button
@@ -123,7 +123,7 @@ const { forceDesktop } = useForceDesktop()
         v-if="showInstallButton"
         :icon="{ name: 'install', size: 'small' }"
         icon-bg="bg-blue"
-        @click="installZammadPWA"
+        @click="installDejoiyPWA"
       >
         {{ $t('Install App') }}
       </CommonSectionMenuLink>

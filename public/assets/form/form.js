@@ -2,15 +2,15 @@
 
 /*
 *
-*  provides feedback form for zammad
+*  provides feedback form for DEJOIY
 *
 
-<button id="zammad-feedback-form">Feedback</button>
+<button id="dejoiy-feedback-form">Feedback</button>
 
-<script id="zammad_form_script" src="http://localhost:3000/assets/form/form.js"></script>
+<script id="dejoiy_form_script" src="http://localhost:3000/assets/form/form.js"></script>
 <script>
 $(function() {
-  $('#zammad-feedback-form').ZammadForm({
+  $('#dejoiy-feedback-form').DejoiyForm({
     messageTitle: 'Feedback Form', // optional
     messageSubmit: 'Submit', // optional
     messageThankYou: 'Thank you for your inquiry (#%s)! We\'ll contact you as soon as possible.', // optional
@@ -60,14 +60,14 @@ $(function() {
 
 */
 
-  var pluginName = 'ZammadForm',
+  var pluginName = 'DejoiyForm',
   defaults = {
     lang: undefined,
     debug: false,
     noCSS: false,
-    prefixCSS: 'zammad-form-',
+    prefixCSS: 'dejoiy-form-',
     showTitle: false,
-    messageTitle: 'Zammad Form',
+    messageTitle: 'DEJOIY Form',
     messageSubmit: 'Submit',
     messageThankYou: 'Thank you for your inquiry! We\'ll contact you as soon as possible.',
     messageNoConfig: 'Unable to load form config from server. Maybe feature is disabled.',
@@ -78,7 +78,7 @@ $(function() {
         name: 'name',
         tag: 'input',
         type: 'text',
-        id: 'zammad-form-name',
+        id: 'dejoiy-form-name',
         required: true,
         placeholder: 'Your Name',
         defaultValue: '',
@@ -88,7 +88,7 @@ $(function() {
         name: 'email',
         tag: 'input',
         type: 'email',
-        id: 'zammad-form-email',
+        id: 'dejoiy-form-email',
         required: true,
         placeholder: 'Your Email',
         defaultValue: '',
@@ -97,7 +97,7 @@ $(function() {
         display: 'Message',
         name: 'body',
         tag: 'textarea',
-        id: 'zammad-form-body',
+        id: 'dejoiy-form-body',
         required: true,
         placeholder: 'Your Message…',
         defaultValue: '',
@@ -347,7 +347,7 @@ $(function() {
     this._script_location = '/assets/form/form.js'
     this._css_location    = '/assets/form/form.css'
 
-    this._src = document.getElementById('zammad_form_script').src
+    this._src = document.getElementById('dejoiy_form_script').src
     this.css_location = this._src.replace(this._script_location, this._css_location)
     this.endpoint_config = this._src.replace(this._script_location, this._endpoint_config)
     this.endpoint_submit = this._src.replace(this._script_location, this._endpoint_submit)
@@ -392,7 +392,7 @@ $(function() {
         name: 'agreement',
         tag: 'input',
         type: 'checkbox',
-        id: 'zammad-form-agreement',
+        id: 'dejoiy-form-agreement',
         required: true,
         defaultValue: '',
       }
@@ -438,7 +438,7 @@ $(function() {
 
     // bind form on call
     else {
-      this.$element.off('click.zammad-form').on('click.zammad-form', function (e) {
+      this.$element.off('click.dejoiy-form').on('click.dejoiy-form', function (e) {
         e.preventDefault()
         _this.render()
         return true
@@ -486,14 +486,14 @@ $(function() {
     }).done(function(data) {
 
       // Remove the errors from the form.
-      _this.$form.find('.zammad-form-group--has-error').removeClass('zammad-form-group--has-error')
+      _this.$form.find('.dejoiy-form-group--has-error').removeClass('dejoiy-form-group--has-error')
       // Deprecated code, can be removed in future versions:
       _this.$form.find('.has-error').removeClass('has-error')
 
       // set errors
       if (data.errors) {
         $.each(data.errors, function( key, value ) {
-          _this.$form.find('[name=' + key + ']').closest('.'+ _this.options.prefixCSS +'group').addClass('zammad-form-group--has-error')
+          _this.$form.find('[name=' + key + ']').closest('.'+ _this.options.prefixCSS +'group').addClass('dejoiy-form-group--has-error')
           // Deprecated code, can be removed in future versions:
           _this.$form.find('[name=' + key + ']').closest('.form-group').addClass('has-error')
         })
@@ -553,14 +553,14 @@ $(function() {
     _this.log('debug', 'modalOpenTime:', _this.modalOpenTime)
 
     var element = "<div class=\"" + _this.options.prefixCSS + "modal\">\
-      <div class=\"" + _this.options.prefixCSS + "modal-backdrop js-zammad-form-modal-backdrop\"></div>\
-      <div class=\"" + _this.options.prefixCSS + "modal-body js-zammad-form-modal-body\">\
-        <form class=\"zammad-form\"></form>\
+      <div class=\"" + _this.options.prefixCSS + "modal-backdrop js-dejoiy-form-modal-backdrop\"></div>\
+      <div class=\"" + _this.options.prefixCSS + "modal-body js-dejoiy-form-modal-body\">\
+        <form class=\"dejoiy-form\"></form>\
       </div>\
     </div>"
 
     if (!this.options.modal) {
-      element = '<div><form class="zammad-form"></form></div>'
+      element = '<div><form class="dejoiy-form"></form></div>'
     }
 
     var $element = $(element)
@@ -601,14 +601,14 @@ $(function() {
     this.$form  = $form
 
     // bind on close
-    $element.find('.js-zammad-form-modal-backdrop').off('click.zammad-form').on('click.zammad-form', function (e) {
+    $element.find('.js-dejoiy-form-modal-backdrop').off('click.dejoiy-form').on('click.dejoiy-form', function (e) {
       e.preventDefault()
       _this.closeModal()
       return true
     })
 
     // bind form submit
-    $element.off('submit.zammad-form').on('submit.zammad-form', function (e) {
+    $element.off('submit.dejoiy-form').on('submit.dejoiy-form', function (e) {
       e.preventDefault()
       _this.submit()
       return true
@@ -632,7 +632,7 @@ $(function() {
     if (data.ticket && data.ticket.number) {
       thankYou = thankYou.replace('%s', data.ticket.number)
     }
-    var message = $('<div class="js-thankyou zammad-form-thankyou">' + thankYou + '</div>')
+    var message = $('<div class="js-thankyou dejoiy-form-thankyou">' + thankYou + '</div>')
     this.$form.html(message)
   }
 
@@ -699,7 +699,7 @@ $(function() {
   Plugin.prototype.fingerprint = function () {
     var canvas = document.createElement('canvas')
     var ctx = canvas.getContext('2d')
-    var txt = 'https://zammad.com'
+    var txt = 'https://dejoiy.com'
     ctx.textBaseline = 'top'
     ctx.font = '12px \'Arial\''
     ctx.textBaseline = 'alphabetic'

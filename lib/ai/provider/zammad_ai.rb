@@ -1,9 +1,12 @@
 # Copyright (C) 2012-2026 Zammad Foundation, https://zammad-foundation.org/
 
 class AI::Provider::ZammadAI < AI::Provider
-  ZAMMAD_AI_API_BASE_URL = 'https://ai.zammad.com'.freeze
+  # No vendor default — configure DEJOIY_AI_API_URL for internal AI gateway only.
+  DEJOIY_AI_API_BASE_URL = ''.freeze
 
   def chat(prompt_system:, prompt_user:, prompt_image:)
+    raise Exceptions::UnprocessableContent, __('AI service is not configured. Set DEJOIY_AI_API_URL and DEJOIY_AI_TOKEN.') if !self.class.configured?(config)
+
     service_name = options[:service_name] || 'generic'
 
     request_body = {
@@ -69,11 +72,15 @@ class AI::Provider::ZammadAI < AI::Provider
   end
 
   def self.base_url(config)
-    ENV['ZAMMAD_AI_API_URL'] || config[:url] || ZAMMAD_AI_API_BASE_URL
+    ENV['DEJOIY_AI_API_URL'] || ENV['ZAMMAD_AI_API_URL'] || config[:url].presence || DEJOIY_AI_API_BASE_URL
   end
 
   def self.token(config)
-    ENV['ZAMMAD_AI_TOKEN'] || config[:token]
+    ENV['DEJOIY_AI_TOKEN'] || ENV['ZAMMAD_AI_TOKEN'] || config[:token]
+  end
+
+  def self.configured?(config)
+    base_url(config).present? && token(config).present?
   end
 
   private

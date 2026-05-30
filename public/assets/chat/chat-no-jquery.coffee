@@ -150,7 +150,7 @@ do(window) ->
         @send('ping')
       @pingDelayId = setTimeout(localPing, 29000)
 
-  class ZammadChat extends Base
+  class DejoiyChat extends Base
     defaults:
       chatId: undefined
       show: true
@@ -162,7 +162,7 @@ do(window) ->
       cssAutoload: true
       cssUrl: undefined
       fontSize: undefined
-      buttonClass: 'open-zammad-chat'
+      buttonClass: 'open-dejoiy-chat'
       inactiveClass: 'is-inactive'
       title: '<strong>Chat</strong> with us!'
       scrollHint: 'Scroll down to see new messages'
@@ -662,7 +662,7 @@ do(window) ->
         options.background = @options.background
         options.flat = @options.flat
         options.fontSize = @options.fontSize
-        return window.zammadChatTemplates[name](options)
+        return window.dejoiyChatTemplates[name](options)
 
     constructor: (options) ->
       super(options)
@@ -720,7 +720,7 @@ do(window) ->
       return if end > start then html else document.body
 
     render: =>
-      if !@el || !document.querySelector('.zammad-chat')
+      if !@el || !document.querySelector('.dejoiy-chat')
         @renderBase()
 
       # disable open button
@@ -747,15 +747,15 @@ do(window) ->
         title: @options.title,
         scrollHint: @options.scrollHint
       ))
-      @el = @options.target.querySelector('.zammad-chat')
-      @input = @el.querySelector('.zammad-chat-input')
-      @body = @el.querySelector('.zammad-chat-body')
+      @el = @options.target.querySelector('.dejoiy-chat')
+      @input = @el.querySelector('.dejoiy-chat-input')
+      @body = @el.querySelector('.dejoiy-chat-body')
 
       # start bindings
       @el.querySelector('.js-chat-open').addEventListener('click', @open)
       @el.querySelector('.js-chat-toggle').addEventListener('click', @toggle)
       @el.querySelector('.js-chat-status').addEventListener('click', @stopPropagation)
-      @el.querySelector('.zammad-chat-controls').addEventListener('submit', @onSubmit)
+      @el.querySelector('.dejoiy-chat-controls').addEventListener('submit', @onSubmit)
       @body.addEventListener('scroll', @detectScrolledtoBottom)
       @el.querySelector('.zammad-scroll-hint').addEventListener('click', @onScrollHintClick)
       @input.addEventListener('keydown', @onKeydown)
@@ -1012,11 +1012,11 @@ do(window) ->
                 else
                   @socketReady = true
               when 'offline'
-                @onError 'Zammad Chat: No agent online'
+                @onError 'DEJOIY Chat: No agent online'
               when 'chat_disabled'
-                @onError 'Zammad Chat: Chat is disabled'
+                @onError 'DEJOIY Chat: Chat is disabled'
               when 'no_seats_available'
-                @onError "Zammad Chat: Too many clients in queue. Clients in queue: #{pipe.data.queue}"
+                @onError "DEJOIY Chat: Too many clients in queue. Clients in queue: #{pipe.data.queue}"
               when 'reconnect'
                 @onReopenSession pipe.data
 
@@ -1037,7 +1037,7 @@ do(window) ->
       @addStatus(message)
       btn = document.querySelector(".#{ @options.buttonClass }")
       if btn
-        btn.classList.add('zammad-chat-is-hidden')
+        btn.classList.add('dejoiy-chat-is-hidden')
 
       if @isOpen
         @disableInput()
@@ -1079,8 +1079,8 @@ do(window) ->
 
     onInput: =>
       # remove unread-state from messages
-      for message in @el.querySelectorAll('.zammad-chat-message--unread')
-        message.classList.remove 'zammad-chat-message--unread'
+      for message in @el.querySelectorAll('.dejoiy-chat-message--unread')
+        message.classList.remove 'dejoiy-chat-message--unread'
 
       sessionStorage.setItem 'unfinished_message', @input.innerHTML
 
@@ -1116,9 +1116,9 @@ do(window) ->
       @maybeAddTimestamp()
 
       # add message before message typing loader
-      if @el.querySelector('.zammad-chat-message--typing')
+      if @el.querySelector('.dejoiy-chat-message--typing')
         @lastAddedType = 'typing-placeholder'
-        @el.querySelector('.zammad-chat-message--typing').insertAdjacentHTML('beforebegin', messageElement)
+        @el.querySelector('.dejoiy-chat-message--typing').insertAdjacentHTML('beforebegin', messageElement)
       else
         @lastAddedType = 'message--customer'
         @body.insertAdjacentHTML('beforeend', messageElement)
@@ -1149,7 +1149,7 @@ do(window) ->
 
     renderMessage: (data) =>
       @lastAddedType = "message--#{ data.from }"
-      data.unreadClass = if document.hidden then ' zammad-chat-message--unread' else ''
+      data.unreadClass = if document.hidden then ' dejoiy-chat-message--unread' else ''
       @body.insertAdjacentHTML('beforeend', @view('message')(data))
 
     open: =>
@@ -1164,15 +1164,15 @@ do(window) ->
       if !@sessionId
         @showLoader()
 
-      @el.classList.add 'zammad-chat-is-open'
-      remainerHeight = @el.clientHeight - @el.querySelector('.zammad-chat-header').offsetHeight
+      @el.classList.add 'dejoiy-chat-is-open'
+      remainerHeight = @el.clientHeight - @el.querySelector('.dejoiy-chat-header').offsetHeight
       @el.style.transform = "translateY(#{remainerHeight}px)"
       # force redraw
       @el.clientHeight
 
       if !@sessionId
         @el.addEventListener 'transitionend', @onOpenAnimationEnd
-        @el.classList.add 'zammad-chat--animate'
+        @el.classList.add 'dejoiy-chat--animate'
         # force redraw
         @el.clientHeight
         # start animation
@@ -1187,7 +1187,7 @@ do(window) ->
 
     onOpenAnimationEnd: =>
       @el.removeEventListener 'transitionend', @onOpenAnimationEnd
-      @el.classList.remove 'zammad-chat--animate'
+      @el.classList.remove 'dejoiy-chat--animate'
       @idleTimeout.stop()
 
       if @isFullscreen
@@ -1236,9 +1236,9 @@ do(window) ->
         @enableScrollOnRoot()
 
       # close window
-      remainerHeight = @el.clientHeight - @el.querySelector('.zammad-chat-header').offsetHeight
+      remainerHeight = @el.clientHeight - @el.querySelector('.dejoiy-chat-header').offsetHeight
       @el.addEventListener 'transitionend', @onCloseAnimationEnd
-      @el.classList.add 'zammad-chat--animate'
+      @el.classList.add 'dejoiy-chat--animate'
       # force redraw
       document.offsetHeight
       # animate out
@@ -1246,13 +1246,13 @@ do(window) ->
 
     onCloseAnimationEnd: =>
       @el.removeEventListener 'transitionend', @onCloseAnimationEnd
-      @el.classList.remove 'zammad-chat-is-open', 'zammad-chat--animate'
+      @el.classList.remove 'dejoiy-chat-is-open', 'dejoiy-chat--animate'
       @el.style.transform = ''
 
       @showLoader()
-      @el.querySelector('.zammad-chat-welcome').classList.remove('zammad-chat-is-hidden')
-      @el.querySelector('.zammad-chat-agent').classList.add('zammad-chat-is-hidden')
-      @el.querySelector('.zammad-chat-agent-status').classList.add('zammad-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-welcome').classList.remove('dejoiy-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-agent').classList.add('dejoiy-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-agent-status').classList.add('dejoiy-chat-is-hidden')
 
       @isOpen = false
       @options.onCloseAnimationEnd?()
@@ -1262,28 +1262,28 @@ do(window) ->
     onWebSocketClose: =>
       return if @isOpen
       if @el
-        @el.classList.remove('zammad-chat-is-shown')
-        @el.classList.remove('zammad-chat-is-loaded')
+        @el.classList.remove('dejoiy-chat-is-shown')
+        @el.classList.remove('dejoiy-chat-is-loaded')
 
     show: ->
       return if @state is 'offline'
 
-      @el.classList.add('zammad-chat-is-loaded')
-      @el.classList.add('zammad-chat-is-shown')
+      @el.classList.add('dejoiy-chat-is-loaded')
+      @el.classList.add('dejoiy-chat-is-shown')
 
     disableInput: ->
       @inputDisabled = true
       @input.setAttribute('contenteditable', false)
-      @el.querySelector('.zammad-chat-send').disabled = true
+      @el.querySelector('.dejoiy-chat-send').disabled = true
       @io.close()
 
     enableInput: ->
       @inputDisabled = false
       @input.setAttribute('contenteditable', true)
-      @el.querySelector('.zammad-chat-send').disabled = false
+      @el.querySelector('.dejoiy-chat-send').disabled = false
 
     hideModal: ->
-      @el.querySelector('.zammad-chat-modal').innerHTML = ''
+      @el.querySelector('.dejoiy-chat-modal').innerHTML = ''
 
     onQueueScreen: (data) =>
       @setSessionId data.session_id
@@ -1308,7 +1308,7 @@ do(window) ->
       @log.notice 'onQueue', data.position
       @inQueue = true
 
-      @el.querySelector('.zammad-chat-modal').innerHTML = @view('waiting')
+      @el.querySelector('.dejoiy-chat-modal').innerHTML = @view('waiting')
         position: data.position
 
     onAgentTypingStart: =>
@@ -1317,18 +1317,18 @@ do(window) ->
       @stopTypingId = setTimeout(@onAgentTypingEnd, 3000)
 
       # never display two typing indicators
-      return if @el.querySelector('.zammad-chat-message--typing')
+      return if @el.querySelector('.dejoiy-chat-message--typing')
 
       @maybeAddTimestamp()
 
       @body.insertAdjacentHTML('beforeend', @view('typingIndicator')())
 
       # only if typing indicator is shown
-      return if !@isVisible(@el.querySelector('.zammad-chat-message--typing'), true)
+      return if !@isVisible(@el.querySelector('.dejoiy-chat-message--typing'), true)
       @scrollToBottom()
 
     onAgentTypingEnd: =>
-      @el.querySelector('.zammad-chat-message--typing').remove() if @el.querySelector('.zammad-chat-message--typing')
+      @el.querySelector('.dejoiy-chat-message--typing').remove() if @el.querySelector('.dejoiy-chat-message--typing')
 
     onLeaveTemporary: =>
       return if !@sessionId
@@ -1356,7 +1356,7 @@ do(window) ->
 
     updateLastTimestamp: (label, time) ->
       return if !@el
-      timestamps = @el.querySelectorAll('.zammad-chat-body .zammad-chat-timestamp')
+      timestamps = @el.querySelectorAll('.dejoiy-chat-body .dejoiy-chat-timestamp')
       return if !timestamps
       timestamps[timestamps.length - 1].outerHTML = @view('timestamp')
         label: label
@@ -1461,15 +1461,15 @@ do(window) ->
       # empty old messages
       @body.innerHTML = ''
 
-      @el.querySelector('.zammad-chat-agent').innerHTML = @view('agent')
+      @el.querySelector('.dejoiy-chat-agent').innerHTML = @view('agent')
         agent: @agent
 
       @enableInput()
 
       @hideModal()
-      @el.querySelector('.zammad-chat-welcome').classList.add('zammad-chat-is-hidden')
-      @el.querySelector('.zammad-chat-agent').classList.remove('zammad-chat-is-hidden')
-      @el.querySelector('.zammad-chat-agent-status').classList.remove('zammad-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-welcome').classList.add('dejoiy-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-agent').classList.remove('dejoiy-chat-is-hidden')
+      @el.querySelector('.dejoiy-chat-agent-status').classList.remove('dejoiy-chat-is-hidden')
 
       @input.focus() if not @isFullscreen
 
@@ -1481,27 +1481,27 @@ do(window) ->
       @options.onConnectionEstablished?(data)
 
     showCustomerTimeout: ->
-      @el.querySelector('.zammad-chat-modal').innerHTML = @view('customer_timeout')
+      @el.querySelector('.dejoiy-chat-modal').innerHTML = @view('customer_timeout')
         agent: @agent.name
         delay: @options.inactiveTimeout
       @el.querySelector('.js-restart').addEventListener 'click', -> location.reload()
       @sessionClose()
 
     showWaitingListTimeout: ->
-      @el.querySelector('.zammad-chat-modal').innerHTML = @view('waiting_list_timeout')
+      @el.querySelector('.dejoiy-chat-modal').innerHTML = @view('waiting_list_timeout')
         delay: @options.watingListTimeout
       @el.querySelector('.js-restart').addEventListener 'click', -> location.reload()
       @sessionClose()
 
     showLoader: ->
-      @el.querySelector('.zammad-chat-modal').innerHTML = @view('loader')()
+      @el.querySelector('.dejoiy-chat-modal').innerHTML = @view('loader')()
 
     setAgentOnlineState: (state) =>
       @state = state
       return if !@el
       capitalizedState = state.charAt(0).toUpperCase() + state.slice(1)
-      @el.querySelector('.zammad-chat-agent-status').dataset.status = state
-      @el.querySelector('.zammad-chat-agent-status').textContent = @T(capitalizedState)
+      @el.querySelector('.dejoiy-chat-agent-status').dataset.status = state
+      @el.querySelector('.dejoiy-chat-agent-status').textContent = @T(capitalizedState)
 
     detectHost: ->
       protocol = 'ws://'
@@ -1782,4 +1782,4 @@ do(window) ->
         @removeAttribute node
       html
 
-  window.ZammadChat = ZammadChat
+  window.DejoiyChat = DejoiyChat

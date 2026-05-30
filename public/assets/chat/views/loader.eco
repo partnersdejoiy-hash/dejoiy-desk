@@ -1,6 +1,6 @@
-<span class="zammad-chat-loading-animation">
-  <span class="zammad-chat-loading-circle"></span>
-  <span class="zammad-chat-loading-circle"></span>
-  <span class="zammad-chat-loading-circle"></span>
+<span class="dejoiy-chat-loading-animation">
+  <span class="dejoiy-chat-loading-circle"></span>
+  <span class="dejoiy-chat-loading-circle"></span>
+  <span class="dejoiy-chat-loading-circle"></span>
 </span>
-<span class="zammad-chat-modal-text"><%- @T('Connecting') %></span>
+<span class="dejoiy-chat-modal-text"><%- @T('Connecting') %></span>

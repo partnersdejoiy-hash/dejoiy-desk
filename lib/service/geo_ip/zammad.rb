@@ -2,6 +2,8 @@
 
 class Service::GeoIp::Zammad
   def self.location(address)
+    return {} unless Dejoiy::ExternalServices.zammad_vendor_enabled?
+
     return {} if address == '127.0.0.1'
     return {} if address == '::1'
 

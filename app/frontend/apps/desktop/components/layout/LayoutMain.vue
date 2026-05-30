@@ -28,7 +28,7 @@ const backgroundVariantClasses = computed(() => {
       return 'bg-blue-50 dark:bg-gray-800'
     case 'tertiary':
     default:
-      return 'bg-neutral-50 dark:bg-gray-500'
+      return 'dejoiy-main-surface'
   }
 })
 </script>
