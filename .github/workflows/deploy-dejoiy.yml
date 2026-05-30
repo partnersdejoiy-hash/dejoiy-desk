@@ -1,0 +1,42 @@
+# Manual deploy of DEJOIY Internal Tools to your portal server.
+# Add repository secrets (Settings → Secrets and variables → Actions):
+#   DEJOIY_DEPLOY_HOST, DEJOIY_DEPLOY_USER, DEJOIY_DEPLOY_PASSWORD, DEJOIY_DEPLOY_FQDN
+# Optional: DEJOIY_PURGE_OLD_ZAMMAD=true
+name: Deploy DEJOIY
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Git branch to deploy
+        required: true
+        default: cursor/dejoiy-complete-rebrand-35c2
+      fqdn:
+        description: Public hostname (e.g. desk.dejoiy.internal)
+        required: true
+        default: desk.dejoiy.internal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Install SSH tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq sshpass openssh-client
+
+      - name: Deploy to server
+        env:
+          DEJOIY_DEPLOY_HOST: ${{ secrets.DEOJIY_DEPLOY_HOST }}
+          DEJOIY_DEPLOY_USER: ${{ secrets.DEOJIY_DEPLOY_USER }}
+          DEJOIY_DEPLOY_PASSWORD: ${{ secrets.DEOJIY_DEPLOY_PASSWORD }}
+          DEJOIY_DEPLOY_FQDN: ${{ inputs.fqdn }}
+          DEJOIY_PURGE_OLD_ZAMMAD: ${{ secrets.DEOJIY_PURGE_OLD_ZAMMAD }}
+          DEJOIY_DEPLOY_BRANCH: ${{ inputs.branch }}
+        run: |
+          chmod +x deploy/scripts/*.sh
+          ./deploy/scripts/agent-ssh-deploy.sh
