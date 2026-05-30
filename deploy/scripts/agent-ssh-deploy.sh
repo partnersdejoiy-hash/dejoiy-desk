@@ -2,6 +2,12 @@
 # Used by Cursor Cloud Agent when DEJOIY_DEPLOY_* secrets are set.
 set -euo pipefail
 
+# Accept common misnamed secrets (prefer exact DEJOIY_* names)
+export DEJOIY_DEPLOY_HOST="${DEJOIY_DEPLOY_HOST:-${DEPLOY_HOST:-${HOST:-}}}"
+export DEJOIY_DEPLOY_USER="${DEJOIY_DEPLOY_USER:-${DEPLOY_USER:-root}}"
+export DEJOIY_DEPLOY_PASSWORD="${DEJOIY_DEPLOY_PASSWORD:-${DEPLOY_PASSWORD:-${PASSWORD:-}}}"
+export DEJOIY_DEPLOY_FQDN="${DEJOIY_DEPLOY_FQDN:-${DEPLOY_FQDN:-${FQDN:-desk.dejoiy.internal}}}"
+
 if [[ -z "${DEJOIY_DEPLOY_HOST:-}" ]]; then
   cat >&2 <<'EOF'
 ERROR: DEJOIY deploy secrets are not available in this agent session.
