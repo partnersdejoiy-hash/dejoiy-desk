@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#E91E63" />
+  <title>DEJOIY Internal Tools — UI Preview</title>
+  <style>
+    :root {
+      --dejoiy-navy: #001f3f;
+      --dejoiy-magenta: #e91e63;
+      --dejoiy-cyan: #00bcd4;
+      --dejoiy-gradient-brand: linear-gradient(90deg, #e91e63, #d946ef, #00bcd4);
+      --dejoiy-gradient-sidebar: linear-gradient(180deg, #000814 0%, #001f3f 45%, #001a33 100%);
+      --dejoiy-shadow-glow: 0 0 0 1px rgba(233, 30, 99, 0.12), 0 20px 50px rgba(0, 31, 63, 0.22), 0 8px 24px rgba(0, 188, 212, 0.1);
+      --radius: 1rem;
+      --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); background: #0a0a0f; color: #e2e8f0; }
+    h2.preview-section-title {
+      margin: 0 0 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    .preview-page { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    .preview-grid { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+    @media (min-width: 1100px) { .preview-grid { grid-template-columns: 1fr 1fr; } }
+    .preview-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    }
+    .preview-label {
+      padding: 0.75rem 1rem;
+      background: #1e293b;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* —— Canvases (from dejoiy-brand.css) —— */
+    .dejoiy-brand-bar { background: var(--dejoiy-gradient-brand); height: 3px; width: 100%; }
+    .dejoiy-canvas-auth {
+      position: relative;
+      min-height: 520px;
+      background-color: #000814;
+      background-image:
+        radial-gradient(ellipse 90% 60% at 15% 10%, rgba(233, 30, 99, 0.38), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 85% 85%, rgba(0, 188, 212, 0.28), transparent 50%),
+        linear-gradient(160deg, #000814 0%, #001f3f 40%, #000a14 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .dejoiy-canvas-auth::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black, transparent);
+    }
+    .dejoiy-glass-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 380px;
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--dejoiy-shadow-glow);
+      color: var(--dejoiy-navy);
+    }
+    .dejoiy-brand { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .dejoiy-brand__icon { width: 56px; height: 56px; filter: drop-shadow(0 0 14px rgba(233,30,99,0.5)) drop-shadow(0 0 8px rgba(0,188,212,0.35)); }
+    .dejoiy-brand__wordmark { height: 40px; width: auto; max-width: 200px; }
+    .dejoiy-brand__tagline { margin: 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; }
+    .login-title { text-align: center; font-size: 1.15rem; font-weight: 600; margin: 0 0 1.25rem; }
+    .field { margin-bottom: 0.85rem; }
+    .field label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.35rem; color: #334155; }
+    .field input {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    .btn-primary {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #e91e63, #c2185b);
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(233,30,99,0.35);
+    }
+    .login-footer { text-align: center; margin-top: 1.5rem; font-size: 0.7rem; color: rgba(0,188,212,0.7); }
+
+    /* Desktop shell */
+    .desktop-shell {
+      display: flex;
+      min-height: 520px;
+      background: linear-gradient(165deg, #fafbfc 0%, #e0f7fa 35%, #fce4ec 100%);
+    }
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--dejoiy-gradient-sidebar);
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem;
+    }
+    .sidebar-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; margin-bottom: 1rem; }
+    .sidebar-search {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.45rem 0.6rem;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 2px;
+    }
+    .nav-item.active { background: rgba(233,30,99,0.25); color: #fff; border-left: 3px solid var(--dejoiy-magenta); }
+    .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dejoiy-cyan); }
+    .main { flex: 1; display: flex; flex-direction: column; }
+    .topbar {
+      height: 48px;
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dejoiy-navy);
+    }
+    .content { flex: 1; padding: 1rem; display: grid; grid-template-columns: 1fr 280px; gap: 1rem; }
+    .ticket-panel {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,188,212,0.12);
+      padding: 1rem;
+      box-shadow: var(--dejoiy-shadow-glow);
+    }
+    .ticket-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem;
+      border-radius: 8px;
+      margin-bottom: 0.35rem;
+      font-size: 0.8rem;
+      color: #334155;
+    }
+    .ticket-row:hover { background: #f1f5f9; }
+    .ticket-row.selected { background: color-mix(in srgb, #e91e63 8%, white); border: 1px solid rgba(233,30,99,0.2); }
+    .badge { font-size: 0.65rem; padding: 0.15rem 0.45rem; border-radius: 4px; background: #e0f7fa; color: #006064; }
+    .badge.open { background: #fce4ec; color: #ad1457; }
+    .detail-title { font-size: 1rem; font-weight: 700; color: var(--dejoiy-navy); margin: 0 0 0.75rem; }
+    .msg {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-size: 0.8rem;
+      color: #475569;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid var(--dejoiy-cyan);
+    }
+    .swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; padding: 1rem; background: #1e293b; }
+    .swatch { width: 48px; height: 48px; border-radius: 8px; font-size: 0.55rem; display: flex; align-items: end; justify-content: center; padding: 4px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  </style>
+</head>
+<body>
+  <div class="preview-page">
+    <header style="margin-bottom: 2rem; text-align: center;">
+      <h1 style="margin: 0; font-size: 1.75rem; background: var(--dejoiy-gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DEJOIY Internal Tools</h1>
+      <p style="margin: 0.5rem 0 0; color: #94a3b8; font-size: 0.9rem;">UI preview — login, workspace & brand canvases</p>
+    </header>
+
+    <div class="swatches" style="border-radius: 12px; margin-bottom: 2rem;">
+      <div class="swatch" style="background: #001F3F;">Navy</div>
+      <div class="swatch" style="background: #E91E63;">Magenta</div>
+      <div class="swatch" style="background: #00BCD4; color: #001F3F;">Cyan</div>
+      <div class="swatch" style="background: linear-gradient(135deg, #E91E63, #00BCD4);">Icon</div>
+    </div>
+
+    <div class="preview-grid">
+      <section id="preview-login">
+        <h2 class="preview-section-title">Login — auth canvas</h2>
+        <div class="preview-frame">
+          <div class="preview-label">LayoutPublicPage · dejoiy-canvas-auth + glass card</div>
+          <div class="dejoiy-canvas-auth">
+            <div class="dejoiy-brand-bar" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+            <div class="dejoiy-glass-card">
+              <div class="dejoiy-brand">
+                <img class="dejoiy-brand__icon" src="../app/frontend/shared/components/DejoiyBrand/assets/dejoiy-icon.svg" alt="DEJOIY" />
+                <img class="dejoiy-brand__wordmark" src="../app/frontend/shared/components/DejoiyBrand/assets/dejoiy-wordmark.svg" alt="DEJOIY YOU + JOY" />
+                <p class="dejoiy-brand__tagline"><span style="color:#001F3F">YOU </span><span style="color:#E91E63">+ JOY</span></p>
+              </div>
+              <h2 class="login-title">Sign in to DEJOIY Internal Tools</h2>
+              <div class="field"><label>Username / Email</label><input type="text" value="alex.demo@dejoiy.internal" readonly /></div>
+              <div class="field"><label>Password</label><input type="password" value="••••••••" readonly /></div>
+              <button type="button" class="btn-primary">Sign in</button>
+            </div>
+            <p class="login-footer" style="position:relative;z-index:1;margin-top:1.5rem;">Powered by <strong style="color:#E91E63">Dejoiy</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="preview-desktop">
+        <h2 class="preview-section-title">Desktop — workspace canvas</h2>
+        <div class="preview-frame">
+          <div class="preview-label">Sidebar gradient · ticket workspace · brand accents</div>
+          <div class="desktop-shell">
+            <aside class="sidebar">
+              <div class="sidebar-header">
+                <img class="dejoiy-brand__icon" style="width:36px;height:36px;" src="../app/frontend/shared/components/DejoiyBrand/assets/dejoiy-icon.svg" alt="" />
+                <div class="sidebar-search">Search…</div>
+              </div>
+              <div class="nav-item active"><span class="nav-dot"></span> Overviews</div>
+              <div class="nav-item">Tickets</div>
+              <div class="nav-item">Customers</div>
+              <div class="nav-item">Knowledge Base</div>
+              <div class="nav-item">Reports</div>
+              <div style="margin-top: auto; font-size: 0.65rem; color: #64748b; padding: 0.5rem;">DEJOIY · YOU + JOY</div>
+            </aside>
+            <div class="main">
+              <div class="topbar">Tickets · Open</div>
+              <div class="content">
+                <div class="ticket-panel">
+                  <div class="ticket-row selected"><span class="badge open">Open</span> #42001 · Help me! Example ticket 🎓</div>
+                  <div class="ticket-row"><span class="badge">Pending</span> #42002 · VPN access request</div>
+                  <div class="ticket-row"><span class="badge">New</span> #42003 · Billing question</div>
+                </div>
+                <div class="ticket-panel">
+                  <h3 class="detail-title">Help me! I am an example ticket 🎓</h3>
+                  <div class="msg">Hi, I'm Alex Demo — explore DEJOIY tickets, channels, and workflows.</div>
+                  <div class="msg" style="border-left-color: #E91E63;">Reply with the full conversation in one place.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
