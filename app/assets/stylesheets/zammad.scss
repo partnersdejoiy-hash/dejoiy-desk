@@ -4047,7 +4047,8 @@ ol.tabs li {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background: hsl(145, 51%, 45%);
+  background: linear-gradient(135deg, #E91E63 0%, #00BCD4 100%);
+  border-radius: 6px;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
 
@@ -4591,6 +4592,17 @@ footer {
 
   .icon {
     @include bidi-style(margin-right, 10px, margin-left, 0);
+  }
+
+  &--dejoiy {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .splash-dejoiy-logo {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 4px 16px rgba(233, 30, 99, 0.35));
   }
 }
 

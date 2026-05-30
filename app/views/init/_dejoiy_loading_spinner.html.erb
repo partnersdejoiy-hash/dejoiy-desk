@@ -1,0 +1,47 @@
+<svg class="loading-animation dejoiy-loading-animation" width="72" height="72" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="dejoiy-spinner-bg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="55%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#00BCD4"/>
+    </linearGradient>
+    <linearGradient id="dejoiy-spinner-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="100%" stop-color="#00BCD4"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .dejoiy-spinner-ring {
+      fill: none;
+      stroke: url(#dejoiy-spinner-ring);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 18 110;
+      transform-origin: 24px 24px;
+      animation: dejoiy-spinner-rotate 1.1s linear infinite;
+    }
+    .dejoiy-spinner-tile {
+      transform-origin: 24px 24px;
+      animation: dejoiy-spinner-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes dejoiy-spinner-rotate {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes dejoiy-spinner-pulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.88; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+    .loading-animation.error .dejoiy-spinner-ring,
+    .loading-animation.error .dejoiy-spinner-tile {
+      animation: none !important;
+    }
+  </style>
+  <circle class="dejoiy-spinner-ring" cx="24" cy="24" r="21"/>
+  <g class="dejoiy-spinner-tile">
+    <rect x="4" y="4" width="40" height="40" rx="10" fill="url(#dejoiy-spinner-bg)"/>
+    <rect x="4.5" y="4.5" width="39" height="39" rx="9.5" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none"/>
+    <path fill="#FFFFFF" d="M14 12h10.5c6.5 0 10.5 4.2 10.5 11.5S31 35 24.5 35H14V12zm4 4v19h6.8c4.2 0 6.5-2.8 6.5-7.2S29 20.5 24.8 20.5H18V16z"/>
+    <circle cx="29.5" cy="21.5" r="2" fill="#FFFFFF"/>
+    <path d="M25.5 30c1.7-4 3.5-5.8 6.3-5.8s4.6 1.8 6.3 5.8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

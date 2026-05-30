@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="favicon-bg" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="55%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#00BCD4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#favicon-bg)"/>
+  <path fill="#FFFFFF" d="M13 11h11.5c7.2 0 11.5 4.6 11.5 13s-4.3 13-11.5 13H13V11zm4.2 4.2v25.6h7.2c4.8 0 7.3-3.4 7.3-8.8s-2.5-8.8-7.3-8.8h-7.2z"/>
+  <circle cx="29.5" cy="21.5" r="2.1" fill="#FFFFFF"/>
+</svg>

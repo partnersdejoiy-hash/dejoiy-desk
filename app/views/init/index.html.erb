@@ -29,8 +29,8 @@
   })(document)
 <% end -%>
 <div id="app"></div>
-<div class="splash">
-  <svg class="icon icon-logo"><use xlink:href="<%= icons_url %>#icon-logo" /></svg>
+<div class="splash splash--dejoiy">
+  <img class="splash-dejoiy-logo" src="/assets/images/icons/logo.svg" width="48" height="48" alt="DEJOIY" />
   <div class="splash-title"><%= Translation.translate(local_assigns[:locale], 'Loading…') %></div>
   <noscript>
     <style>
@@ -38,7 +38,7 @@
       .splash-title { display: none; }
     </style>
     <div style="margin-top: 16px;">
-      <%= Translation.translate(local_assigns[:locale], 'Turn on JavaScript to use Zammad.') %>
+      Turn on JavaScript to use DEJOIY Internal Tools.
     </div>
   </noscript>
 </div>
