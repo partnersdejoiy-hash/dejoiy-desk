@@ -12,7 +12,7 @@ DEPLOY_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 REPO_ROOT="$(cd "$DEPLOY_DIR/.." && pwd)"
 
 FQDN=""
-HTTP_TYPE="https"
+HTTP_TYPE="http"
 PURGE_OLD=false
 SKIP_REMOVE=false
 NONINTERACTIVE=false

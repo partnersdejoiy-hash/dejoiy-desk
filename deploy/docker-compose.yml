@@ -43,7 +43,7 @@ x-shared:
       ZAMMAD_WEBSOCKET_HOST: ${ZAMMAD_WEBSOCKET_HOST:-dejoiy-websocket}
       RAILS_TRUSTED_PROXIES: ${RAILS_TRUSTED_PROXIES:-127.0.0.1,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
 
-      ZAMMAD_HTTP_TYPE: ${ZAMMAD_HTTP_TYPE:-https}
+      ZAMMAD_HTTP_TYPE: ${ZAMMAD_HTTP_TYPE:-http}
       ZAMMAD_FQDN: ${ZAMMAD_FQDN:-desk.dejoiy.internal}
 
       BACKUP_DIR: ${BACKUP_DIR:-/var/tmp/zammad}
