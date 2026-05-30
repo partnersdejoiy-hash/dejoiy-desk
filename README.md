@@ -57,6 +57,18 @@ See `.dev/ai-agent-instructions.md` (via `AGENTS.md`) for patterns and agent ref
 
 Product name, logo, and colors are configured under **Settings → Branding**. Defaults use **DEJOIY Internal Tools** and the DEJOIY gradient identity.
 
+## Private deployment (replace legacy Zammad on your portal)
+
+To **remove old Zammad** and run **DEJOIY only on your servers** (no vendor data sharing):
+
+```bash
+./deploy/scripts/uninstall-legacy-zammad.sh   # on your portal server
+cp deploy/.env.example deploy/.env            # edit FQDN + passwords
+./deploy/scripts/install-dejoiy.sh
+```
+
+Full guide: **[deploy/DEPLOY.md](deploy/DEPLOY.md)**
+
 ## License
 
 This codebase is derived from open-source helpdesk software (AGPLv3). See `LICENSE` for terms. DEJOIY-specific branding and configuration are for internal use by DEJOIY and partners.
