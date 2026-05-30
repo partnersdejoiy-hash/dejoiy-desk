@@ -5311,12 +5311,17 @@ input[type='search']::-webkit-search-decoration {
   }
 }
 
-.search .logo .icon-logo {
+.search .logo .icon-logo,
+.search .logo .dejoiy-nav-logo {
   position: relative;
+  width: 42px;
+  height: 42px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(233, 30, 99, 0.25));
 
   @include phone {
     width: 35px;
-    height: 30px;
+    height: 35px;
     margin-left: 4px;
   }
 }

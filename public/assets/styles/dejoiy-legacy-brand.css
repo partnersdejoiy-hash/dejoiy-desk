@@ -1,0 +1,29 @@
+/* DEJOIY branding overrides for legacy (CoffeeScript) UI — no asset rebuild required */
+
+.search .logo .icon-logo {
+  visibility: hidden;
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.search .logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  background: url(/assets/images/icons/logo.svg) center / contain no-repeat;
+  filter: drop-shadow(0 2px 8px rgba(233, 30, 99, 0.28));
+  pointer-events: none;
+}
+
+.poweredBy {
+  display: none !important;
+}
+
+.login .poweredBy,
+.signup .poweredBy {
+  display: none !important;
+}

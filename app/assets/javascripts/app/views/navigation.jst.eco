@@ -9,7 +9,7 @@
       </div>
     </form>
     <div class="logo js-toggleNotifications">
-      <%- @Icon('logo') %>
+      <img class="dejoiy-nav-logo" src="/assets/images/icons/logo.svg" width="42" height="42" alt="<%= @C('product_name') %>" />
       <div class="activity-counter js-notificationsCounter"></div>
     </div>
     <div class="global-search-menu">
