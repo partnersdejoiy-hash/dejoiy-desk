@@ -20,5 +20,5 @@ class App.PublicLink extends App.Model
   ]
 
   @description = __('''
-You can define links which are shown e.g. in the footer of Zammad's login screen. These have many purposes, such as displaying a data privacy page for all people using your Zammad instance.
+You can define links shown on the login screen—for example a privacy policy or support page for everyone using your service desk.
 ''')

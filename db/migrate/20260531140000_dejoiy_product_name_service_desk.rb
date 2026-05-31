@@ -13,7 +13,7 @@ class DejoiyProductNameServiceDesk < ActiveRecord::Migration[7.2]
     return if !Setting.exists?(name: 'product_name')
 
     current = Setting.get('product_name').to_s
-    return if current.present? && LEGACY_NAMES.exclude?(current)
+    return if current.present? && LEGACY_NAMES.exclude?(current) && current !~ /zammad/i
 
     Setting.set('product_name', NEW_NAME)
   end

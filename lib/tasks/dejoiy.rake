@@ -1,6 +1,17 @@
 # Copyright (C) 2024-2026 Dejoiy
 
 namespace :dejoiy do
+  namespace :branding do
+    desc 'Set product name, clear caches (run after deploy)'
+    task sync: :environment do
+      Setting.set('product_name', 'Service Desk for DEJOIY')
+      Rails.cache.clear
+      Translation.sync if Translation.respond_to?(:sync)
+      puts 'product_name=' + Setting.get('product_name').to_s
+      puts 'Caches cleared.'
+    end
+  end
+
   namespace :admin do
     desc 'Create or update super admin. LOGIN=admin EMAIL=admin@example.com PASSWORD=secret [FIRSTNAME] [LASTNAME]'
     task ensure: :environment do

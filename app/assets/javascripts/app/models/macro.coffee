@@ -27,9 +27,9 @@ class App.Macro extends App.Model
     App.Macro.search(filter: { active: true }, sortBy:'name', order:'ASC')
 
   @description = __('''
-Macros make it easy to automate common, multi-step tasks within Zammad.
+Macros make it easy to automate common, multi-step tasks within the service desk.
 
-You can use macros in Zammad to automate recurring sequences, saving time (and nerves). This allows a combined sequence of actions on the ticket to be executed with just one click.
+You can use macros to automate recurring sequences, saving time (and nerves). This allows a combined sequence of actions on the ticket to be executed with just one click.
 ''')
 
   uiUrl: =>
