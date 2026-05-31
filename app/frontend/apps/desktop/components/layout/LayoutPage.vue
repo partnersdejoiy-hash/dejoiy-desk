@@ -17,6 +17,8 @@ import { numberOfPermanentItems } from '#desktop/components/PageNavigation/first
 import PageNavigation from '#desktop/components/PageNavigation/PageNavigation.vue'
 import QuickSearch from '#desktop/components/Search/QuickSearch/QuickSearch.vue'
 import UserTaskbarTabs from '#desktop/components/UserTaskbarTabs/UserTaskbarTabs.vue'
+import { DEJOIY_CANVAS } from '#shared/constants/branding.ts'
+
 import { useResizeGridColumns } from '#desktop/composables/useResizeGridColumns.ts'
 
 const config = toRef(useApplicationStore(), 'config')
@@ -79,10 +81,18 @@ const onResetWidth = () => {
 
 <template>
   <div
-    class="grid h-full max-h-full overflow-y-clip duration-100"
-    :class="{ 'transition-none': noTransition }"
-    :style="gridColumns"
+    class="flex h-full min-h-0 flex-col"
+    :class="DEJOIY_CANVAS.workspace"
   >
+    <div
+      class="dejoiy-brand-bar shrink-0"
+      role="presentation"
+    />
+    <div
+      class="grid min-h-0 flex-1 max-h-full overflow-y-clip duration-100"
+      :class="{ 'transition-none': noTransition }"
+      :style="gridColumns"
+    >
     <LayoutSidebar
       id="main-sidebar"
       ref="layout-sidebar"
@@ -154,6 +164,7 @@ const onResetWidth = () => {
           />
         </KeepAlive>
       </RouterView>
+    </div>
     </div>
   </div>
 </template>

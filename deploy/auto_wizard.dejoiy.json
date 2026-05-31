@@ -1,0 +1,34 @@
+{
+  "TextModuleLocale": {
+    "Locale": "en-us"
+  },
+  "Users": [
+    {
+      "login": "admin",
+      "firstname": "DEJOIY",
+      "lastname": "Admin",
+      "email": "admin@dejoiy.internal",
+      "organization": "DEJOIY",
+      "password": "CHANGE_ME_DEJOIY_ADMIN"
+    }
+  ],
+  "Organizations": [
+    {
+      "name": "DEJOIY"
+    }
+  ],
+  "Settings": [
+    {
+      "name": "product_name",
+      "value": "DEJOIY Internal Tools"
+    },
+    {
+      "name": "system_online_service",
+      "value": false
+    },
+    {
+      "name": "developer_mode",
+      "value": false
+    }
+  ]
+}

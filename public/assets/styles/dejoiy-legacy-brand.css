@@ -1,4 +1,30 @@
-/* DEJOIY branding overrides for legacy (CoffeeScript) UI — no asset rebuild required */
+/* DEJOIY branding overrides for legacy (CoffeeScript) UI */
+
+/* Top accent — matches Vue dejoiy-brand-bar */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10000;
+  background: linear-gradient(90deg, #e91e63, #d946ef, #00bcd4);
+  pointer-events: none;
+}
+
+body {
+  background: linear-gradient(
+    165deg,
+    #fafbfc 0%,
+    color-mix(in srgb, #e0f7fa 35%, #fafbfc) 50%,
+    color-mix(in srgb, #fce4ec 20%, #fafbfc) 100%
+  ) !important;
+}
+
+html[data-theme='dark'] body {
+  background: linear-gradient(165deg, #0a1628 0%, #001f3f 50%, #0d1117 100%) !important;
+}
 
 .search .logo .icon-logo {
   visibility: hidden;
@@ -28,6 +54,90 @@
   display: none !important;
 }
 
+/* Login / signup — DEJOIY auth canvas */
+.login.fullscreen,
+.login.branding {
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 10%, rgba(233, 30, 99, 0.38), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 85%, rgba(0, 188, 212, 0.28), transparent 50%),
+    linear-gradient(160deg, #000814 0%, #001f3f 40%, #000a14 100%) !important;
+}
+
+.login .hero h1,
+.login .hero h2 {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.login .btn--primary,
+.signup .btn--primary,
+.btn--primary {
+  background: linear-gradient(135deg, #e91e63 0%, #d946ef 55%, #00bcd4 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(233, 30, 99, 0.35);
+}
+
+.login .btn--primary:hover,
+.signup .btn--primary:hover,
+.btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+/* Main navigation — DEJOIY sidebar gradient */
+.navigation {
+  background: linear-gradient(180deg, #000814 0%, #001f3f 45%, #001a33 100%) !important;
+  border-right: 1px solid rgba(0, 188, 212, 0.12) !important;
+}
+
+.navigation .nav-tab.is-active,
+.navigation .nav-tab:hover {
+  background: rgba(233, 30, 99, 0.15) !important;
+}
+
+.navigation .nav-tab.is-active .nav-tab-name {
+  color: #00bcd4 !important;
+}
+
+/* Content area */
+.content {
+  background: transparent !important;
+}
+
+.main {
+  background: transparent !important;
+}
+
+/* Admin sidebar */
+.NavBarAdmin.sidebar,
+.sidebar {
+  border-color: rgba(0, 188, 212, 0.12) !important;
+}
+
+.sidebar .nav-pills > li.active > a,
+.sidebar .nav-pills > li > a:hover {
+  background: rgba(233, 30, 99, 0.12) !important;
+  color: #001f3f !important;
+}
+
+html[data-theme='dark'] .sidebar .nav-pills > li.active > a,
+html[data-theme='dark'] .sidebar .nav-pills > li > a:hover {
+  color: #00bcd4 !important;
+}
+
+/* Tables & panels */
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(0, 188, 212, 0.04) !important;
+}
+
+.well,
+.panel {
+  border-radius: 0.75rem !important;
+  border-color: rgba(0, 188, 212, 0.15) !important;
+  box-shadow:
+    0 0 0 1px rgba(233, 30, 99, 0.06),
+    0 8px 24px rgba(0, 31, 63, 0.08);
+}
+
 /* User-switch banner (admin previewing as another user) */
 .switchBackToUser {
   background: linear-gradient(90deg, #e91e63, #d946ef, #00bcd4) !important;
@@ -36,4 +146,13 @@
 
 .switchBackToUser-text {
   font-weight: 600;
+}
+
+/* Focus rings */
+input:focus,
+textarea:focus,
+select:focus,
+.btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #e91e63 !important;
 }

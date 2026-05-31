@@ -18,6 +18,15 @@ fi
 # shellcheck disable=SC1091
 source .env 2>/dev/null || true
 
+if [[ -z "${AUTOWIZARD_JSON:-}" ]] && [[ -n "${DEJOIY_ADMIN_PASSWORD:-}" ]] \
+  && [[ "${DEJOIY_ADMIN_PASSWORD}" != "CHANGE_ME_ON_FIRST_LOGIN" ]]; then
+  echo "Generating AUTOWIZARD_JSON from DEJOIY_ADMIN_* in deploy/.env..."
+  chmod +x "$SCRIPT_DIR/generate-autowizard.sh"
+  "$SCRIPT_DIR/generate-autowizard.sh"
+  # shellcheck disable=SC1091
+  source .env 2>/dev/null || true
+fi
+
 export COMMIT_SHA="${COMMIT_SHA:-$(git -C "$REPO_ROOT" rev-parse HEAD 2>/dev/null || echo local)}"
 
 echo "Building DEJOIY image (this may take several minutes)..."
@@ -46,6 +55,11 @@ echo ""
 echo "DEJOIY Internal Tools is starting."
 echo "  URL (local):  http://127.0.0.1:${PORT}/"
 echo "  Configured FQDN: ${FQDN}"
+if [[ -n "${AUTOWIZARD_JSON:-}" ]]; then
+  echo "  First visit: automated setup (preset admin: ${DEJOIY_ADMIN_LOGIN:-admin})"
+else
+  echo "  First visit: manual setup wizard (or run generate-autowizard.sh for preset admin)"
+fi
 echo ""
 echo "Privacy: DEJOIY_ENABLE_VENDOR_SERVICES=${DEJOIY_ENABLE_VENDOR_SERVICES:-false}"
 echo "Point your portal reverse proxy to 127.0.0.1:${PORT}"

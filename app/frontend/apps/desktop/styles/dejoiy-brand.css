@@ -167,4 +167,26 @@
   .dejoiy-brand__tagline {
     font-variant-numeric: tabular-nums;
   }
+
+  #main-content {
+    position: relative;
+    isolation: isolate;
+  }
+
+  #main-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(233, 30, 99, 0.06), transparent),
+      radial-gradient(ellipse 50% 35% at 0% 100%, rgba(0, 188, 212, 0.06), transparent);
+  }
+
+  #main-content > * {
+    position: relative;
+    z-index: 1;
+  }
 }

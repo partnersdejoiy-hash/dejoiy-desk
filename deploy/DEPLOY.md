@@ -48,7 +48,29 @@ nano deploy/.env   # set ZAMMAD_FQDN, POSTGRES_PASS, ZAMMAD_HTTP_TYPE
 ./deploy/scripts/install-dejoiy.sh
 ```
 
-Open `http://SERVER_IP:8080` (or your proxy URL), complete setup wizard, create admin user.
+Open `http://SERVER_IP:8080` (or your proxy URL).
+
+### Preset super-admin (recommended for fresh installs)
+
+1. In `deploy/.env`, set `DEJOIY_ADMIN_PASSWORD` (and optionally login/email).
+2. Run `./deploy/scripts/generate-autowizard.sh` — this writes `AUTOWIZARD_JSON` into `.env`.
+3. Start the stack with `./deploy/scripts/install-dejoiy.sh` (or `docker compose up -d` on a **new** database).
+
+On first visit you should see **automated setup**; it creates the admin user and signs you in. Default login from `.env.example` is `admin` / `admin@dejoiy.internal` unless you changed them.
+
+**Security:** change the password under Personal settings after first login. Do not commit `deploy/.env` with real passwords.
+
+### Existing install (database already initialized)
+
+Auto-wizard only runs on a fresh database. To set or reset the super admin on a running stack:
+
+```bash
+docker compose -f deploy/docker-compose.yml exec dejoiy-railsserver \
+  bundle exec rake dejoiy:admin:ensure \
+  LOGIN=admin EMAIL=admin@dejoiy.internal PASSWORD='YourStrongPassword'
+```
+
+Or complete the manual setup wizard and create an admin user in the UI.
 
 ## 3. Put it on your portal (HTTPS)
 

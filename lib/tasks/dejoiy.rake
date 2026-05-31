@@ -1,6 +1,37 @@
 # Copyright (C) 2024-2026 Dejoiy
 
 namespace :dejoiy do
+  namespace :admin do
+    desc 'Create or update super admin. LOGIN=admin EMAIL=admin@example.com PASSWORD=secret [FIRSTNAME] [LASTNAME]'
+    task ensure: :environment do
+      login = ENV['LOGIN'].presence || ENV['DEJOIY_ADMIN_LOGIN'].presence || 'admin'
+      email = ENV['EMAIL'].presence || ENV['DEJOIY_ADMIN_EMAIL'].presence || login
+      password = ENV['PASSWORD'].presence || ENV['DEJOIY_ADMIN_PASSWORD'].presence
+      firstname = ENV['FIRSTNAME'].presence || ENV['DEJOIY_ADMIN_FIRSTNAME'].presence || 'DEJOIY'
+      lastname = ENV['LASTNAME'].presence || ENV['DEJOIY_ADMIN_LASTNAME'].presence || 'Admin'
+
+      abort 'Set PASSWORD= or DEJOIY_ADMIN_PASSWORD=' if password.blank?
+
+      admin_roles = Role.where(name: %w[Admin Agent])
+      groups = Group.all
+
+      user = User.create_or_update(
+        login:     login,
+        email:     email,
+        firstname: firstname,
+        lastname:  lastname,
+        password:  password,
+        active:    true,
+        roles:     admin_roles,
+        groups:    groups,
+      )
+      puts "Admin user ##{user.id} ready (#{login})"
+
+      Setting.set('system_init_done', true) if User.admin_user_exists?
+      puts 'Done. Sign in with the login and password above.'
+    end
+  end
+
   namespace :email do
     desc 'Print outbound email / notification channel diagnostics'
     task diagnose: :environment do
