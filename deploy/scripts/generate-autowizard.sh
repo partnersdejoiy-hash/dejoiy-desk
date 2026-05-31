@@ -82,10 +82,11 @@ B64="$(base64 -w0 < "$TMP_JSON" 2>/dev/null || base64 < "$TMP_JSON" | tr -d '\n'
 
 echo ""
 echo "Generated auto-wizard payload for login: ${LOGIN} / ${EMAIL}"
+echo "(AUTOWIZARD_JSON is not printed — it contains your password.)"
 echo ""
 echo "Add to deploy/.env:"
 echo "AUTOWIZARD_RELATIVE_PATH=tmp/auto_wizard.json"
-echo "AUTOWIZARD_JSON=${B64}"
+echo "AUTOWIZARD_JSON=<generated — written to .env when run from deploy/>"
 echo ""
 echo "Fresh install only: open the app URL → automated setup runs and signs you in."
 echo "Existing database: use rake dejoiy:admin:ensure instead (see deploy/DEPLOY.md)."

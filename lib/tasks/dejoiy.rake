@@ -12,6 +12,8 @@ namespace :dejoiy do
 
       abort 'Set PASSWORD= or DEJOIY_ADMIN_PASSWORD=' if password.blank?
 
+      UserInfo.current_user_id = 1
+
       admin_roles = Role.where(name: %w[Admin Agent])
       groups = Group.all
 
