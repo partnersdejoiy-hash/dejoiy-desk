@@ -20,7 +20,7 @@ class DejoiyScrubSettingDescriptions < ActiveRecord::Migration[7.2]
   def up
     return if !Setting.exists?(name: 'system_init_done')
 
-    product = Setting.get('product_name').presence || 'DEJOIY Internal Tools'
+    product = Setting.get('product_name').presence || 'Service Desk for DEJOIY'
 
     Setting.where('description LIKE ?', '%Zammad%').find_each do |setting|
       description = setting.description

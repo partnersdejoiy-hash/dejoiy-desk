@@ -111,7 +111,7 @@ Setting.create_if_not_exists(
     placeholder: true,
     permission:  ['admin.branding'],
   },
-  state:       __('DEJOIY Internal Tools'),
+  state:       __('Service Desk for DEJOIY'),
   frontend:    true
 )
 Setting.create_if_not_exists(

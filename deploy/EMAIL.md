@@ -29,7 +29,7 @@ In Docker, the default **Local MTA (sendmail)** adapter usually **does not deliv
    - User / password: SMTP credentials
    - SSL/TLS: as required by provider
 4. Use **Test configuration** / verify if the UI offers it.
-5. Set **Notification sender** (e.g. `DEJOIY Internal Tools <noreply@yourdomain.com>`).
+5. Set **Notification sender** (e.g. `Service Desk for DEJOIY <noreply@yourdomain.com>`).
 
 ### Hostinger example
 

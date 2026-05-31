@@ -1,4 +1,4 @@
-# DEJOIY Internal Tools — private Docker Compose stack
+# Service Desk for DEJOIY — private Docker Compose stack
 # Data lives only in dejoiy-* volumes on your infrastructure.
 
 name: dejoiy-desk

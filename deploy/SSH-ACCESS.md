@@ -60,4 +60,4 @@ Open the portal server as your **SSH Remote** workspace in Cursor Desktop, then 
 
 1. Browse `https://YOUR.PORTAL.DOMAIN/`  
 2. Complete setup wizard → admin user  
-3. Admin → Branding → **DEJOIY Internal Tools**
+3. Admin → Branding → **Service Desk for DEJOIY**

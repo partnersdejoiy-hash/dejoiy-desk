@@ -1,10 +1,10 @@
 # AI Agent Instructions
 
-This file provides guidance on how to work with code in the **DEJOIY Internal Tools** repository (fork of a Rails helpdesk platform).
+This file provides guidance on how to work with code in the **Service Desk for DEJOIY** repository (fork of a Rails helpdesk platform).
 
 ## Project Overview
 
-DEJOIY Internal Tools is an internal support and operations platform. The backend is **Ruby on Rails**.
+Service Desk for DEJOIY is DEJOIY’s internal support and operations platform. The backend is **Ruby on Rails**.
 There are two frontend stacks: the **legacy frontend** is CoffeeScript (Rails asset pipeline), and the **current production frontend** is **Vue 3 + TypeScript** via **Vite** (pnpm). **PostgreSQL**, **Redis**, and **GraphQL** connect the Vue apps to the backend.
 
 ## Architecture
@@ -19,7 +19,7 @@ New features target the Vue 3 + GraphQL stack.
 
 ## Branding
 
-- Product name: **DEJOIY** / **DEJOIY Internal Tools**
+- Product name: **Service Desk for DEJOIY** (brand: **DEJOIY**)
 - User-facing URLs: `https://dejoiy.com` (not vendor domains)
 - Design tokens: `app/frontend/apps/desktop/styles/dejoiy-brand.css`, `tokens.css`
 - Shared constants: `app/frontend/shared/constants/branding.ts`

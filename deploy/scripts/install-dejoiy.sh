@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build and start DEJOIY Internal Tools (private stack).
+# Build and start Service Desk for DEJOIY (private stack).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -52,7 +52,7 @@ kill "$LOG_PID" 2>/dev/null || true
 PORT="${NGINX_EXPOSE_PORT:-8080}"
 FQDN="${ZAMMAD_FQDN:-desk.dejoiy.internal}"
 echo ""
-echo "DEJOIY Internal Tools is starting."
+echo "Service Desk for DEJOIY is starting."
 echo "  URL (local):  http://127.0.0.1:${PORT}/"
 echo "  Configured FQDN: ${FQDN}"
 if [[ -n "${AUTOWIZARD_JSON:-}" ]]; then

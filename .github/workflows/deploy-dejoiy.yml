@@ -1,4 +1,4 @@
-# Manual deploy of DEJOIY Internal Tools to your portal server.
+# Manual deploy of Service Desk for DEJOIY to your portal server.
 # Add repository secrets (Settings → Secrets and variables → Actions):
 #   DEJOIY_DEPLOY_HOST, DEJOIY_DEPLOY_USER, DEJOIY_DEPLOY_PASSWORD, DEJOIY_DEPLOY_FQDN
 # Optional: DEJOIY_PURGE_OLD_ZAMMAD=true

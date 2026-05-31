@@ -10,10 +10,14 @@ export const DEJOIY_COLORS = {
   black: '#000000',
 } as const
 
-/** DEJOIY internal tools — product identity. */
+/** User-facing product title (browser tab, login, emails). */
+export const DEJOIY_PRODUCT_NAME = 'Service Desk for DEJOIY' as const
+
+/** DEJOIY service desk — product identity. */
 export const DEJOIY_BRAND = {
   name: 'DEJOIY',
   shortName: 'DEJOIY',
+  productName: DEJOIY_PRODUCT_NAME,
   tagline: 'YOU + JOY',
   websiteUrl: 'https://dejoiy.com',
   supportPath: '/help',

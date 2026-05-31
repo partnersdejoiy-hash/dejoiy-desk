@@ -37,7 +37,7 @@ class Auth::TwoFactor::AuthenticationMethod::AuthenticatorApp < Auth::TwoFactor:
   private
 
   def issuer
-    Setting.get('organization').presence || Setting.get('product_name').presence || 'DEJOIY Internal Tools'
+    Setting.get('organization').presence || Setting.get('product_name').presence || 'Service Desk for DEJOIY'
   end
 
   def totp(secret)

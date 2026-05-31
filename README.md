@@ -1,6 +1,6 @@
-# DEJOIY Internal Tools
+# Service Desk for DEJOIY
 
-DEJOIY Internal Tools is your team’s unified workspace for support, operations, and customer communication. It brings tickets, channels (email, chat, phone, messaging), knowledge base, and automation into one branded experience built for DEJOIY—not a third-party SaaS shell.
+Service Desk for DEJOIY is your team’s unified workspace for support, operations, and customer communication. It brings tickets, channels (email, chat, phone, messaging), knowledge base, and automation into one branded experience built for DEJOIY—not a third-party SaaS shell.
 
 ## What you get
 
@@ -55,7 +55,7 @@ See `.dev/ai-agent-instructions.md` (via `AGENTS.md`) for patterns and agent ref
 
 ## Branding
 
-Product name, logo, and colors are configured under **Settings → Branding**. Defaults use **DEJOIY Internal Tools** and the DEJOIY gradient identity.
+Product name, logo, and colors are configured under **Settings → Branding**. Defaults use **Service Desk for DEJOIY** and the DEJOIY gradient identity.
 
 ## Private deployment (replace legacy Zammad on your portal)
 

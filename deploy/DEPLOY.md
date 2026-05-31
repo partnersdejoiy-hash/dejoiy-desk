@@ -111,7 +111,7 @@ RAILS_TRUSTED_PROXIES=127.0.0.1,::1,10.0.0.0/8
 - [ ] Do not expose PostgreSQL/Redis/Elasticsearch ports publicly  
 - [ ] Firewall: only 443 (proxy) from internet  
 - [ ] Regular backups: `dejoiy-postgresql-data` + `dejoiy-storage` volumes  
-- [ ] Admin → Branding: product name **DEJOIY Internal Tools**
+- [ ] Admin → Branding: product name **Service Desk for DEJOIY**
 
 ## 5. Email (password reset & verification links)
 

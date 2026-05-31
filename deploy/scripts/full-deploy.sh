@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-shot: remove legacy Zammad (optional) + install DEJOIY Internal Tools
+# One-shot: remove legacy Zammad (optional) + install Service Desk for DEJOIY
 # Run ON your portal server as root or a user in the docker group.
 #
 #   curl -fsSL .../full-deploy.sh | bash
@@ -117,7 +117,7 @@ done
 PORT="$(grep -E '^NGINX_EXPOSE_PORT=' .env | cut -d= -f2 || echo 8080)"
 echo ""
 echo "============================================"
-echo " DEJOIY Internal Tools is deployed"
+ echo " Service Desk for DEJOIY is deployed"
 echo " Local:  http://127.0.0.1:${PORT}/"
 echo " Public: ${HTTP_TYPE}://${FQDN}/  (after reverse proxy)"
 echo " Privacy: vendor services DISABLED"
