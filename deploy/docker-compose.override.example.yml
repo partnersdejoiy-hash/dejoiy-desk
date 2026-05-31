@@ -15,3 +15,11 @@ services:
   dejoiy-websocket:
     volumes:
       - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
+      - ./stubs/noop-initializer.rb:/opt/zammad/config/initializers/dejoiy_email_notification_check.rb:ro
+  dejoiy-nginx:
+    volumes:
+      - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
+      - ./stubs/noop-initializer.rb:/opt/zammad/config/initializers/dejoiy_email_notification_check.rb:ro
+      - ../public/favicon.svg:/opt/zammad/public/favicon.svg:ro
+      - ../public/favicon.ico:/opt/zammad/public/favicon.ico:ro
+      - ../public/apple-touch-icon.png:/opt/zammad/public/apple-touch-icon.png:ro
