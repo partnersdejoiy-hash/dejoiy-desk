@@ -1,0 +1,17 @@
+# Optional: mount DEJOIY config from host without rebuilding (development / hotfix).
+# cp docker-compose.override.example.yml docker-compose.override.yml
+services:
+  dejoiy-init:
+    volumes:
+      - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
+      - ../config/initializers/dejoiy_brand_scrub.rb:/opt/zammad/config/initializers/dejoiy_brand_scrub.rb:ro
+  dejoiy-railsserver:
+    volumes:
+      - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
+      - ../config/initializers/dejoiy_brand_scrub.rb:/opt/zammad/config/initializers/dejoiy_brand_scrub.rb:ro
+  dejoiy-scheduler:
+    volumes:
+      - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
+  dejoiy-websocket:
+    volumes:
+      - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro

@@ -72,8 +72,9 @@ if [ "$1" = 'zammad-init' ]; then
     fi
 
     # create autowizard.json on first install
-    if base64 -d <<< "${AUTOWIZARD_JSON}" &>> /dev/null; then
+    if [ -n "${AUTOWIZARD_JSON}" ] && base64 -d <<< "${AUTOWIZARD_JSON}" &>> /dev/null; then
       echo "Saving autowizard json payload..."
+      mkdir -p "$(dirname "${AUTOWIZARD_RELATIVE_PATH}")"
       base64 -d <<< "${AUTOWIZARD_JSON}" > "${AUTOWIZARD_RELATIVE_PATH}"
     fi
   else
