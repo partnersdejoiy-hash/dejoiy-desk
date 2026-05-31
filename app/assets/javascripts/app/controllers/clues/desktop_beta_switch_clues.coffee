@@ -3,7 +3,7 @@ class App.DesktopBetaSwitchClues extends App.CluesBase
     {
       container: '.navbar-desktop-beta-switch'
       headline: __('New BETA UI')
-      text: App.i18n.translateContent('Hey! %s is getting a New Agent User Interface soon!¶Please try it out early and send your feedback on it.¶¶You can come back any time using the switch below.', App.Config.get('product_name'))
+      text: __('Hey! The service desk is getting a New Agent User Interface soon!¶Please try it out early and send your feedback on it.¶¶You can come back any time using the switch below.')
     }
   ]
 

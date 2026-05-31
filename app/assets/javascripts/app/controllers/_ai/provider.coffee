@@ -75,7 +75,7 @@ class ChannelAiProvider extends App.ControllerTabs
 
 class AiProviderSettings extends App.Controller
   @requiredPermission: 'admin.ai_provider'
-  description : App.i18n.translateContent('This service allows you to connect %s with an AI provider.', App.Config.get('product_name'))
+  description : __('This service allows you to connect the service desk with an AI provider.')
 
   constructor: ->
     super
