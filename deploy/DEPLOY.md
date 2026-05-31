@@ -91,7 +91,17 @@ RAILS_TRUSTED_PROXIES=127.0.0.1,::1,10.0.0.0/8
 - [ ] Regular backups: `dejoiy-postgresql-data` + `dejoiy-storage` volumes  
 - [ ] Admin → Branding: product name **DEJOIY Internal Tools**
 
-## 5. Do you need a “similar SaaS”?
+## 5. Email (password reset & verification links)
+
+Outbound mail uses an **Email::Notification** channel. Docker does **not** deliver real mail via sendmail/Local MTA.
+
+1. Admin → **Channels** → **Email** → **Notification** → configure **SMTP** (Hostinger, etc.).
+2. Set **FQDN** / **http_type** to match your public URL (include port if needed, e.g. `178.104.228.157:8081`).
+3. Run `./deploy/scripts/diagnose-email.sh` on the server.
+
+Full guide: [deploy/EMAIL.md](EMAIL.md).
+
+## 6. Do you need a “similar SaaS”?
 
 | Option | When to use |
 |--------|-------------|

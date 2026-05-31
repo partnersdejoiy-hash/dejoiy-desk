@@ -16,6 +16,7 @@ Channel.create_if_not_exists(
   preferences: { online_service_disable: true },
   active:      false,
 )
+# Local MTA does not deliver real mail inside Docker — enable SMTP via Admin → Channels after install.
 Channel.create_if_not_exists(
   area:        'Email::Notification',
   options:     {
@@ -24,5 +25,5 @@ Channel.create_if_not_exists(
     },
   },
   preferences: { online_service_disable: true },
-  active:      true,
+  active:      false,
 )
