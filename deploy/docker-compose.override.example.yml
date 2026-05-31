@@ -23,3 +23,6 @@ services:
       - ../public/favicon.svg:/opt/zammad/public/favicon.svg:ro
       - ../public/favicon.ico:/opt/zammad/public/favicon.ico:ro
       - ../public/apple-touch-icon.png:/opt/zammad/public/apple-touch-icon.png:ro
+      # When HTTPS terminates on Caddy/Traefik/nginx in front of Docker, use $http_x_forwarded_proto
+      # so Rails sets secure session cookies (fixes CSRF / login behind https://desk.example.com).
+      - ./nginx-dejoiy-docker-default.conf:/etc/nginx/sites-enabled/default:ro

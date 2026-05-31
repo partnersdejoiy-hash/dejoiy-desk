@@ -96,6 +96,14 @@ server {
 }
 ```
 
+If HTTPS terminates **in front of** the Docker nginx (e.g. Caddy on the host proxying to port 8081), the inner nginx must **not** overwrite `X-Forwarded-Proto` with `http`. Use:
+
+```nginx
+proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+```
+
+Mount `deploy/nginx-dejoiy-docker-default.conf` via `docker-compose.override.yml` (see `docker-compose.override.example.yml`). Without this, login fails with **CSRF token verification failed** because secure session cookies are not issued.
+
 Set in `deploy/.env`:
 
 ```bash
