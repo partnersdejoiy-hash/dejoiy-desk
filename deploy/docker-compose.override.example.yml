@@ -16,6 +16,10 @@ services:
     volumes:
       - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
       - ./stubs/noop-initializer.rb:/opt/zammad/config/initializers/dejoiy_email_notification_check.rb:ro
+  dejoiy-elasticsearch:
+    environment:
+      ES_JAVA_OPTS: "-Xms256m -Xmx256m"
+
   dejoiy-nginx:
     volumes:
       - ../lib/dejoiy:/opt/zammad/lib/dejoiy:ro
