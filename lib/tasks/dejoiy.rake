@@ -12,6 +12,58 @@ namespace :dejoiy do
     end
   end
 
+  namespace :company do
+    desc 'Configure DEJOIY org and agent users. AGENTS=email1,email2 PASSWORD=optional (resets all listed)'
+    task setup: :environment do
+      UserInfo.current_user_id = 1
+
+      org = Organization.find_or_create_by(name: 'DEJOIY') do |o|
+        o.shared = true
+        o.active = true
+      end
+      org.update!(name: 'DEJOIY', active: true) if org.name != 'DEJOIY'
+
+      agent_roles = Role.where(name: %w[Admin Agent])
+      groups      = Group.all
+      password    = ENV['PASSWORD'].presence || ENV['DEJOIY_AGENT_PASSWORD'].presence
+
+      agent_emails = (ENV['AGENTS'].presence || 'core@dejoiy.com,anil.sharma@dejoiy.com')
+        .split(/[,;\s]+/)
+        .map(&:strip)
+        .reject(&:blank?)
+
+      agent_emails.each do |email|
+        login = email.include?('@') ? email : email
+        firstname, lastname = email.split('@').first.split(/[._-]/, 2)
+        lastname = lastname.presence || 'Agent'
+
+        attrs = {
+          login:           login,
+          email:           email,
+          firstname:       firstname.capitalize,
+          lastname:        lastname.capitalize,
+          organization_id: org.id,
+          active:          true,
+          roles:           agent_roles,
+          groups:          groups,
+        }
+        attrs[:password] = password if password.present?
+
+        user = User.create_or_update(attrs)
+        puts "Agent ##{user.id} ready: #{login} (#{email})"
+      end
+
+      Setting.set('system_init_done', true)
+      Setting.set('product_name', 'Service Desk for DEJOIY')
+      Setting.set('fqdn', ENV['DEJOIY_FQDN']) if ENV['DEJOIY_FQDN'].present?
+      Setting.set('http_type', ENV['DEJOIY_HTTP_TYPE']) if ENV['DEJOIY_HTTP_TYPE'].present?
+
+      puts "Organization: #{org.name} (##{org.id})"
+      puts "Agents configured: #{agent_emails.join(', ')}"
+      puts 'Sign in at https://' + Setting.get('fqdn').to_s
+    end
+  end
+
   namespace :admin do
     desc 'Create or update super admin. LOGIN=admin EMAIL=admin@example.com PASSWORD=secret [FIRSTNAME] [LASTNAME]'
     task ensure: :environment do
